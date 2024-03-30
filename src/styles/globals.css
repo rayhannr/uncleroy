@@ -31,3 +31,19 @@ body {
   font-family: "Manrope", sans-serif;
   @apply bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100;
 }
+
+.bg-base {
+  @apply bg-slate-100 dark:bg-slate-900;
+}
+
+.text-base {
+  @apply text-slate-900 dark:text-slate-100;
+}
+
+.bg-reverse {
+  @apply bg-slate-900 dark:bg-slate-100;
+}
+
+.text-reverse {
+  @apply text-slate-100 dark:text-slate-900;
+}

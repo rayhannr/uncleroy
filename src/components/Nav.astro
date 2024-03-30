@@ -1,30 +1,46 @@
 ---
 import ThemeToggler from "./ThemeToggler.astro";
+import { twMerge } from "tailwind-merge";
 const links = [
   {
-    title: 'Home',
-    link: '/'
+    title: "Home",
+    link: "/",
   },
   {
-    title: 'Blog',
-    link: '/blog'
+    title: "Blog",
+    link: "/blog",
   },
   {
-    title: 'About',
-    link: '/about'
-  }
-]
+    title: "About",
+    link: "/about",
+  },
+];
+const activeLink = `/${Astro.url.pathname.split("/")[1]}`;
 ---
 
-<nav class="flex flex-row justify-center py-4 w-full sm:w-1/2 m-auto">
+<nav
+  class="flex flex-row justify-center py-4 w-full px-4 sm:px-0 sm:w-1/2 m-auto"
+>
   <div class="flex justify-between items-center w-full">
-    <ul class="flex flex-wrap">
-      {links.map(({link, title}) => (
-        <li>
-          <a href={link} class="px-4 py-2">{title}</a>  
+    <ul class="flex flex-wrap gap-3">
+      {
+        links.map(({ link, title }) => (
+          <li>
+            <a
+              href={link}
+              class={twMerge(
+                "px-3 py-1 text-sm rounded-xl",
+                link === activeLink
+                  ? "bg-reverse text-reverse"
+                  : "hover:text-slate-600 dark:hover:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700",
+              )}
+            >
+              {title}
+            </a>
           </li>
-          ))}
-  </ul>
-  <ThemeToggler />
-</div>
+        ))
+      }
+    </ul>
+    <ThemeToggler />
+  </div>
 </nav>
