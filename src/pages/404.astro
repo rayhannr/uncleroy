@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const image404 = '/images/base/404.webp'
+---
+
+<BaseLayout>
+  <div class="flex flex-col flex-1 items-center justify-center h-full">
+    <img alt="404 not found" src={image404} class="max-h-[300px]" />
+    <p class="text-center mt-2">Nothing to see here, mate.</p>
+  </div>
+</BaseLayout>
