@@ -1,25 +1,25 @@
 ---
-import Footer from "../components/Footer.astro";
-import Head from "../components/Head.astro";
-import Nav from "../components/Nav.astro";
+import Footer from '../components/Footer.astro'
+import Head from '../components/Head.astro'
+import Nav from '../components/Nav.astro'
 
 interface Props {
-  title?: string;
-  description?: string;
-  image?: string;
+  title?: string
+  description?: string
+  image?: string
 }
 
-const { title, description, image } = Astro.props;
-const permalink = Astro.url.href;
-const desc = description || "Little things about Uncle Roy";
+const { title, description, image } = Astro.props
+const permalink = Astro.url.href
+const desc = description || 'Little things about Uncle Roy'
 
-const prefix = title ? `${title} | ` : "";
-const pageTitle = `${prefix}uncle roy`;
+const prefix = title ? `${title} | ` : ''
+const pageTitle = `${prefix}uncle roy`
 ---
 
 <html lang="en">
   <Head title={pageTitle} description={desc} {image} {permalink} />
-  <body class="min-h-screen flex flex-col transition-all">
+  <body class="min-h-screen flex flex-col transition-all font-medium">
     <Nav />
     <main class="flex flex-col flex-1 px-4 sm:px-0 sm:w-1/2 m-auto">
       <slot />

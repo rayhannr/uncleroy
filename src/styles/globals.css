@@ -3,32 +3,32 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Manrope";
-  src: url("/fonts/Manrope-Regular.woff2") format("woff2");
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Manrope";
-  src: url("/fonts/Manrope-SemiBold.woff2") format("woff2");
-  font-weight: 600;
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Medium.woff2') format('woff2');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Manrope";
-  src: url("/fonts/Manrope-Bold.woff2") format("woff2");
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Manrope";
-  src: url("/fonts/Manrope-ExtraBold.woff2") format("woff2");
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -36,8 +36,8 @@
 
 html,
 body {
-  font-family: "Manrope", sans-serif;
-  @apply bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100;
+  font-family: 'Manrope', sans-serif;
+  @apply bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100;
 }
 
 .bg-base {
@@ -45,7 +45,7 @@ body {
 }
 
 .text-base {
-  @apply text-slate-900 dark:text-slate-100;
+  @apply text-slate-800 dark:text-slate-100;
 }
 
 .bg-reverse {
@@ -53,5 +53,5 @@ body {
 }
 
 .text-reverse {
-  @apply text-slate-100 dark:text-slate-900;
+  @apply text-slate-100 dark:text-slate-800;
 }

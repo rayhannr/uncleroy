@@ -1,59 +1,42 @@
 ---
-import type { MarkdownLayoutProps } from "astro";
-import BaseLayout from "./BaseLayout.astro";
-import { formatLongDate } from "../utils/date";
+import type { MarkdownLayoutProps } from 'astro'
+import BaseLayout from './BaseLayout.astro'
+import { formatLongDate } from '../utils/date'
 
-type Props = MarkdownLayoutProps<{
-  title: string;
-  image: string;
-  description: string;
-  imageAlt: string;
-  imageCaption: string;
-  publishedAt: string;
-  imageCredit?: string;
-  imageLink?: string;
-}>;
+export interface BlogProps {
+  title: string
+  image: string
+  description: string
+  imageAlt: string
+  imageCaption: string
+  publishedAt: string
+  imageCredit?: string
+  imageLink?: string
+}
 
-const {
-  title,
-  image,
-  imageAlt,
-  imageCaption,
-  imageCredit,
-  imageLink,
-  publishedAt,
-  description,
-} = Astro.props.frontmatter;
-const publishedDate = new Date(publishedAt);
+type Props = MarkdownLayoutProps<BlogProps>
+
+const { title, image, imageAlt, imageCaption, imageCredit, imageLink, publishedAt, description } = Astro.props.frontmatter
+const publishedDate = new Date(publishedAt)
 ---
 
 <BaseLayout title={title} description={description} image={image}>
-  <article class="text-sm mt-4">
+  <article class="mt-4">
     <header>
-      <time
-        datetime={publishedDate.toISOString()}
-        class="text-slate-500 dark:text-slate-400"
-      >
+      <time datetime={publishedDate.toISOString()} class="text-slate-500 dark:text-slate-400">
         {formatLongDate(publishedDate)}
       </time>
       <h1 class="font-extrabold text-3xl md:text-5xl text-pretty mt-4">
         {title}
       </h1>
 
-      <figure class="mt-4">
+      <figure class="mt-4 font-normal">
         <img src={image} alt={imageAlt} class="mb-1 rounded" />
-        <figcaption
-          class="text-xs text-slate-500 dark:text-slate-400 text-center"
-        >
+        <figcaption class="text-xs text-slate-500 dark:text-slate-400 text-center">
           {imageCaption}
         </figcaption>
-        <figcaption
-          class="text-xs text-slate-500 dark:text-slate-400 text-center"
-        >
-          Background by <a
-            href={imageLink}
-            class="text-slate-700 dark:text-slate-200">{imageCredit}</a
-          > from Unsplash
+        <figcaption class="text-xs text-slate-500 dark:text-slate-400 text-center">
+          Background by <a href={imageLink} class="text-slate-700 dark:text-slate-200">{imageCredit}</a> from Unsplash
         </figcaption>
       </figure>
     </header>

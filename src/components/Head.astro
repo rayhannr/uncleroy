@@ -1,26 +1,21 @@
 ---
-import "../styles/globals.css";
+import '../styles/globals.css'
 
 interface Props {
-  title: string;
-  description: string;
-  permalink: string;
-  image?: string;
+  title: string
+  description: string
+  permalink: string
+  image?: string
 }
 
-const {
-  title,
-  description,
-  permalink,
-  image = "/images/base/uncle-roy.webp",
-} = Astro.props;
+const { title, description, permalink, image = '/images/base/uncle-roy.webp' } = Astro.props
 
-let url = Astro.site?.href || "";
-if (url.endsWith("/")) {
-  url = url.slice(0, -1);
+let url = Astro.site?.href || ''
+if (url.endsWith('/')) {
+  url = url.slice(0, -1)
 }
 
-const imageUrl = `${url}${image}`;
+const imageUrl = `${url}${image}`
 ---
 
 <head>
@@ -46,50 +41,39 @@ const imageUrl = `${url}${image}`;
   <meta property="twitter:image" content={imageUrl} />
 
   {
-    [
-      "Manrope-Bold.woff2",
-      "Manrope-Regular.woff2",
-      "Manrope-SemiBold.woff2",
-      "Manrope-ExtraBold.woff2",
-    ].map((font) => (
-      <link
-        rel="preload"
-        href={`/fonts/${font}`}
-        as="font"
-        type="font/woff2"
-        crossorigin
-      />
+    ['Manrope-Bold.woff2', 'Manrope-Regular.woff2', 'Manrope-Medium.woff2', 'Manrope-ExtraBold.woff2'].map((font) => (
+      <link rel="preload" href={`/fonts/${font}`} as="font" type="font/woff2" crossorigin />
     ))
   }
 
   <script is:inline>
-    const DARK_THEME_CLASS = "dark";
-    const COLOR_MODE = "colorMode";
-    const LIGHT_THEME = "light";
-    const DARK_THEME = "dark";
+    const DARK_THEME_CLASS = 'dark'
+    const COLOR_MODE = 'colorMode'
+    const LIGHT_THEME = 'light'
+    const DARK_THEME = 'dark'
 
-    const root = document.documentElement;
+    const root = document.documentElement
 
     const getInitialColorMode = () => {
-      const prevColorMode = localStorage.getItem(COLOR_MODE);
+      const prevColorMode = localStorage.getItem(COLOR_MODE)
 
-      if (prevColorMode) return prevColorMode;
-      if (window.matchMedia("prefers-color-scheme: dark").matches) {
-        return DARK_THEME;
+      if (prevColorMode) return prevColorMode
+      if (window.matchMedia('prefers-color-scheme: dark').matches) {
+        return DARK_THEME
       }
 
-      return LIGHT_THEME;
-    };
+      return LIGHT_THEME
+    }
 
     const setInitialColorMode = (mode) => {
       if (mode === LIGHT_THEME) {
-        root.classList.remove(DARK_THEME_CLASS);
+        root.classList.remove(DARK_THEME_CLASS)
       } else {
-        root.classList.add(DARK_THEME_CLASS);
+        root.classList.add(DARK_THEME_CLASS)
       }
-    };
+    }
 
-    const initialColorMode = getInitialColorMode();
-    setInitialColorMode(initialColorMode);
+    const initialColorMode = getInitialColorMode()
+    setInitialColorMode(initialColorMode)
   </script>
 </head>

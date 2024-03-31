@@ -1,0 +1,29 @@
+---
+import Timeline from '../components/Timeline.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import type { BlogProps } from '../layouts/Blog.astro'
+
+let blogs = await Astro.glob<BlogProps>('./blog/*.md')
+blogs = blogs.sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())
+---
+
+<BaseLayout title="Blog" description="List of my blogs I've written since I built this site">
+  <div
+    class="relative sm:pb-12 sm:ml-[calc(2rem+1px)] md:ml-[calc(3.5rem+1px)] lg:ml-[max(calc(14.5rem+1px),calc(100%-48rem))] mt-4"
+  >
+    <div class="hidden absolute top-3 bottom-0 right-full mr-7 md:mr-[3.25rem] w-px bg-slate-200 dark:bg-slate-800 sm:block">
+    </div>
+    <div class="space-y-16">
+      {
+        blogs.map((blog) => (
+          <Timeline
+            title={blog.frontmatter.title}
+            description={blog.frontmatter.description}
+            time={blog.frontmatter.publishedAt}
+            url={blog.url}
+          />
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

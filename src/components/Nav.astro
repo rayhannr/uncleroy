@@ -1,19 +1,19 @@
 ---
-import ThemeToggler from "./ThemeToggler.astro";
+import ThemeToggler from './ThemeToggler.astro'
 const links = [
   {
-    title: "Home",
-    link: "/",
+    title: 'Home',
+    link: '/'
   },
   {
-    title: "Blog",
-    link: "/blog",
+    title: 'Blog',
+    link: '/blog'
   },
   {
-    title: "About",
-    link: "/about",
-  },
-];
+    title: 'About',
+    link: '/about'
+  }
+]
 ---
 
 <nav class="flex flex-row justify-center py-4 px-4 sm:px-0 sm:w-1/2 sm:m-auto">
@@ -34,14 +34,14 @@ const links = [
 </nav>
 
 <script>
-  const activeLink = `/${window.location.pathname.split("/")[1]}`;
-  const activeNavEl = document.querySelector(`nav a[href="${activeLink}"]`);
+  const activeLink = `/${window.location.pathname.split('/')[1]}`
+  const activeNavEl = document.querySelector(`nav a[href="${activeLink}"]`)
   if (activeNavEl) {
-    activeNavEl.classList.add("bg-reverse");
-    activeNavEl.classList.add("text-reverse");
-    activeNavEl.classList.remove("hover:text-slate-600");
-    activeNavEl.classList.remove("dark:hover:text-slate-400");
-    activeNavEl.classList.remove("hover:bg-slate-300");
-    activeNavEl.classList.remove("dark:hover:bg-slate-700");
+    activeNavEl.classList.add('bg-reverse')
+    activeNavEl.classList.add('text-reverse')
+    activeNavEl.classList.remove('hover:text-slate-600')
+    activeNavEl.classList.remove('dark:hover:text-slate-400')
+    activeNavEl.classList.remove('hover:bg-slate-300')
+    activeNavEl.classList.remove('dark:hover:bg-slate-700')
   }
 </script>
