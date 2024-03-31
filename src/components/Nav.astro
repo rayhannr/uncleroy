@@ -15,7 +15,7 @@ const links = [
     link: "/about",
   },
 ];
-const activeLink = `/${Astro.url.pathname.split("/")[1]}`;
+const activeLink = `/${window.location.pathname.split("/")[1]}`;
 ---
 
 <nav
