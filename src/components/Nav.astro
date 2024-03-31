@@ -1,6 +1,5 @@
 ---
 import ThemeToggler from "./ThemeToggler.astro";
-import { twMerge } from "tailwind-merge";
 const links = [
   {
     title: "Home",
@@ -15,7 +14,6 @@ const links = [
     link: "/about",
   },
 ];
-const activeLink = `/${window.location.pathname.split("/")[1]}`;
 ---
 
 <nav
@@ -26,15 +24,7 @@ const activeLink = `/${window.location.pathname.split("/")[1]}`;
       {
         links.map(({ link, title }) => (
           <li>
-            <a
-              href={link}
-              class={twMerge(
-                "px-3 py-1 text-sm rounded-xl",
-                link === activeLink
-                  ? "bg-reverse text-reverse"
-                  : "hover:text-slate-600 dark:hover:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-700",
-              )}
-            >
+            <a href={link} data-nav-link class="px-3 py-1 text-sm rounded-xl">
               {title}
             </a>
           </li>
@@ -44,3 +34,16 @@ const activeLink = `/${window.location.pathname.split("/")[1]}`;
     <ThemeToggler />
   </div>
 </nav>
+
+<script>
+  const activeLink = `/${window.location.pathname.split("/")[1]}`;
+  const activeNavEl = document.querySelector(`nav a[href="${activeLink}"]`);
+  if (activeNavEl) {
+    activeNavEl.classList.add("bg-reverse");
+    activeNavEl.classList.add("text-reverse");
+    activeNavEl.classList.remove("hover:text-slate-600");
+    activeNavEl.classList.remove("dark:hover:text-slate-400");
+    activeNavEl.classList.remove("hover:bg-slate-300");
+    activeNavEl.classList.remove("dark:hover:bg-slate-700");
+  }
+</script>
