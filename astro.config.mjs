@@ -13,9 +13,9 @@ export default defineConfig({
     port: 3000,
   },
   site:
-    process.env.CONTEXT === "production"
-      ? process.env.URL
-      : process.env.DEPLOYED_URL,
+    process.env.VERCEL_ENV === "production"
+      ? `https://${process.env.VERCEL_URL}`
+      : process.env.URL,
   output: "static",
   adapter: vercel({
     webAnalytics: {
