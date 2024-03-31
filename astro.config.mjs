@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/static";
+import htmlClassNames from "./plugins/html-classnames/index.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +12,10 @@ export default defineConfig({
   ],
   server: {
     port: 3000,
+  },
+  markdown: {
+    syntaxHighlight: "prism",
+    remarkPlugins: [htmlClassNames],
   },
   site:
     process.env.VERCEL_ENV === "production"
