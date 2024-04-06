@@ -1,12 +1,12 @@
 ---
-title: Features in a Digital Wedding Invitation That Need Improvements
-image: /images/blog/features-in-a-digital-wedding-invitation-that-need-improvements.webp
-imageAlt: An image with the text "features in a digital wedding invitation need improvements"
-imageCaption: An image with the text "features in a digital wedding invitation need improvements"
-imageCredit: Iman soleimany zadeh
-imageLink: https://unsplash.com/photos/white-dove-figurine-surrounded-by-string-lights-on-table-2mxwz9uFqcY
-description: If someone invites me to their wedding, I hope these features are improved in the invitation.
-publishedAt: 2024-03-31T03:48:11.988Z
+title: Begin Again
+image: /images/blog/begin-again.webp
+imageAlt: An image with the text "begin again"
+imageCaption: An image with the text "begin again"
+imageCredit: Wahyu Pratama
+imageLink: https://unsplash.com/photos/jco-signage-Ps6OvCkHSlM
+description: Yup, i begin to blog again
+publishedAt: 2024-04-10T12:52:34.981Z
 layout: ../../layouts/Blog.astro
 ---
 
