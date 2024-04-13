@@ -21,7 +21,7 @@ const publishedDate = new Date(publishedAt)
 ---
 
 <BaseLayout title={title} description={description} image={image}>
-  <article class="mt-4">
+  <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedDate.toISOString()} class="text-slate-500 dark:text-slate-400">
         {formatLongDate(publishedDate)}
