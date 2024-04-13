@@ -3,6 +3,7 @@ import type { MarkdownLayoutProps } from 'astro'
 import BaseLayout from './BaseLayout.astro'
 import { formatLongDate } from '../utils/date'
 import Title from '../components/typography/Title.astro'
+import Paragraph from '../components/typography/Paragraph.astro'
 
 export interface BlogProps {
   title: string
@@ -13,11 +14,13 @@ export interface BlogProps {
   publishedAt: string
   imageCredit?: string
   imageLink?: string
+  status?: string
 }
 
 type Props = MarkdownLayoutProps<BlogProps>
 
-const { title, image, imageAlt, imageCaption, imageCredit, imageLink, publishedAt, description } = Astro.props.frontmatter
+const { title, image, imageAlt, imageCaption, imageCredit, imageLink, publishedAt, description, status } =
+  Astro.props.frontmatter
 const publishedDate = new Date(publishedAt)
 ---
 
@@ -43,7 +46,7 @@ const publishedDate = new Date(publishedAt)
     </header>
 
     <div class="mt-8">
-      <slot />
+      {status === 'draft' ? <Paragraph>Regrettably, the material is still in its draft stage.</Paragraph> : <slot />}
     </div>
   </article>
 </BaseLayout>
