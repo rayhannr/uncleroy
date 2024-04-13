@@ -1,5 +1,7 @@
 ---
 import BlogCard from '../components/BlogCard.astro'
+import Paragraph from '../components/typography/Paragraph.astro'
+import Title from '../components/typography/Title.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import type { BlogProps } from '../layouts/Blog.astro'
 
@@ -12,16 +14,16 @@ const { title, description, image, publishedAt, imageAlt } = latestBlog.frontmat
 
 <BaseLayout>
   <div class="mt-2 lg:mt-6">
-    <h1 class="font-extrabold text-3xl md:text-5xl text-pretty tracking-tighter">Hi, Uncle Roy here!</h1>
-    <p class="mt-6">
+    <Title>Hi, Uncle Roy here!</Title>
+    <Paragraph>
       I write tech, life, and book review thingy. If you're reading this, most likely you either:
       <ul class="list-disc ml-10 my-2">
         <li>found one of my blog from your browser's search result</li>
         <li>know my social media which has the link to this page</li>
       </ul>
-    </p>
-    If we haven't crossed paths personally, I must apologize for not sharing my real identity or linking my social media to this
-    page.
+      If we haven't crossed paths personally, I must apologize for not sharing my real identity or linking my social media to this
+      page.
+    </Paragraph>
 
     <div class="mt-6">
       <h2 class="font-extrabold text-2xl text-pretty mb-4">Latest blog</h2>

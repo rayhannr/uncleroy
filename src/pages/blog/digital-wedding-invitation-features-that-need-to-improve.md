@@ -7,6 +7,7 @@ imageCredit: Iman soleimany zadeh
 imageLink: https://unsplash.com/photos/white-dove-figurine-surrounded-by-string-lights-on-table-2mxwz9uFqcY
 description: If someone invites me to their wedding, I hope these features are improved in the invitation.
 publishedAt: 2024-04-30T03:48:11.988Z
+status: draft
 layout: ../../layouts/Blog.astro
 ---
 

@@ -2,6 +2,7 @@
 import type { MarkdownLayoutProps } from 'astro'
 import BaseLayout from './BaseLayout.astro'
 import { formatLongDate } from '../utils/date'
+import Title from '../components/typography/Title.astro'
 
 export interface BlogProps {
   title: string
@@ -23,12 +24,12 @@ const publishedDate = new Date(publishedAt)
 <BaseLayout title={title} description={description} image={image}>
   <article class="mt-2 lg:mt-4">
     <header>
-      <time datetime={publishedDate.toISOString()} class="text-slate-500 dark:text-slate-400">
+      <time datetime={publishedDate.toISOString()} class="text-slate-500 dark:text-slate-400 block mb-4">
         {formatLongDate(publishedDate)}
       </time>
-      <h1 class="font-extrabold text-3xl md:text-5xl text-pretty tracking-tighter mt-4">
+      <Title>
         {title}
-      </h1>
+      </Title>
 
       <figure class="mt-6 font-normal text-balance">
         <img src={image} loading="lazy" alt={imageAlt} class="mb-1 rounded w-full" />
