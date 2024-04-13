@@ -17,7 +17,10 @@ export default defineConfig({
     syntaxHighlight: 'prism',
     remarkPlugins: [htmlClassNames]
   },
-  site: process.env.VERCEL_ENV === 'production' ? `https://${process.env.VERCEL_URL}` : process.env.URL,
+  site:
+    process.env.VERCEL_ENV === 'production'
+      ? `https://${process.env.CUSTOM_VERCEL_URL || process.env.VERCEL_URL}`
+      : process.env.URL,
   output: 'static',
   adapter: vercel({
     webAnalytics: {
