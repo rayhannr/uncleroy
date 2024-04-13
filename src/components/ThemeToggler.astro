@@ -5,7 +5,7 @@
 <button
   aria-label="theme toggler"
   data-theme-toggle
-  class="cursor-pointer rounded-xl border-0 px-2 py-1 transition-all hover:scale-90 active:scale-100 outline-none"
+  class="rounded-full border-0 p-2 transition-all hover:scale-90 active:scale-100 hover:bg-slate-200 dark:hover:bg-slate-800 outline-none"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -39,13 +39,17 @@
 
   const toggle = document.querySelector('[data-theme-toggle]')
   const root = document.documentElement
+  const metaThemeColor = document.querySelector('meta[name="theme-color"]')
 
   if (toggle) {
     toggle.addEventListener('click', () => {
       root.classList.toggle(DARK_THEME_CLASS)
 
       const colorMode = root.classList.contains(DARK_THEME_CLASS) ? DARK_THEME : LIGHT_THEME
+      const metaColor = colorMode === DARK_THEME ? '#0f172a' : '#f1f5f9'
+
       localStorage.setItem(COLOR_MODE, colorMode)
+      metaThemeColor?.setAttribute('content', metaColor)
     })
   }
 </script>

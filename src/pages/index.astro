@@ -1,15 +1,32 @@
 ---
+import BlogCard from '../components/BlogCard.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
+import type { BlogProps } from '../layouts/Blog.astro'
+
+const blogs = await Astro.glob<BlogProps>('./blog/*.md')
+const latestBlog = blogs.sort(
+  (a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf()
+)[0]
+const { title, description, image, publishedAt, imageAlt } = latestBlog.frontmatter
 ---
 
 <BaseLayout>
   <div class="mt-6">
-    <p>
-      If you're reading this, most likely you either:
-      <ul class="list-disc ml-4">
+    <h1 class="font-extrabold text-3xl md:text-5xl text-pretty tracking-tighter">Hi, Uncle Roy here!</h1>
+    <p class="mt-6">
+      I write tech, life, and book review thingy. If you're reading this, most likely you either:
+      <ul class="list-disc ml-10 my-2">
         <li>found one of my blog from your browser's search result</li>
-        <li>know my personal site through my social media</li>
+        <li>know my social media which has the link to this page</li>
       </ul>
     </p>
+    If we haven't crossed paths personally, I must apologize for not sharing my real identity or linking my social media to this
+    page.
+
+    <div class="mt-6">
+      <h2 class="font-extrabold text-2xl text-pretty mb-4">Latest blog</h2>
+
+      <BlogCard {image} {title} {description} {publishedAt} {imageAlt} link={latestBlog.url} />
+    </div>
   </div>
 </BaseLayout>
