@@ -1,0 +1,26 @@
+---
+import TimelineWrapper from '../components/TimelineWrapper.astro'
+import Timeline from '../components/Timeline.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import type { ProjectProps } from '../layouts/Project.astro'
+
+let projects = await Astro.glob<ProjectProps>('./project/*.md')
+projects = projects.sort(
+  (a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf()
+)
+---
+
+<BaseLayout title="Project">
+  <TimelineWrapper>
+    {
+      projects.map((project) => (
+        <Timeline
+          title={project.frontmatter.title}
+          description={project.frontmatter.description}
+          time={project.frontmatter.publishedAt}
+          url={project.url}
+        />
+      ))
+    }
+  </TimelineWrapper>
+</BaseLayout>
