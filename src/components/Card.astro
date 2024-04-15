@@ -9,13 +9,14 @@ interface Props {
   image?: string
   imageAlt?: string
   link?: string
+  className?: string
 }
 
-const { link, image, title, description, imageAlt, publishedAt } = Astro.props
+const { link, image, title, description, imageAlt, publishedAt, className } = Astro.props
 ---
 
-<a href={link}>
-  <div class="w-full lg:flex rounded border border-slate-200 dark:border-slate-800">
+<a href={link} class={className}>
+  <div class="w-full h-full lg:flex rounded border border-slate-200 dark:border-slate-800">
     {
       image && (
         <div
@@ -28,10 +29,10 @@ const { link, image, title, description, imageAlt, publishedAt } = Astro.props
     <div class="p-4 flex flex-col justify-between leading-normal">
       <div class="mb-8">
         <Title as="h3" className="mb-2">{title}</Title>
-        <p class="text-slate-600 dark:text-slate-300">{description}</p>
+        <p class="text-slate-600 dark:text-slate-300 line-clamp-2">{description}</p>
       </div>
 
-      <p class="text-sm text-slate-500 dark:text-slate-400">{formatShortDate(new Date(publishedAt))}</p>
+      <p class="text-sm text-slate-500 dark:text-slate-400">{formatShortDate(publishedAt)}</p>
     </div>
   </div>
 </a>

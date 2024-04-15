@@ -3,6 +3,7 @@ title: folklore-invitation
 description: Bare minimum wedding invitation template
 publishedAt: 2023-10-08T10:24:59.000Z
 projectUrl: https://folklore-invitation.vercel.app/?to=Shikamaru%20Nara
+status: published
 layout: ../../layouts/Project.astro
 ---
 

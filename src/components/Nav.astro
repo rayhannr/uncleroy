@@ -16,23 +16,28 @@ const links = [
   {
     title: 'Project',
     link: '/project'
+  },
+  {
+    title: 'Review',
+    link: '/review'
   }
 ]
 ---
 
-<nav class="flex flex-row justify-center py-4 px-4 sm:px-0 sm:w-1/2 sm:m-auto font-medium">
+<nav class="flex flex-row justify-center py-4 px-4 sm:px-0 sm:w-3/4 lg:w-1/2 sm:m-auto font-medium">
   <div class="flex justify-between items-center w-full">
-    <ul class="flex flex-wrap gap-3">
+    <ul class="flex flex-wrap gap-3 md:gap-6">
       {
         links.map(({ link, title }) => (
           <li>
-            <a href={link} data-nav-link class="px-3 py-1 text-sm rounded-xl hover:bg-slate-200 dark:hover:bg-slate-800">
+            <a href={link} data-nav-link class="text-sm hover:border-b-2 hover:border-slate-800 dark:hover:border-slate-300">
               {title}
             </a>
           </li>
         ))
       }
     </ul>
+
     <ThemeToggler />
   </div>
 </nav>
@@ -41,9 +46,10 @@ const links = [
   const activeLink = `/${window.location.pathname.split('/')[1]}`
   const activeNavEl = document.querySelector(`nav a[href="${activeLink}"]`)
   if (activeNavEl) {
-    activeNavEl.classList.add('bg-reverse')
-    activeNavEl.classList.add('text-reverse')
-    activeNavEl.classList.remove('hover:bg-slate-200')
-    activeNavEl.classList.remove('dark:hover:bg-slate-800')
+    activeNavEl.classList.add('border-b-2')
+    activeNavEl.classList.add('border-slate-800')
+    activeNavEl.classList.add('dark:border-slate-300')
+    activeNavEl.classList.remove('hover:border-slate-800')
+    activeNavEl.classList.remove('dark:hover:border-slate-300')
   }
 </script>

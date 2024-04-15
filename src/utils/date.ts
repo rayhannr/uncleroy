@@ -1,11 +1,11 @@
-export const formatLongDate = (date: Date) =>
+export const formatLongDate = (date: Date | string) =>
   new Intl.DateTimeFormat('en-GB', {
     dateStyle: 'full',
     timeStyle: 'long',
     timeZone: 'Europe/London'
-  }).format(date)
+  }).format(new Date(date))
 
-export const formatShortDate = (date: Date) =>
+export const formatShortDate = (date: Date | string) =>
   new Intl.DateTimeFormat('en-GB', {
     dateStyle: 'full'
-  }).format(date)
+  }).format(new Date(date))
