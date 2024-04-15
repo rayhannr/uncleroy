@@ -21,14 +21,13 @@ type Props = MarkdownLayoutProps<BlogProps>
 
 const { title, image, imageAlt, imageCaption, imageCredit, imageLink, publishedAt, description, status } =
   Astro.props.frontmatter
-const publishedDate = new Date(publishedAt)
 ---
 
-<BaseLayout title={title} description={description} image={image}>
+<BaseLayout {title} {description} {image}>
   <article class="mt-2 lg:mt-4">
     <header>
-      <time datetime={publishedDate.toISOString()} class="text-slate-500 dark:text-slate-400 block mb-4">
-        {formatLongDate(publishedDate)}
+      <time datetime={publishedAt} class="text-slate-500 dark:text-slate-400 block mb-4">
+        {formatLongDate(publishedAt)}
       </time>
       <Title>
         {title}

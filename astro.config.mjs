@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
 import vercel from '@astrojs/vercel/static'
-import htmlClassNames from './plugins/html-classnames/index.mjs'
+import htmlClassNames from './plugins/html-classnames.mjs'
 import { externalLink } from './plugins/external-link'
 
 const siteUrl =

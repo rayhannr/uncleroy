@@ -9,14 +9,14 @@ export interface ProjectProps {
   description: string
   publishedAt: string
   projectUrl?: string
+  status?: string
 }
 
 type Props = MarkdownLayoutProps<ProjectProps>
 const { title, description, publishedAt, projectUrl } = Astro.props.frontmatter
-const publishedDate = new Date(publishedAt)
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout {title} {description}>
   <article class="mt-2 lg:mt-4">
     <header>
       <div class="text-slate-500 dark:text-slate-400 mb-4">
@@ -44,8 +44,8 @@ const publishedDate = new Date(publishedAt)
             </span>
           )
         }
-        <time datetime={publishedDate.toISOString()}>
-          {formatLongDate(publishedDate)}
+        <time datetime={publishedAt}>
+          {formatLongDate(publishedAt)}
         </time>
       </div>
 

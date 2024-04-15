@@ -1,0 +1,48 @@
+---
+import type { MarkdownLayoutProps } from 'astro'
+import BaseLayout from './BaseLayout.astro'
+import Title from '../components/typography/Title.astro'
+import { formatLongDate } from '../utils/date'
+
+export interface ReviewProps {
+  title: string
+  author: string
+  description: string
+  publishYear: string
+  publishedAt: string
+  rating: number
+}
+
+type Props = MarkdownLayoutProps<ReviewProps>
+const { title, author, description, publishYear, publishedAt, rating } = Astro.props.frontmatter
+---
+
+<BaseLayout title={`${title} by ${author} Review`} {description}>
+  <article class="mt-2 lg:mt-4">
+    <header>
+      <time datetime={publishedAt} class="text-slate-500 dark:text-slate-400 block mb-4">
+        {formatLongDate(publishedAt)}
+      </time>
+      <Title>{title}</Title>
+    </header>
+
+    <div class="my-6">
+      <ul class="list-none list-inside text-slate-500 dark:text-slate-400">
+        <li>
+          <b>Author:</b>
+          {author}
+        </li>
+        <li>
+          <b>Publish Year:</b>
+          {publishYear}
+        </li>
+        <li>
+          <b>Rating:</b>
+          {rating}/5
+        </li>
+      </ul>
+    </div>
+
+    <slot />
+  </article>
+</BaseLayout>
