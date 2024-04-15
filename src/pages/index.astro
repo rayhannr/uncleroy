@@ -1,15 +1,21 @@
 ---
-import BlogCard from '../components/BlogCard.astro'
+import Card from '../components/Card.astro'
 import Paragraph from '../components/typography/Paragraph.astro'
 import Title from '../components/typography/Title.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import type { BlogProps } from '../layouts/Blog.astro'
+import type { ProjectProps } from '../layouts/Project.astro'
 
 const blogs = await Astro.glob<BlogProps>('./blog/*.md')
 const latestBlog = blogs
   .filter((blog) => blog.frontmatter.status === 'published')
   .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())[0]
 const { title, description, image, publishedAt, imageAlt } = latestBlog.frontmatter
+
+const projects = await Astro.glob<ProjectProps>('./project/*.md')
+const latestProject = projects.sort(
+  (a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf()
+)[0]
 ---
 
 <BaseLayout>
@@ -22,13 +28,24 @@ const { title, description, image, publishedAt, imageAlt } = latestBlog.frontmat
         <li>know my social media which has the link to this page</li>
       </ul>
       If we haven't crossed paths personally, I must apologize for not sharing my real identity or linking my social media to this
-      page.
+      page. You might discover my Github profile through my projects; however, it doesn't disclose much of my personal information.
     </Paragraph>
 
     <div class="mt-6">
-      <h2 class="font-extrabold text-2xl text-pretty mb-4">Latest blog</h2>
+      <Title as="h2" className="mb-4">Latest blog</Title>
+      <Card {image} {title} {description} {publishedAt} {imageAlt} link={latestBlog.url} />
+    </div>
 
-      <BlogCard {image} {title} {description} {publishedAt} {imageAlt} link={latestBlog.url} />
+    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div class="flex flex-col">
+        <Title as="h2" className="mb-4">Latest project</Title>
+        <Card
+          title={latestProject.frontmatter.title}
+          description={latestProject.frontmatter.description}
+          publishedAt={latestProject.frontmatter.publishedAt}
+          link={latestProject.url}
+        />
+      </div>
     </div>
   </div>
 </BaseLayout>

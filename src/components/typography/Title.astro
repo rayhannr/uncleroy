@@ -1,3 +1,23 @@
-<h1 class="font-extrabold text-3xl md:text-5xl text-pretty tracking-tighter">
+---
+import { twMerge } from 'tailwind-merge'
+
+interface Props {
+  as?: string
+  className?: string
+}
+
+const { as: As = 'h1', className } = Astro.props
+---
+
+<As
+  class={twMerge(
+    'font-extrabold text-pretty',
+    As === 'h1' ? 'tracking-tighter' : 'tracking-tight',
+    As === 'h1' && 'text-3xl md:text-5xl',
+    As === 'h2' && 'text-2xl',
+    As === 'h3' && 'text-lg',
+    className
+  )}
+>
   <slot />
-</h1>
+</As>

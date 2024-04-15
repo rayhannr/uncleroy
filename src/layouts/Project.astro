@@ -19,7 +19,7 @@ const publishedDate = new Date(publishedAt)
 <BaseLayout title={title} description={description}>
   <article class="mt-2 lg:mt-4">
     <header>
-      <span class="flex gap-1 text-slate-500 dark:text-slate-400">
+      <div class="text-slate-500 dark:text-slate-400 mb-4">
         {
           projectUrl && (
             <span>
@@ -40,21 +40,21 @@ const publishedDate = new Date(publishedAt)
                   />
                 </svg>
               </a>
-              •
+              <span class="inline-block mx-1">•</span>
             </span>
           )
         }
-        <time datetime={publishedDate.toISOString()} class="block items-center mb-4">
+        <time datetime={publishedDate.toISOString()}>
           {formatLongDate(publishedDate)}
         </time>
-      </span>
+      </div>
 
       <Title>
         {title}
       </Title>
     </header>
 
-    <div class="mt-8">
+    <div class="mt-6">
       <slot />
     </div>
   </article>

@@ -1,11 +1,12 @@
 ---
 import { formatShortDate } from '../utils/date'
+import Title from './typography/Title.astro'
 
 interface Props {
-  image: string
   title: string
   description: string
   publishedAt: string
+  image?: string
   imageAlt?: string
   link?: string
 }
@@ -14,16 +15,19 @@ const { link, image, title, description, imageAlt, publishedAt } = Astro.props
 ---
 
 <a href={link}>
-  <div class="max-w-sm w-full lg:max-w-full lg:flex rounded border border-slate-200 dark:border-slate-800">
-    <div
-      class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center rounded-t lg:rounded-l lg:rounded-tr-none text-center overflow-hidden"
-      style={`background-image: url('${image}')`}
-      title={imageAlt}
-    >
-    </div>
+  <div class="w-full lg:flex rounded border border-slate-200 dark:border-slate-800">
+    {
+      image && (
+        <div
+          class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center rounded-t lg:rounded-l lg:rounded-tr-none text-center overflow-hidden"
+          style={`background-image: url('${image}')`}
+          title={imageAlt}
+        />
+      )
+    }
     <div class="p-4 flex flex-col justify-between leading-normal">
       <div class="mb-8">
-        <h3 class="font-extrabold text-xl mb-2 tracking-tight">{title}</h3>
+        <Title as="h3" className="mb-2">{title}</Title>
         <p class="text-slate-600 dark:text-slate-300">{description}</p>
       </div>
 

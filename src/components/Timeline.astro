@@ -1,5 +1,6 @@
 ---
 import { formatShortDate } from '../utils/date'
+import Title from './typography/Title.astro'
 
 interface Props {
   title: string
@@ -13,7 +14,7 @@ const { title, description, time, url } = Astro.props
 
 <article class="relative group">
   <div
-    class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl group-hover:bg-slate-200/70 dark:group-hover:bg-slate-800/50"
+    class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 rounded-lg sm:rounded-2xl group-hover:bg-slate-200/70 dark:group-hover:bg-slate-800/50"
   >
   </div>
   <svg
@@ -23,9 +24,7 @@ const { title, description, time, url } = Astro.props
     <circle cx="4.5" cy="4.5" r="4.5" stroke="currentColor" class="fill-white dark:fill-slate-900" stroke-width="2"></circle>
   </svg>
   <div class="relative">
-    <h3 class="text-lg font-extrabold tracking-tight pt-8 lg:pt-0">
-      {title}
-    </h3>
+    <Title as="h3" className="pt-8 lg:pt-0">{title}</Title>
     <div class="mt-2 mb-4 prose prose-slate prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2">
       <p class="text-slate-600 dark:text-slate-300">{description}</p>
     </div>
