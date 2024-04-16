@@ -21,9 +21,17 @@ const pageTitle = `${prefix}uncle roy`
   <Head title={pageTitle} description={desc} {image} {permalink} />
   <body class="min-h-screen flex flex-col transition-all text-sm md:text-base">
     <div class="absolute top-[-60px] inset-x-0 flex justify-center overflow-hidden pointer-events-none">
-      <div class="w-[108rem] flex-none flex justify-start md:justify-end">
-        <img src="/images/base/soft-pattern.png" class="w-[71.75rem] flex-none max-w-none dark:hidden" />
-        <img src="/images/base/soft-pattern-dark.png" class="w-[71.75rem] flex-none max-w-none hidden dark:block" />
+      <div class="w-[108rem] flex-none flex justify-start md:justify-end opacity-50 dark:opacity-30">
+        <img
+          src="/images/base/soft-pattern.png"
+          alt="soft pattern background"
+          class="w-[71.75rem] flex-none max-w-none dark:hidden"
+        />
+        <img
+          src="/images/base/soft-pattern-dark.png"
+          alt="soft pattern background"
+          class="w-[71.75rem] flex-none max-w-none hidden dark:block"
+        />
       </div>
     </div>
     <Nav />
