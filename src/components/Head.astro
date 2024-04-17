@@ -1,5 +1,6 @@
 ---
 import '../styles/globals.css'
+import SpeedInsights from '@vercel/speed-insights/astro'
 
 interface Props {
   title: string
@@ -40,6 +41,8 @@ const imageUrl = `${url}${image}`
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={imageUrl} />
+
+  <SpeedInsights />
 
   {
     ['Manrope-Bold.woff2', 'Manrope-Regular.woff2', 'Manrope-Medium.woff2', 'Manrope-ExtraBold.woff2'].map((font) => (
