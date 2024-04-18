@@ -24,8 +24,10 @@ const links = [
 ]
 ---
 
-<nav class="flex flex-row justify-center py-4 px-4 sm:px-0 sm:w-3/4 lg:w-1/2 sm:m-auto font-medium">
-  <div class="flex justify-between items-center w-full">
+<nav
+  class="fixed top-0 left-0 flex flex-row justify-center py-4 px-4 w-full sm:m-auto font-medium z-10 bg-slate-100 dark:bg-slate-900"
+>
+  <div class="flex justify-between items-center w-full sm:px-0 sm:w-3/4 lg:w-1/2">
     <ul class="flex flex-wrap gap-3 md:gap-6">
       {
         links.map(({ link, title }) => (
