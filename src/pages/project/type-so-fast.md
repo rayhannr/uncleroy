@@ -1,7 +1,7 @@
 ---
 title: type-so-fast
 description: A simple 10fastfingers clone to test typing speed in Indonesian
-publishedAt: 2021-02-04T15:40:13Z
+publishedAt: 2021-02-04T15:40:13.000Z
 projectUrl: https://typesofast.vercel.app
 status: published
 layout: ../../layouts/Project.astro
