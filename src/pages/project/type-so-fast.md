@@ -1,6 +1,8 @@
 ---
-title: type-so-fast
+title: TypeSoFast!
 description: A simple 10fastfingers clone to test typing speed in Indonesian
+image: /images/project/type-so-fast.webp
+imageCaption: TypeSoFast! landing page UI
 publishedAt: 2021-02-04T15:40:13.000Z
 projectUrl: https://typesofast.vercel.app
 status: published
