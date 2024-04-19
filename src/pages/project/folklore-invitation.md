@@ -1,6 +1,8 @@
 ---
 title: folklore-invitation
 description: Bare minimum wedding invitation template
+image: /images/project/folklore-invitation.webp
+imageCaption: Hero UI of the invitation
 publishedAt: 2023-10-08T10:24:59.000Z
 projectUrl: https://folklore-invitation.vercel.app/?to=Shikamaru%20Nara
 status: published
