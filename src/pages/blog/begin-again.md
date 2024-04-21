@@ -35,4 +35,4 @@ Reflecting on those experiences, I can't help but cringe a bit, realizing that I
 
 This represents the current stage of my journey. Now proficient as a frontend engineer, I no longer require CMS platforms like Blogspot or WordPress to create websites. This led me to develop my new blog using [Astro](https://astro.build/). My goal for this blog is to avoid delving too deeply into personal matters. Instead, I plan to share technical stuff and showcase my projects as well. If I do decide to write about my personal experiences, I hope it will be content that I won't regret sharing later on.
 
-So I guess that's it. <s>On a Wednesday in a cafe, I watched it begin again.</s> On a Sunday in a cafe, I begin to blog again.
+So I guess that's it. On a Sunday in a cafe, I begin to blog again.
