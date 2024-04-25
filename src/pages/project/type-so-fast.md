@@ -9,7 +9,7 @@ status: published
 layout: ../../layouts/Project.astro
 ---
 
-I created this project to clone [10fastfingers](https://10fastfingers.com/) in Indonesian using [CRA](https://create-react-app.dev/). I compiled the dictionary by scraping articles from various news outlets.
+I created `` `TypeSoFast!` `` to clone [10fastfingers](https://10fastfingers.com/) in Indonesian using [CRA](https://create-react-app.dev/). I compiled the dictionary by scraping articles from various news outlets.
 
 Certainly, I didn't scrape manually. I automated the process using Python, leveraging my recent experience in scraping articles for my final research project at university, just before embarking on this project.
 
