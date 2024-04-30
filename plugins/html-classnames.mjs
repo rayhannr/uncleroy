@@ -4,7 +4,8 @@ const classMap = {
   'heading[depth=2]': 'my-6 text-lg font-bold',
   'heading[depth=3]': 'my-6 font-bold',
   'paragraph link': 'text-sky-500 hover:text-sky-400',
-  'paragraph inlineCode': 'text-sky-500'
+  'paragraph inlineCode': 'text-sky-500',
+  list: 'list-disc ml-10 text-pretty'
 }
 
 export default function htmlClassNames() {
