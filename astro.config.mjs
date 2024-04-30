@@ -18,9 +18,7 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false
     }),
-    sitemap({
-      filter: (page) => !page.includes('/digital-wedding-invitation-features-that-need-to-improve')
-    })
+    sitemap()
   ],
   server: {
     port: 3000
