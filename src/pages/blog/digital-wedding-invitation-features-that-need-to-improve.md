@@ -33,4 +33,4 @@ Since last year, I've been receiving wedding invitations from friends my age, al
   - <b>Slow transition:</b> I find animation durations of 500ms or greater to be sluggish and unpleasant, particularly when involving opacity transitions from very low to full.
   - <b>Large transition distance:</b> Large distances, regardless of animation speed, create a peculiar UI, in my opinion. For example, when an element is animated from bottom to top over a distance of 250px.
 
-These two issues motivated me to create my own wedding invitation template which you can find the details [here](/project/folklore-invitation). It showcases minimal animation, and the audio will commence only when the visitor clicks the play button located at the bottom right corner of the screen.
+These two issues motivated me to address them in my own wedding invitation template which you can find the details [here](/project/folklore-invitation). It showcases minimal animation, and the audio will commence only when the visitor clicks the play button located at the bottom right corner of the screen.
