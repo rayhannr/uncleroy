@@ -3,7 +3,7 @@ title: The Stoic Mind
 author: Addy Osmani and GoLimitlesss
 description: A Visual Exploration of Stoic Philosophy
 publishYear: 2023
-publishedAt: 2024-06-30T13:59:01.226Z
+publishedAt: 2024-06-30T14:45:09.226Z
 rating: 5
 layout: ../../layouts/Review.astro
 ---
