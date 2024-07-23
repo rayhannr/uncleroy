@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
 import vercel from '@astrojs/vercel/static'
 import sitemap from '@astrojs/sitemap'
+import expressiveCode from 'astro-expressive-code'
 import htmlClassNames from './plugins/html-classnames.mjs'
 import { externalLink } from './plugins/external-link'
 
@@ -18,7 +19,10 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false
     }),
-    sitemap()
+    sitemap(),
+    expressiveCode({
+      themes: ['catppuccin-mocha', 'catppuccin-latte']
+    })
   ],
   server: {
     port: 3000
