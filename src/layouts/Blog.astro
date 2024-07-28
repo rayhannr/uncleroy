@@ -9,7 +9,6 @@ export interface BlogProps {
   title: string
   image: string
   description: string
-  imageAlt: string
   imageCaption: string
   publishedAt: string
   imageCredit?: string
@@ -19,8 +18,7 @@ export interface BlogProps {
 
 type Props = MarkdownLayoutProps<BlogProps>
 
-const { title, image, imageAlt, imageCaption, imageCredit, imageLink, publishedAt, description, status } =
-  Astro.props.frontmatter
+const { title, image, imageCaption, imageCredit, imageLink, publishedAt, description, status } = Astro.props.frontmatter
 ---
 
 <BaseLayout {title} {description} {image}>
@@ -34,7 +32,7 @@ const { title, image, imageAlt, imageCaption, imageCredit, imageLink, publishedA
       </Title>
 
       <figure class="mt-6 font-normal text-balance">
-        <img src={image} alt={imageAlt} class="mb-1 rounded w-full aspect-[11/5] object-cover" />
+        <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover" />
         <figcaption class="text-xs text-slate-500 dark:text-slate-400 text-center">
           {imageCaption}
         </figcaption>

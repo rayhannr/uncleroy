@@ -1,7 +1,6 @@
 ---
 title: Begin Again
 image: /images/blog/begin-again.webp
-imageAlt: An image with the text "begin again"
 imageCaption: An image with the text "begin again"
 imageCredit: Wahyu Pratama
 imageLink: https://unsplash.com/photos/jco-signage-Ps6OvCkHSlM

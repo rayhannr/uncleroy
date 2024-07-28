@@ -1,7 +1,6 @@
 ---
 title: Delete Zone.Identifier files in WSL
 image: /images/blog/delete-zone-identifier-files-in-wsl.webp
-imageAlt: An image with the text "delete zone.identifier files in wsl"
 imageCaption: An image with the text "delete zone.identifier files in wsl"
 imageCredit: Kenny Eliason
 imageLink: https://unsplash.com/photos/person-surfing-black-laptop-near-microwave-oven-_oKSYD2cSIk

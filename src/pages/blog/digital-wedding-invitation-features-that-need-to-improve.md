@@ -1,7 +1,6 @@
 ---
 title: Digital Wedding Invitation Features that Need to Improve
 image: /images/blog/digital-wedding-invitation-features-that-need-to-improve.webp
-imageAlt: An image with the text "digital wedding invitation features that need to improve"
 imageCaption: An image with the text "digital wedding invitation features that need to improve"
 imageCredit: Iman soleimany zadeh
 imageLink: https://unsplash.com/photos/white-dove-figurine-surrounded-by-string-lights-on-table-2mxwz9uFqcY
