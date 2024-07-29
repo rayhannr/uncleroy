@@ -5,7 +5,7 @@ imageCaption: An image with the text "install npm dependencies from multiple reg
 imageCredit: Paul Esch-Laurent
 imageLink: https://unsplash.com/photos/orange-pink-keyboard-oZMUrWFHOB4
 description: You may need this when you're working on Javascript project that requires installing dependencies from a private registry
-publishedAt: 2024-07-29T14:55:39.942Z
+publishedAt: 2024-07-28T14:55:39.942Z
 status: published
 layout: ../../layouts/Blog.astro
 ---
