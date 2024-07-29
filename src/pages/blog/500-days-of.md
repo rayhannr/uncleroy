@@ -30,7 +30,7 @@ Don't invest your time and effort in someone whose visions aren't aligned with y
 
 ## Interpret her treatment towards you cautiously
 
-Be cautious when interpreting her actions. Just because she acts the way you like—such as asking about your day, complementing you, acting cute in front of you, or going on dates with you—doesn't always mean she has romantic feelings. She might be like that to everyone or simply seeking company because she feels lonely, without necessarily being interested in a serious relationship with you.
+Be cautious when interpreting her actions. Just because she acts the way you like—such as asking about your day, complementing you, acting cute in front of you, or going on dates with you—doesn't always mean she has romantic feelings. She might be like that to everyone or simply seeking company without necessarily being interested in a serious relationship with you.
 
 If she likes you but only wants to be friends, you should revisit the section on `` `Listen to what she wants` ``.
 
