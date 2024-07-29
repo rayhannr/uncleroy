@@ -17,7 +17,7 @@ layout: ../../layouts/Blog.astro
 //{your_private_registry}/:_authToken={YOUR_AUTH_TOKEN_HERE}
 ```
 
-By default, `` `npm install` `` loads all dependencies defined in `` `package.json` `` from the [npm package registry](https://registry.npmjs.org/). However, if you work for a private company, you may encounter projects that depend on packages published to a private registry.
+By default, `` `npm install` `` loads all dependencies defined in `` `package.json` `` from the [npm package registry](https://registry.npmjs.org/). However, you may encounter projects that depend on packages published to a private registry.
 
 You can configure `` `npm install` `` to load public dependencies from the npm package registry and private dependencies from a private registry in a single project by following the step mentioned in the TL;DR above.
 
@@ -37,7 +37,7 @@ and your `` `.npmrc` `` is as follows:
 //registry.uncleroy.org/:_authToken={YOUR_AUTH_TOKEN_HERE}
 ```
 
-`` `npm install` `` will download `` `react` `` from the public npm registry and `@uncleroy/validator` from uncleroy private registry.
+`` `npm install` `` will download `` `react` `` from the public npm registry and `` `@uncleroy/validator` `` from uncleroy private registry.
 
 If the private dependencies' names do not start with `` `@{scope}` ``, you may need to update the `` `.npmrc` `` file as follows:
 
