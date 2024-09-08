@@ -17,7 +17,7 @@ type Props = MarkdownLayoutProps<ReviewProps>
 const { title, author, description, publishYear, publishedAt, rating } = Astro.props.frontmatter
 ---
 
-<BaseLayout title={`${title} by ${author} Review`} {description}>
+<BaseLayout title={`${title} by ${author} Review`} {description} showMeter>
   <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedAt} class="text-slate-500 dark:text-slate-400 block mb-4">

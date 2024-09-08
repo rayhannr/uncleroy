@@ -1,4 +1,6 @@
 ---
+import { twMerge } from 'tailwind-merge'
+import { ScrollMeter } from './ScrollMeter'
 import ThemeToggler from './ThemeToggler.astro'
 const links = [
   {
@@ -22,9 +24,20 @@ const links = [
     link: '/review'
   }
 ]
+
+interface Props {
+  showMeter?: boolean
+}
+
+const { showMeter = false } = Astro.props
 ---
 
-<nav class="flex flex-row justify-center py-4 px-4 sm:px-0 w-full sm:m-auto sticky top-0 z-10 bg-slate-100 dark:bg-slate-900">
+<nav
+  class={twMerge(
+    'flex flex-col items-center px-4 sm:px-0 w-full sm:m-auto sticky top-0 z-10 bg-slate-100 dark:bg-slate-900',
+    showMeter ? 'pt-4' : 'py-4'
+  )}
+>
   <div class="flex justify-between items-center w-full sm:w-3/4 lg:w-1/2 font-medium">
     <ul class="flex flex-wrap gap-3 md:gap-6">
       {
@@ -40,6 +53,7 @@ const links = [
 
     <ThemeToggler />
   </div>
+  {showMeter && <ScrollMeter client:only />}
 </nav>
 
 <script>
