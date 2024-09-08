@@ -3,6 +3,7 @@ import type { MarkdownLayoutProps } from 'astro'
 import BaseLayout from './BaseLayout.astro'
 import { formatLongDate } from '../utils/date'
 import Title from '../components/typography/Title.astro'
+import { getReadingTime } from '../utils/readingTime'
 
 export interface ProjectProps {
   title: string
@@ -15,7 +16,8 @@ export interface ProjectProps {
 }
 
 type Props = MarkdownLayoutProps<ProjectProps>
-const { title, description, publishedAt, projectUrl, image, imageCaption } = Astro.props.frontmatter
+const { frontmatter, rawContent } = Astro.props
+const { title, description, publishedAt, projectUrl, image, imageCaption } = frontmatter
 ---
 
 <BaseLayout {title} {description} {image} showMeter>
@@ -47,7 +49,13 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = Ast
           )
         }
         <time datetime={publishedAt}>
-          {formatLongDate(publishedAt)}
+          <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
+            <p>
+              {formatLongDate(publishedAt)}
+            </p>
+            <span class="hidden sm:inline-block">|</span>
+            {getReadingTime(rawContent())}
+          </div>
         </time>
       </div>
 

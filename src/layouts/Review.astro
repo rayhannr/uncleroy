@@ -3,6 +3,7 @@ import type { MarkdownLayoutProps } from 'astro'
 import BaseLayout from './BaseLayout.astro'
 import Title from '../components/typography/Title.astro'
 import { formatLongDate } from '../utils/date'
+import { getReadingTime } from '../utils/readingTime'
 
 export interface ReviewProps {
   title: string
@@ -14,14 +15,21 @@ export interface ReviewProps {
 }
 
 type Props = MarkdownLayoutProps<ReviewProps>
-const { title, author, description, publishYear, publishedAt, rating } = Astro.props.frontmatter
+const { frontmatter, rawContent } = Astro.props
+const { title, author, description, publishYear, publishedAt, rating } = frontmatter
 ---
 
 <BaseLayout title={`${title} by ${author} Review`} {description} showMeter>
   <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedAt} class="text-slate-500 dark:text-slate-400 block mb-4">
-        {formatLongDate(publishedAt)}
+        <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
+          <p>
+            {formatLongDate(publishedAt)}
+          </p>
+          <span class="hidden sm:inline-block">|</span>
+          {getReadingTime(rawContent())}
+        </div>
       </time>
       <Title>{title}</Title>
     </header>

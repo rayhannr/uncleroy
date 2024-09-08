@@ -19,7 +19,7 @@ export const ScrollMeter = () => {
 
   return (
     <div className="w-full sm:w-3/4 lg:w-1/2 mt-1">
-      <div className="h-1 bg-blue-600 dark:bg-sky-500" style={{ width: `${progress}%` }} />
+      <div className="h-1 bg-reverse" style={{ width: `${progress}%` }} />
     </div>
   )
 }
