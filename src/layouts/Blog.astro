@@ -42,10 +42,7 @@ const { title, image, imageCaption, imageCredit, imageLink, publishedAt, descrip
       <figure class="mt-6 font-normal text-balance">
         <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover" />
         <figcaption class="text-xs text-slate-500 dark:text-slate-400 text-center">
-          {imageCaption}
-        </figcaption>
-        <figcaption class="text-xs text-slate-500 dark:text-slate-400 text-center">
-          Background by <a href={imageLink} class="text-slate-700 dark:text-slate-200">{imageCredit}</a> from Unsplash
+          Background image by <a href={imageLink} class="text-slate-700 dark:text-slate-200">{imageCredit}</a> from Unsplash
         </figcaption>
       </figure>
     </header>
