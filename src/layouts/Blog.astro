@@ -21,7 +21,7 @@ type Props = MarkdownLayoutProps<BlogProps>
 const { title, image, imageCaption, imageCredit, imageLink, publishedAt, description, status } = Astro.props.frontmatter
 ---
 
-<BaseLayout {title} {description} {image}>
+<BaseLayout {title} {description} {image} showMeter>
   <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedAt} class="text-slate-500 dark:text-slate-400 block mb-4">
