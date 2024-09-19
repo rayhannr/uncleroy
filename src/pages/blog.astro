@@ -10,7 +10,7 @@ blogs = blogs
   .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())
 ---
 
-<BaseLayout title="Blog" description="List of my blogs I've written since I built this site">
+<BaseLayout title="Blog" description="List of my blogs I've written since I built this site" showMeter>
   <TimelineWrapper>
     {
       blogs.map((blog) => (

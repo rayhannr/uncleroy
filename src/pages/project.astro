@@ -10,7 +10,7 @@ projects = projects
   .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())
 ---
 
-<BaseLayout title="Project" description="List of my personal frontend projects">
+<BaseLayout title="Project" description="List of my personal frontend projects" showMeter>
   <TimelineWrapper>
     {
       projects.map((project) => (
