@@ -10,7 +10,7 @@ status: published
 layout: ../../layouts/Blog.astro
 ---
 
-At the time of writing this blog, I’m maintaining a React app with a hefty initial bundle size of 1.5 MB. The `` `.nginx.conf` `` file initially looked like this
+At the time of writing this blog, I’m maintaining a React app with a hefty initial bundle size of 1.5 MB. The `.nginx.conf` file initially looked like this
 
 ```nginx
 location / {
@@ -19,13 +19,13 @@ location / {
 }
 ```
 
-which added `` `Cache-Control: no-store` `` to the response header, preventing the browser from caching any assets. The intention behind this was to ensure users always received the latest content after new updates were deployed.
+which added `Cache-Control: no-store` to the response header, preventing the browser from caching any assets. The intention behind this was to ensure users always received the latest content after new updates were deployed.
 
 However, this approach led to inefficient use of bandwidth and increased load times, as users were forced to re-download all assets on every reload, even when no changes had been made.
 
 ## Solution
 
-It was straightforward. I just updated the `` `.nginx.conf` `` to look like this
+It was straightforward. I just updated the `.nginx.conf` to look like this
 
 ```nginx
 

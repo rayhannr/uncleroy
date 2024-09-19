@@ -2,7 +2,6 @@
 import type { MarkdownLayoutProps } from 'astro'
 import BaseLayout from './BaseLayout.astro'
 import { formatLongDate } from '../utils/date'
-import Title from '../components/typography/Title.astro'
 import { getReadingTime } from '../utils/readingTime'
 
 export interface ProjectProps {
@@ -24,10 +23,17 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
   <article class="mt-2 lg:mt-4">
     <header>
       <div class="text-slate-500 dark:text-slate-400 mb-4">
+        <time datetime={publishedAt}>
+          <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
+            {formatLongDate(publishedAt)}
+            <span class="hidden sm:inline-block">|</span>
+            {getReadingTime(rawContent())}
+          </div>
+        </time>
         {
           projectUrl && (
             <span>
-              <a href={projectUrl} target="_blank" class="text-blue-500 dark:text-sky-500 hover:text-sky-400">
+              <a href={projectUrl} target="_blank">
                 View project
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -44,24 +50,14 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
                   />
                 </svg>
               </a>
-              <span class="inline-block mx-1">•</span>
             </span>
           )
         }
-        <time datetime={publishedAt}>
-          <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
-            <p>
-              {formatLongDate(publishedAt)}
-            </p>
-            <span class="hidden sm:inline-block">|</span>
-            {getReadingTime(rawContent())}
-          </div>
-        </time>
       </div>
 
-      <Title>
+      <h1>
         {title}
-      </Title>
+      </h1>
 
       <figure class="mt-6 font-normal text-balance">
         <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover object-top" />

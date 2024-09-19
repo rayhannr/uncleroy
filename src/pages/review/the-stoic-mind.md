@@ -10,11 +10,11 @@ layout: ../../layouts/Review.astro
 
 ## Review
 
-`` `The Stoic Mind` `` is a compelling guide that brings the ancient wisdom of Stoicism into the modern world. This book is an invaluable resource for anyone looking to cultivate resilience, emotional intelligence, and a sense of tranquility amidst life's challenges. The good thing is, you can get this book for free from [Google Play Books](https://play.google.com/store/books/details/Addy_Osmani_The_Stoic_Mind?id=ylfPEAAAQBAJ&hl=en).
+`The Stoic Mind` is a compelling guide that brings the ancient wisdom of Stoicism into the modern world. This book is an invaluable resource for anyone looking to cultivate resilience, emotional intelligence, and a sense of tranquility amidst life's challenges. The good thing is, you can get this book for free from [Google Play Books](https://play.google.com/store/books/details/Addy_Osmani_The_Stoic_Mind?id=ylfPEAAAQBAJ&hl=en).
 
 The book is organized into clear, concise chapters that each focus on different aspects of Stoic thought, such as the importance of distinguishing between what we can and cannot control, the value of self-discipline, and the practice of mindfulness and presence. All of them are translated into practical advices that can be applied in today's fast-paced society.
 
-One of the standout features of `` `The Stoic Mind` `` is its emphasis on actionable insights. Osmani doesn't just explain Stoic principles, he provides readers with practical exercises and real-world applications to integrate these timeless teachings into their daily routines. One example is in the first chapter about balancing between work and life, the book advises us to:
+One of the standout features of `The Stoic Mind` is its emphasis on actionable insights. Osmani doesn't just explain Stoic principles, he provides readers with practical exercises and real-world applications to integrate these timeless teachings into their daily routines. One example is in the first chapter about balancing between work and life, the book advises us to:
 
 - Prioritize relationships with loved ones as they are our vital support system
 - Invest in health physically, mentally, and emotionally. Exercise regularly, eat healthily, and seek professional help when necessary

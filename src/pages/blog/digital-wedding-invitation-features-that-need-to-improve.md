@@ -14,7 +14,7 @@ Since last year, I've been receiving wedding invitations from friends my age, al
 
 - <b>Autoplay audio</b>
 
-  Upon first load, the invitation is silent. However, as soon as I click the `` `Open Invitation` `` button, background music starts playing without warning. I'm often caught off guard by this automatic audio playback and immediately scramble to find the stop button or lower my device's volume.
+  Upon first load, the invitation is silent. However, as soon as I click the `Open Invitation` button, background music starts playing without warning. I'm often caught off guard by this automatic audio playback and immediately scramble to find the stop button or lower my device's volume.
 
   I strongly believe that unless explicitly triggered by a play button, no audio should play. Otherwise, it becomes particularly bothersome, especially when receiving invitations in quiet public settings like a library, where unexpected loud audio can disrupt others and cause embarrassment.
 

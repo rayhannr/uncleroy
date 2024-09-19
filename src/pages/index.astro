@@ -1,7 +1,5 @@
 ---
 import Card from '../components/Card.astro'
-import Paragraph from '../components/typography/Paragraph.astro'
-import Title from '../components/typography/Title.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import type { BlogProps } from '../layouts/Blog.astro'
 import type { ProjectProps } from '../layouts/Project.astro'
@@ -26,25 +24,23 @@ const latestReview = reviews.sort(
 
 <BaseLayout>
   <div class="mt-2 lg:mt-6">
-    <Title>Hi, Uncle Roy here!</Title>
-    <Paragraph>
+    <h1>Hi, Uncle Roy here!</h1>
+    <p>
       I write tech, life, and book review thingy. If you're reading this, most likely you either:
-      <ul class="list-disc ml-10 my-2">
+      <ul>
         <li>found one of my blog from your browser's search result</li>
         <li>know my social media which has the link to this page</li>
       </ul>
       If we haven't crossed paths personally, I must apologize for not sharing my real identity or linking my social media to this
       page. You might discover my Github profile through my projects; however, it doesn't disclose much of my personal information.
-    </Paragraph>
+    </p>
 
-    <div class="mt-6">
-      <Title element="h2" className="mb-4">Latest blog</Title>
-      <Card {image} {title} {description} {publishedAt} imageAlt={imageCaption} link={latestBlog.url} />
-    </div>
+    <h2 class="mb-4 mt-6">Latest blog</h2>
+    <Card {image} {title} {description} {publishedAt} imageAlt={imageCaption} link={latestBlog.url} />
 
-    <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 lg:auto-rows-[1fr] gap-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:auto-rows-[1fr] gap-4">
       <div class="flex flex-col">
-        <Title element="h2" className="mb-4">Latest project</Title>
+        <h2 class="mb-4 mt-6">Latest project</h2>
         <Card
           title={latestProject.frontmatter.title}
           description={latestProject.frontmatter.description}
@@ -55,7 +51,7 @@ const latestReview = reviews.sort(
       </div>
 
       <div class="flex flex-col">
-        <Title element="h2" className="mb-4">Latest review</Title>
+        <h2 class="mb-4 mt-2 lg:mt-6">Latest review</h2>
         <Card
           title={latestReview.frontmatter.title}
           description={latestReview.frontmatter.description}

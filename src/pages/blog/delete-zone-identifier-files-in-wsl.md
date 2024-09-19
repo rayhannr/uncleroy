@@ -20,7 +20,7 @@ I use a Windows laptop and rely on [WSL](https://learn.microsoft.com/en-us/windo
 
 One day, I needed to download some design resources from [Figma](https://www.figma.com/). These resources were initially saved in Windows' Downloads directory, so I had to cut and paste them into my project directory in WSL.
 
-However, some unexpected files with the `` `Zone.Identifier` `` suffix were also pasted.
+However, some unexpected files with the `Zone.Identifier` suffix were also pasted.
 
 ```bash
 # Expectation
@@ -39,8 +39,8 @@ my-project/
 If you encounter the same situation, follow these steps:
 
 1. Open the WSL directory where you pasted the files
-2. Press `` `Shift` `` + right-click
-3. Choose `` `Open Linux shell here` ``
+2. Press `Shift` + right-click
+3. Choose `Open Linux shell here`
 4. Run the command mentioned right after TL;DR above
 
-After completing these steps, the `` `Zone.Identifier` `` files should be removed from the directory.
+After completing these steps, the `Zone.Identifier` files should be removed from the directory.

@@ -9,7 +9,7 @@ status: published
 layout: ../../layouts/Project.astro
 ---
 
-`` `AccelPlay` `` is a TMDB (The Movie Database) clone [React](https://react.dev/) app. The home page showcases the top 5 latest movies and a list of movies that users can filter by genre or year. On the movie detail page, users can view the trailer, synopsis, cast, and other movie recommendations.
+`AccelPlay` is a TMDB (The Movie Database) clone [React](https://react.dev/) app. The home page showcases the top 5 latest movies and a list of movies that users can filter by genre or year. On the movie detail page, users can view the trailer, synopsis, cast, and other movie recommendations.
 
 If users log in to TMDB through the app, they can mark movies as favorites and access their personalized list of favorite films.
 

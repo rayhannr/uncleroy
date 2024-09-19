@@ -13,4 +13,4 @@ As a former Photoshop designer, one of my most frequent tasks was color picking 
 
 This got me thinking, "What if I create the same tool myself? Not only to meet my own needs but also to gain more experience in app development."
 
-Hence, I created `` `Image Color Picker` ``. Being a fan of Tailwind CSS and using it in all of my personal projects, I incorporated it into this tool. In addition to displaying the actual picked color, it also shows the closest Tailwind color.
+Hence, I created `Image Color Picker`. Being a fan of Tailwind CSS and using it in all of my personal projects, I incorporated it into this tool. In addition to displaying the actual picked color, it also shows the closest Tailwind color.

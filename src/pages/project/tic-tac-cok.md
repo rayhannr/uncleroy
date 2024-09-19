@@ -9,7 +9,7 @@ status: published
 layout: ../../layouts/Project.astro
 ---
 
-`` `tic-tac-cok` `` is the inaugural [React](https://react.dev/) application I developed upon completing a React course on Udemy, which I undertook in mid-2019. It's a tic-tac-toe game inspired by a tutorial from [a YouTube video](https://www.youtube.com/watch?v=Y-GkMjUZsmM) by Web Dev Simplified, one of my favorite channel for learning web development.
+`tic-tac-cok` is the inaugural [React](https://react.dev/) application I developed upon completing a React course on Udemy, which I undertook in mid-2019. It's a tic-tac-toe game inspired by a tutorial from [a YouTube video](https://www.youtube.com/watch?v=Y-GkMjUZsmM) by Web Dev Simplified, one of my favorite channel for learning web development.
 
 In the video, the game was developed using vanilla JavaScript. I rewrote it in React, incorporating several enhancements such as an increased number of boxes, the ability to undo moves, restart or reset the game, and a light-dark theme toggler.
 

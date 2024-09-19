@@ -10,7 +10,7 @@ status: published
 layout: ../../layouts/Blog.astro
 ---
 
-As I mentioned in the [about page](/about), I may write non-technical content from time to time, and this is one of those occasions. This blog post will discuss relationship lessons I learned from a movie called `` `500 Days of Summer` ``.
+As I mentioned in the [about page](/about), I may write non-technical content from time to time, and this is one of those occasions. This blog post will discuss relationship lessons I learned from a movie called `500 Days of Summer`.
 
 It is a romantic drama that follows Tom, who falls deeply in love with a woman named Summer, believing she is his soulmate. Despite their intense connection, Summer insists she doesn't want a serious relationship, only to later marry someone else, leaving Tom heartbroken and questioning everything he thought he knew about love.
 
@@ -32,7 +32,7 @@ Don't invest your time and effort in someone whose visions aren't aligned with y
 
 Be cautious when interpreting her actions. Just because she acts the way you like—such as asking about your day, complementing you, acting cute in front of you, or going on dates with you—doesn't always mean she has romantic feelings. She might be like that to everyone or simply seeking company without necessarily being interested in a serious relationship with you.
 
-If she likes you but only wants to be friends, you should revisit the section on `` `Listen to what she wants` ``.
+If she likes you but only wants to be friends, you should revisit the section on `Listen to what she wants`.
 
 ## Give space for disappointment
 

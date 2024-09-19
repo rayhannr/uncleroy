@@ -1,6 +1,4 @@
 ---
-import Paragraph from '../components/typography/Paragraph.astro'
-import Title from '../components/typography/Title.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 
 const FIRST_PROFESSIONAL_YEAR = 2021
@@ -9,16 +7,16 @@ const CURRENT_YEAR = new Date().getFullYear()
 
 <BaseLayout title="About" description="Brief introduction about me">
   <div class="mt-2 lg:mt-6">
-    <Title>About me</Title>
+    <h1>About me</h1>
 
-    <Paragraph>
+    <p>
       I am a frontend engineer with {CURRENT_YEAR - FIRST_PROFESSIONAL_YEAR}+ years of experience, crafting user-friendly web
       applications that users love to engage with (hopefully). While I've gained experience contributing to a backend service
       with my company, my preference remains focused on frontend work. I find my passion and expertise lie in frontend
       development, where I excel and feel most at home. Below is my tech stack:
-    </Paragraph>
+    </p>
 
-    <ul class="list-disc mt-6 ml-10 text-pretty tracking-wide">
+    <ul>
       <li>
         <b>Basics:</b> HTML, Markdown, CSS, Javascript
       </li>
@@ -48,25 +46,25 @@ const CURRENT_YEAR = new Date().getFullYear()
       </li>
     </ul>
 
-    <Paragraph>
+    <p>
       Aside from those, I have some knowledge related to Docker, MongoDB, Github Actions, and Vitest. During my college years, I
       delved into Python for my final assignment focusing on Natural Language Processing (NLP). Impressed by my work, my
       lecturer recommended me to assist non-IT master's degree students with their NLP thesis projects. I haven't actively used
       Python since graduation though.
-    </Paragraph>
+    </p>
 
-    <Paragraph>For my next journey, I want to learn (or learn further):</Paragraph>
-    <ul class="list-disc mt-6 ml-10 text-pretty tracking-wide">
-      <li class="mb-3">
+    <p>For my next journey, I want to learn (or learn further):</p>
+    <ul>
+      <li>
         <b>React:</b> My knowledge is stuck at React 17, as that's what's being used in the project at my current company. There
         hasn't been much pressure to learn React 18 since our project hasn't planned an upgrade anytime soon. However, I've noticed
         that React 19 seems to bring significant changes, so I think it's a good time for me to re-learn React.
       </li>
-      <li class="mb-3">
+      <li>
         <b>Other web frameworks:</b> Exploring Remix and Solid.js to bolster my versatility sounds captivating. No intention of delving
         into Vue, Angular, or Svelte at the moment though.
       </li>
-      <li class="mb-3">
+      <li>
         <b>Testing tools:</b> I haven't had much need for testing libraries like Cypress, React Testing Library, or Playwright as
         the testing responsibilities mainly fall on SDETs or QAs. However, I recognize the value in mastering these tools for future
         career growth, particularly if I pursue opportunities with companies that require the engineers to test more.
@@ -78,9 +76,9 @@ const CURRENT_YEAR = new Date().getFullYear()
       </li>
     </ul>
 
-    <Paragraph>
+    <p>
       While I primarily identify myself from a technical standpoint, my blog won't solely focus on technical topics. I plan to
       incorporate personal stuff and even non-technical book reviews into my content.
-    </Paragraph>
+    </p>
   </div>
 </BaseLayout>

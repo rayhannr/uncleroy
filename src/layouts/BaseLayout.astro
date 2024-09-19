@@ -22,7 +22,9 @@ const pageTitle = `${prefix}uncle roy`
   <Head title={pageTitle} description={desc} {image} {permalink} />
   <body class="min-h-screen flex flex-col text-sm md:text-base relative">
     <Nav {showMeter} />
-    <main class="flex flex-col flex-1 px-4 sm:px-0 w-full sm:w-3/4 lg:w-1/2 m-auto">
+    <main
+      class="flex flex-col flex-1 px-4 sm:px-0 w-full sm:w-3/4 lg:w-1/2 prose dark:prose-invert prose-sky prose-a:no-underline m-auto"
+    >
       <slot />
     </main>
     <Footer />
