@@ -46,7 +46,7 @@
       root.classList.toggle(DARK_THEME_CLASS)
 
       const colorMode = root.classList.contains(DARK_THEME_CLASS) ? DARK_THEME : LIGHT_THEME
-      const metaColor = colorMode === DARK_THEME ? '#0f172a' : '#f1f5f9'
+      const metaColor = colorMode === DARK_THEME ? '#0a0a0a' : '#f5f5f5'
 
       localStorage.setItem(COLOR_MODE, colorMode)
       metaThemeColor?.setAttribute('content', metaColor)

@@ -29,7 +29,7 @@ const imageUrl = `${url}${image}`
   <title>{title}</title>
   <meta name="title" content={title} />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#f1f5f9" />
+  <meta name="theme-color" content="#f5f5f5" />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content={permalink} />
@@ -72,13 +72,13 @@ const imageUrl = `${url}${image}`
     }
 
     const setInitialColorMode = (mode) => {
-      let color = '#f1f5f9'
+      let color = '#f5f5f5'
 
       if (mode === LIGHT_THEME) {
         root.classList.remove(DARK_THEME_CLASS)
       } else {
         root.classList.add(DARK_THEME_CLASS)
-        color = '#0f172a'
+        color = '#0a0a0a'
       }
       metaThemeColor.setAttribute('content', color)
     }
