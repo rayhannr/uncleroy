@@ -58,7 +58,7 @@ location ~* \.(js|css|png|jpg|jpeg|gif|svg|ico|ttf|woff|woff2)$ {
 ### How a React app works with static assets
 
 - `index.html`: This is the entry point of our React app. When a user visits our site, the browser loads this HTML file, which contains references to the JavaScript, CSS, and other static assets needed to run the app.
-- <b>Static assets</b> (e.g., `.js`, `.css`, images): These are typically generated with unique filenames that include hashes (e.g., main.abc123.js). The hashes change whenever the content of these files changes.
+- <strong>Static assets</strong> (e.g., `.js`, `.css`, images): These are typically generated with unique filenames that include hashes (e.g., main.abc123.js). The hashes change whenever the content of these files changes.
 
 ### Cache static assets aggressively
 
@@ -72,8 +72,8 @@ location ~* \.(js|css|png|jpg|jpeg|gif|svg|ico|ttf|woff|woff2)$ {
 
 ### The strategy in practice
 
-- <b>Cache `index.html` with no-store or a short max-age</b>: This ensures the browser always checks with the server for the latest `index.html`. By doing this, users will always get the updated references to the latest version of your static files after a new deployment.
-- <b>Cache static assets (`.js`, `.css`, etc.) aggressively</b>: These assets can be cached for a long time (e.g., 1 year) because their filenames will change whenever there is a new deployment.
+- <strong>Cache `index.html` with no-store or a short max-age</strong>: This ensures the browser always checks with the server for the latest `index.html`. By doing this, users will always get the updated references to the latest version of your static files after a new deployment.
+- <strong>Cache static assets (`.js`, `.css`, etc.) aggressively</strong>: These assets can be cached for a long time (e.g., 1 year) because their filenames will change whenever there is a new deployment.
 
 ## Summary
 

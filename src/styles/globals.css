@@ -3,32 +3,32 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Regular.woff2') format('woff2');
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Medium.woff2') format('woff2');
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Bold.woff2') format('woff2');
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-ExtraBold.woff2') format('woff2');
+  font-family: 'Geist';
+  src: url('/fonts/Geist-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -36,14 +36,14 @@
 
 html,
 body {
-  font-family: 'Manrope', sans-serif;
-  @apply bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-300;
+  font-family: 'Geist', sans-serif;
+  @apply bg-neutral-100 dark:bg-neutral-950 text-neutral-800 dark:text-neutral-300;
 }
 
 .bg-reverse {
-  @apply bg-slate-900 dark:bg-slate-100;
+  @apply bg-neutral-950 dark:bg-neutral-100;
 }
 
 .text-reverse {
-  @apply text-slate-300 dark:text-slate-800;
+  @apply text-neutral-300 dark:text-neutral-800;
 }

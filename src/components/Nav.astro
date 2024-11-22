@@ -34,7 +34,7 @@ const { showMeter = false } = Astro.props
 
 <nav
   class={twMerge(
-    'flex flex-col items-center px-4 sm:px-0 w-full sm:m-auto sticky top-0 z-10 bg-slate-100 dark:bg-slate-900',
+    'flex flex-col items-center px-4 sm:px-0 w-full sm:m-auto sticky top-0 z-10 bg-neutral-100 dark:bg-neutral-950',
     showMeter ? 'pt-4' : 'py-4'
   )}
 >
@@ -43,7 +43,11 @@ const { showMeter = false } = Astro.props
       {
         links.map(({ link, title }) => (
           <li>
-            <a href={link} data-nav-link class="text-sm hover:border-b-2 hover:border-slate-800 dark:hover:border-slate-300">
+            <a
+              href={link}
+              data-nav-link
+              class="text-sm hover:border-b-2 hover:border-neutral-800 dark:hover:border-neutral-300"
+            >
               {title}
             </a>
           </li>
@@ -61,9 +65,9 @@ const { showMeter = false } = Astro.props
   const activeNavEl = document.querySelector(`nav a[href="${activeLink}"]`)
   if (activeNavEl) {
     activeNavEl.classList.add('border-b-2')
-    activeNavEl.classList.add('border-slate-800')
-    activeNavEl.classList.add('dark:border-slate-300')
-    activeNavEl.classList.remove('hover:border-slate-800')
-    activeNavEl.classList.remove('dark:hover:border-slate-300')
+    activeNavEl.classList.add('border-neutral-800')
+    activeNavEl.classList.add('dark:border-neutral-300')
+    activeNavEl.classList.remove('hover:border-neutral-800')
+    activeNavEl.classList.remove('dark:hover:border-neutral-300')
   }
 </script>

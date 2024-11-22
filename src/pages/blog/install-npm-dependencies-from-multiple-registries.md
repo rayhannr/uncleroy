@@ -10,7 +10,7 @@ status: published
 layout: ../../layouts/Blog.astro
 ---
 
-<b>TL;DR:</b> Add this line to your `.npmrc` file
+<strong>TL;DR:</strong> Add this line to your `.npmrc` file
 
 ```make
 @{scope}:registry={your_private_registry}
@@ -48,4 +48,4 @@ registry=https://registry.uncleroy.org
 
 This configuration instructs `npm install` to load all dependencies from the private registry. Ensure that the private registry you're pointing to acts as a proxy to the public npm registry, allowing you to download both public and private dependencies.
 
-<b>Note:</b> It needs authorization to load dependencies from the private registry. Make sure to have an access token and pass it to your `.npmrc` file, replacing `{YOUR_AUTH_TOKEN_HERE}`. I won't explain the authorization process in this blog.
+<strong>Note:</strong> It needs authorization to load dependencies from the private registry. Make sure to have an access token and pass it to your `.npmrc` file, replacing `{YOUR_AUTH_TOKEN_HERE}`. I won't explain the authorization process in this blog.

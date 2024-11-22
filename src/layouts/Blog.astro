@@ -24,21 +24,21 @@ const { title, image, imageCaption, imageCredit, imageLink, publishedAt, descrip
 <BaseLayout {title} {description} {image} showMeter>
   <article class="mt-2 lg:mt-4">
     <header>
-      <time datetime={publishedAt} class="text-slate-500 dark:text-slate-400 block mb-4">
+      <time datetime={publishedAt} class="text-neutral-500 dark:text-neutral-400 block mb-4">
         <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
           {formatLongDate(publishedAt)}
           <span class="hidden sm:inline-block">|</span>
           {getReadingTime(rawContent())}
         </div>
       </time>
-      <h1>
+      <h1 class="font-bold">
         {title}
       </h1>
 
       <figure class="mt-6 font-normal text-balance">
         <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover" />
-        <figcaption class="text-xs text-slate-500 dark:text-slate-400 text-center">
-          Background image by <a href={imageLink} class="text-slate-700 dark:text-slate-200">{imageCredit}</a> from Unsplash
+        <figcaption class="text-xs text-neutral-500 dark:text-neutral-400 text-center">
+          Background image by <a href={imageLink} class="text-neutral-700 dark:text-neutral-200">{imageCredit}</a> from Unsplash
         </figcaption>
       </figure>
     </header>

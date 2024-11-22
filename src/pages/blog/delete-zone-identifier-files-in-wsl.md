@@ -10,7 +10,7 @@ status: published
 layout: ../../layouts/Blog.astro
 ---
 
-<b>TL;DR:</b> Run the following code snippet in the WSL command line from the directory where the Zone.Identifier files are located.
+<strong>TL;DR:</strong> Run the following code snippet in the WSL command line from the directory where the Zone.Identifier files are located.
 
 ```bash
 find . -name "*:Zone.Identifier" -type f -delete

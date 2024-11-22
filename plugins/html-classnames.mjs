@@ -1,6 +1,6 @@
 import remarkClassNames from 'remark-class-names'
 const classMap = {
-  'paragraph inlineCode': 'text-blue-600 dark:text-sky-500'
+  'paragraph inlineCode': 'text-neutral-950 dark:text-neutral-100'
 }
 
 export default function htmlClassNames() {

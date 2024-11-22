@@ -13,34 +13,35 @@ const { title, description, time, url } = Astro.props
 
 <article class="relative group">
   <div
-    class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 rounded-lg sm:rounded-2xl group-hover:bg-slate-200/70 dark:group-hover:bg-slate-800/50"
+    class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 rounded-lg sm:rounded-2xl group-hover:bg-neutral-200/70 dark:group-hover:bg-neutral-800/50"
   >
   </div>
   <svg
     viewBox="0 0 9 9"
-    class="absolute right-full mr-6 top-2 text-slate-200 dark:text-slate-600 md:mr-12 w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible"
+    class="absolute right-full mr-6 top-2 text-neutral-300 dark:text-neutral-600 md:mr-12 w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible"
   >
-    <circle cx="4.5" cy="4.5" r="4.5" stroke="currentColor" class="fill-white dark:fill-slate-900" stroke-width="2"></circle>
+    <circle cx="4.5" cy="4.5" r="4.5" stroke="currentColor" class="fill-neutral-50 dark:fill-neutral-950" stroke-width="2"
+    ></circle>
   </svg>
   <div class="relative">
     <h3 class="pt-8 lg:pt-0">{title}</h3>
-    <div class="my-2 prose prose-slate prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2">
-      <p class="text-slate-600 dark:text-slate-300">{description}</p>
+    <div class="my-2 prose prose-neutral prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2">
+      <p class="text-neutral-600 dark:text-neutral-300">{description}</p>
     </div>
     <dl class="absolute left-0 top-0 lg:left-auto lg:right-full lg:mr-[calc(6.5rem+1px)] not-prose">
       <dt class="sr-only">Date</dt>
-      <dd class="whitespace-nowrap text-sm leading-6 text-slate-500 dark:text-slate-400">
+      <dd class="whitespace-nowrap text-sm leading-6 text-neutral-500 dark:text-neutral-400">
         <time datetime={time}>{formatShortDate(time)}</time>
       </dd>
     </dl>
   </div>
-  <a href={url} class="flex items-center text-sm text-blue-600 dark:text-sky-500 font-medium">
+  <a href={url} class="flex items-center text-sm font-medium">
     <span class="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl"></span>
     <span class="relative">
       Read more <span class="sr-only">{title}</span>
     </span>
     <svg
-      class="relative mt-px overflow-visible ml-2.5 text-sky-300 dark:text-sky-700"
+      class="relative mt-px overflow-visible ml-2.5"
       width="3"
       height="6"
       viewBox="0 0 3 6"

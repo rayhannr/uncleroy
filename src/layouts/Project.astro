@@ -22,7 +22,7 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
 <BaseLayout {title} {description} {image} showMeter>
   <article class="mt-2 lg:mt-4">
     <header>
-      <div class="text-slate-500 dark:text-slate-400 mb-4">
+      <div class="text-neutral-500 dark:text-neutral-400 mb-4">
         <time datetime={publishedAt}>
           <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
             {formatLongDate(publishedAt)}
@@ -55,13 +55,13 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
         }
       </div>
 
-      <h1>
+      <h1 class="font-bold">
         {title}
       </h1>
 
       <figure class="mt-6 font-normal text-balance">
         <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover object-top" />
-        <figcaption class="text-xs text-slate-500 dark:text-slate-400 text-center">
+        <figcaption class="text-xs text-neutral-500 dark:text-neutral-400 text-center">
           {imageCaption}
         </figcaption>
       </figure>
