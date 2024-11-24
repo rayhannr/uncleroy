@@ -24,10 +24,14 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
     <header>
       <div class="text-neutral-500 dark:text-neutral-400 mb-4">
         <time datetime={publishedAt}>
-          <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
-            {formatLongDate(publishedAt)}
+          <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight">
+            <span>
+              {formatLongDate(publishedAt)}
+            </span>
             <span class="hidden sm:inline-block">|</span>
-            {getReadingTime(rawContent())}
+            <span>
+              {getReadingTime(rawContent())}
+            </span>
           </div>
         </time>
         {
@@ -60,7 +64,9 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
       </h1>
 
       <figure class="mt-6 font-normal text-balance">
-        <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover object-top" />
+        <a href={image} target="_blank">
+          <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover object-top" />
+        </a>
         <figcaption class="text-xs text-neutral-500 dark:text-neutral-400 text-center">
           {imageCaption}
         </figcaption>

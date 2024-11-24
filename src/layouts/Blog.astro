@@ -25,10 +25,14 @@ const { title, image, imageCaption, imageCredit, imageLink, publishedAt, descrip
   <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedAt} class="text-neutral-500 dark:text-neutral-400 block mb-4">
-        <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
-          {formatLongDate(publishedAt)}
+        <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight">
+          <span>
+            {formatLongDate(publishedAt)}
+          </span>
           <span class="hidden sm:inline-block">|</span>
-          {getReadingTime(rawContent())}
+          <span>
+            {getReadingTime(rawContent())}
+          </span>
         </div>
       </time>
       <h1 class="font-bold">
@@ -36,7 +40,9 @@ const { title, image, imageCaption, imageCredit, imageLink, publishedAt, descrip
       </h1>
 
       <figure class="mt-6 font-normal text-balance">
-        <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover" />
+        <a href={image} target="_blank">
+          <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover" />
+        </a>
         <figcaption class="text-xs text-neutral-500 dark:text-neutral-400 text-center">
           Background image by <a href={imageLink} class="text-neutral-700 dark:text-neutral-200">{imageCredit}</a> from Unsplash
         </figcaption>

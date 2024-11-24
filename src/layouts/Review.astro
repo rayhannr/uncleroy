@@ -22,16 +22,20 @@ const { title, author, description, publishYear, publishedAt, rating } = frontma
   <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedAt} class="text-neutral-500 dark:text-neutral-400 block mb-4">
-        <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1">
-          {formatLongDate(publishedAt)}
+        <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight">
+          <span>
+            {formatLongDate(publishedAt)}
+          </span>
           <span class="hidden sm:inline-block">|</span>
-          {getReadingTime(rawContent())}
+          <span>
+            {getReadingTime(rawContent())}
+          </span>
         </div>
       </time>
-      <h1 class="font-bold">{title}</h1>
+      <h1 class="font-bold mb-0">{title}</h1>
     </header>
 
-    <div class="my-6">
+    <div class="mt-4">
       <ul class="my-0 text-neutral-500 dark:text-neutral-400">
         <li>
           <strong>Author:</strong>
