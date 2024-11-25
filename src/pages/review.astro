@@ -5,7 +5,9 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import type { ReviewProps } from '../layouts/Review.astro'
 
 let reviews = await Astro.glob<ReviewProps>('./review/*.md')
-reviews = reviews.sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())
+reviews = reviews
+  .filter((review) => review.frontmatter.status !== 'draft')
+  .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())
 ---
 
 <BaseLayout title="Review" description="List of my reviews for the books I've read" showMeter>
