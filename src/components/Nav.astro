@@ -61,13 +61,17 @@ const { showMeter = false } = Astro.props
 </nav>
 
 <script>
-  const activeLink = `/${window.location.pathname.split('/')[1]}`
-  const activeNavEl = document.querySelector(`nav a[href="${activeLink}"]`)
-  if (activeNavEl) {
-    activeNavEl.classList.add('border-b-2')
-    activeNavEl.classList.add('border-neutral-800')
-    activeNavEl.classList.add('dark:border-neutral-300')
-    activeNavEl.classList.remove('hover:border-neutral-800')
-    activeNavEl.classList.remove('dark:hover:border-neutral-300')
+  const addActiveClass = () => {
+    const activeLink = `/${window.location.pathname.split('/')[1]}`
+    const activeNavEl = document.querySelector(`nav a[href="${activeLink}"]`)
+    if (activeNavEl) {
+      activeNavEl.classList.add('border-b-2')
+      activeNavEl.classList.add('border-neutral-800')
+      activeNavEl.classList.add('dark:border-neutral-300')
+      activeNavEl.classList.remove('hover:border-neutral-800')
+      activeNavEl.classList.remove('dark:hover:border-neutral-300')
+    }
   }
+  addActiveClass()
+  document.addEventListener('astro:after-swap', addActiveClass)
 </script>
