@@ -1,5 +1,6 @@
 ---
 import type { MarkdownLayoutProps } from 'astro'
+import { Image } from 'astro:assets'
 import BaseLayout from './BaseLayout.astro'
 import { formatLongDate } from '../utils/date'
 import { getReadingTime } from '../utils/readingTime'
@@ -8,8 +9,8 @@ export interface ProjectProps {
   title: string
   description: string
   publishedAt: string
-  image?: string
-  imageCaption?: string
+  image: string
+  imageCaption: string
   projectUrl?: string
   status?: string
 }
@@ -65,7 +66,13 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
 
       <figure class="mt-6 font-normal text-balance">
         <a href={image} target="_blank">
-          <img src={image} alt={imageCaption} class="mb-1 rounded w-full aspect-[11/5] object-cover object-top" />
+          <Image
+            src={image}
+            alt={imageCaption}
+            width={1900}
+            height={900}
+            class="mb-1 rounded w-full aspect-[11/5] object-cover object-top"
+          />
         </a>
         <figcaption class="text-xs text-neutral-500 dark:text-neutral-400 text-center">
           {imageCaption}
