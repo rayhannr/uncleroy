@@ -16,7 +16,7 @@ export interface ReviewProps {
 
 type Props = MarkdownLayoutProps<ReviewProps>
 const { frontmatter, rawContent } = Astro.props
-const { title, author, description, publishYear, publishedAt, rating } = frontmatter
+const { title, author, description, publishYear, publishedAt, rating, status } = frontmatter
 ---
 
 <BaseLayout title={`${title} by ${author} Review`} {description} showMeter>
@@ -53,6 +53,6 @@ const { title, author, description, publishYear, publishedAt, rating } = frontma
       </ul>
     </div>
 
-    <slot />
+    {status === 'draft' ? <p>Regrettably, the material is still in its draft stage.</p> : <slot />}
   </article>
 </BaseLayout>
