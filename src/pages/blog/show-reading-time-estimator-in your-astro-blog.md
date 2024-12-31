@@ -66,7 +66,8 @@ To keep this blog concise, I wonâ€™t dive deep into Astro concepts. Instead, Iâ€
     <slot />
   </article>
   ```
-    - `rawContent` refers to your blog content, usually written in `Markdown`, and will replace `<slot />` in the generated markup
+
+  - `rawContent` refers to your blog content, usually written in `Markdown`, and will replace `<slot />` in the generated markup
 
 ## Example
 
@@ -74,10 +75,9 @@ Suppose we have a Markdown blog post that utilizes the `Blog` layout defined ear
 
 ```md
 <!-- src/pages/blog/reading-time.md -->
----
-title: Reading Time
-author: Uncle Roy
-date: Nov 28, 2024
+title: Reading Time 
+author: Rayhan NR 
+date: Nov 28, 2024 
 layout: ../../layouts/Blog.astro
 ---
 
@@ -89,7 +89,7 @@ The resulting markup will look like this
 ```html
 <article>
   <header>
-    <span>Uncle Roy</span>
+    <span>Rayhan NR</span>
     <span>Nov 28, 2024</span>
     <span>2 min read</span>
   </header>

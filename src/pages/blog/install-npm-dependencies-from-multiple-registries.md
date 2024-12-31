@@ -25,7 +25,7 @@ Let's say your `package.json` looks like this:
 
 ```json
 "dependencies": {
-  "@uncleroy/validator": "3.1.0",
+  "@rayhannr/validator": "3.1.0",
   "react": "18.3.1"
 }
 ```
@@ -33,17 +33,17 @@ Let's say your `package.json` looks like this:
 and your `.npmrc` is as follows:
 
 ```make
-@uncleroy:registry=https://registry.uncleroy.org
-//registry.uncleroy.org/:_authToken={YOUR_AUTH_TOKEN_HERE}
+@rayhannr:registry=https://registry.rayhannr.org
+//registry.rayhannr.org/:_authToken={YOUR_AUTH_TOKEN_HERE}
 ```
 
-`npm install` will download `react` from the public npm registry and `@uncleroy/validator` from uncleroy private registry.
+`npm install` will download `react` from the public npm registry and `@rayhannr/validator` from rayhannr private registry.
 
 If the private dependencies' names do not start with `@{scope}`, you may need to update the `.npmrc` file as follows:
 
 ```make
-registry=https://registry.uncleroy.org
-//registry.uncleroy.org/:_authToken={YOUR_AUTH_TOKEN_HERE}
+registry=https://registry.rayhannr.org
+//registry.rayhannr.org/:_authToken={YOUR_AUTH_TOKEN_HERE}
 ```
 
 This configuration instructs `npm install` to load all dependencies from the private registry. Ensure that the private registry you're pointing to acts as a proxy to the public npm registry, allowing you to download both public and private dependencies.
