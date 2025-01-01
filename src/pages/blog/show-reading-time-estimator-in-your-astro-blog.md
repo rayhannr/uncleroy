@@ -41,8 +41,7 @@ To keep this blog concise, I wonâ€™t dive deep into Astro concepts. Instead, Iâ€
 
 - Use the utility function in your layout component
 
-  ```astro
-  <!-- src/layouts/Blog.astro -->
+  ```astro title="src/layouts/Blog.astro"
   ---
   import type { MarkdownLayoutProps } from 'astro'
   import { getReadingTime } from '../utils/readingTime'
@@ -56,6 +55,7 @@ To keep this blog concise, I wonâ€™t dive deep into Astro concepts. Instead, Iâ€
   const { rawContent, frontmatter } = Astro.props
   const { title, author, date } = frontmatter
   ---
+
   <article>
     <header>
       <span>{author}</span>
@@ -73,12 +73,15 @@ To keep this blog concise, I wonâ€™t dive deep into Astro concepts. Instead, Iâ€
 
 Suppose we have a Markdown blog post that utilizes the `Blog` layout defined earlier and will be accessible at `/blog/reading-time` on our website, as illustrated below:
 
-```md
+<!-- prettier-ignore -->
+```md wrap
 <!-- src/pages/blog/reading-time.md -->
-title: Reading Time 
-author: Rayhan NR 
-date: Nov 28, 2024 
+
+title: Reading Time
+author: Rayhan NR
+date: Nov 28, 2024
 layout: ../../layouts/Blog.astro
+
 ---
 
 This is a dummy content estimated to take approximately 2 minutes to read
@@ -86,7 +89,7 @@ This is a dummy content estimated to take approximately 2 minutes to read
 
 The resulting markup will look like this
 
-```html
+```html wrap
 <article>
   <header>
     <span>Rayhan NR</span>

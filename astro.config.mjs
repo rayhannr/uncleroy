@@ -20,7 +20,9 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false
     }),
-    sitemap(),
+    sitemap({
+      lastmod: new Date()
+    }),
     expressiveCode({
       themes: ['catppuccin-mocha', 'catppuccin-latte']
     }),
