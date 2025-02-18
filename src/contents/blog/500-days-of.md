@@ -1,13 +1,12 @@
 ---
 title: 500 Days of ...
-image: /images/blog/500-days-of.webp
+image: ./images/500-days-of.webp
 imageCaption: An image with the text "500 days of ..."
 imageCredit: Justin Little
 imageLink: https://unsplash.com/photos/a-close-up-of-a-street-sign-surrounded-by-leaves-hxUnNtWIjso
 description: Relationship lessons I learned from "500 Days of Summer" movie
 publishedAt: 2024-07-29T03:51:23.054Z
 status: published
-layout: ../../layouts/Blog.astro
 ---
 
 As I mentioned in the [about page](/about), I may write non-technical content from time to time, and this is one of those occasions. This blog post will discuss relationship lessons I learned from a movie called `500 Days of Summer`.
@@ -40,7 +39,7 @@ When you start a relationship, be prepared for the possibility that she might no
 
 ## Don't blame it all on Summer
 
-![Joseph Gordon-Levitt tweet about Tom](/images/blog/joseph-tweet.png)
+![Joseph Gordon-Levitt tweet about Tom](./images/joseph-tweet.png)
 
 Joseph Gordon-Levitt, the actor who played Tom, has stated that it's mostly Tom's fault, not Summer's.
 

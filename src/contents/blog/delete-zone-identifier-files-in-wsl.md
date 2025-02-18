@@ -1,13 +1,12 @@
 ---
 title: Delete Zone.Identifier files in WSL
-image: /images/blog/delete-zone-identifier-files-in-wsl.webp
+image: ./images/delete-zone-identifier-files-in-wsl.webp
 imageCaption: An image with the text "delete zone.identifier files in wsl"
 imageCredit: Kenny Eliason
 imageLink: https://unsplash.com/photos/person-surfing-black-laptop-near-microwave-oven-_oKSYD2cSIk
 description: If you are a software engineer, make sure to do this before pushing your changes
 publishedAt: 2024-07-23T15:23:51.405Z
 status: published
-layout: ../../layouts/Blog.astro
 ---
 
 <strong>TL;DR:</strong> Run the following code snippet in the WSL command line from the directory where the Zone.Identifier files are located.

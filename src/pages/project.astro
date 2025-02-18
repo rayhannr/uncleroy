@@ -3,8 +3,9 @@ import TimelineWrapper from '../components/TimelineWrapper.astro'
 import Timeline from '../components/Timeline.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import type { ProjectProps } from '../layouts/Project.astro'
+import type { MarkdownInstance } from 'astro'
 
-let projects = await Astro.glob<ProjectProps>('./project/*.md')
+let projects = Object.values(import.meta.glob('./project/*.md', { eager: true })) as MarkdownInstance<ProjectProps>[]
 projects = projects
   .filter((project) => project.frontmatter.status === 'published')
   .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())

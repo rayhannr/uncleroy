@@ -1,0 +1,14 @@
+<div class="w-full sm:w-3/4 lg:w-1/2 mt-1">
+  <div class="h-1 bg-reverse rounded-sm w-0" id="progress-bar"></div>
+</div>
+
+<script>
+  const getScrollProgress = () => {
+    const progressBar = document.getElementById('progress-bar')
+    const currentProgress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+    progressBar!.style.width = `${currentProgress}%`
+  }
+
+  getScrollProgress()
+  window.addEventListener('scroll', getScrollProgress)
+</script>

@@ -1,13 +1,13 @@
 ---
+import { getCollection } from 'astro:content'
 import Timeline from '../components/Timeline.astro'
 import TimelineWrapper from '../components/TimelineWrapper.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import type { BlogProps } from '../layouts/Blog.astro'
 
-let blogs = await Astro.glob<BlogProps>('./blog/*.md')
+let blogs = await getCollection('blogs')
 blogs = blogs
-  .filter((blog) => blog.frontmatter.status === 'published')
-  .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())
+  .filter((blog) => blog.data.status === 'published')
+  .sort((a, b) => new Date(b.data.publishedAt).valueOf() - new Date(a.data.publishedAt).valueOf())
 ---
 
 <BaseLayout title="Blog" description="List of my blogs I've written since I built this site" showMeter>
@@ -15,10 +15,10 @@ blogs = blogs
     {
       blogs.map((blog) => (
         <Timeline
-          title={blog.frontmatter.title}
-          description={blog.frontmatter.description}
-          time={blog.frontmatter.publishedAt}
-          url={blog.url}
+          title={blog.data.title}
+          description={blog.data.description}
+          time={blog.data.publishedAt.toISOString()}
+          url={`/blog/${blog.id}`}
         />
       ))
     }

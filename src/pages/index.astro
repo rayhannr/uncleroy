@@ -1,24 +1,25 @@
 ---
+import { getCollection } from 'astro:content'
 import Card from '../components/Card.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import type { BlogProps } from '../layouts/Blog.astro'
 import type { ProjectProps } from '../layouts/Project.astro'
 import type { ReviewProps } from '../layouts/Review.astro'
+import type { MarkdownInstance } from 'astro'
 
-const blogs = await Astro.glob<BlogProps>('./blog/*.md')
+const blogs = await getCollection('blogs')
 const latestBlog = blogs
-  .filter((blog) => blog.frontmatter.status === 'published')
-  .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())[0]
-const { title, description, image, publishedAt, imageCaption } = latestBlog.frontmatter
+  .filter((blog) => blog.data.status === 'published')
+  .sort((a, b) => new Date(b.data.publishedAt).valueOf() - new Date(a.data.publishedAt).valueOf())[0]
+const { title, description, image, publishedAt, imageCaption } = latestBlog.data
 
-const projects = await Astro.glob<ProjectProps>('./project/*.md')
+const projects = Object.values(import.meta.glob('./project/*.md', { eager: true })) as MarkdownInstance<ProjectProps>[]
 const latestProject = projects
   .filter((project) => project.frontmatter.status === 'published')
   .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())[0]
 
-const reviews = await Astro.glob<ReviewProps>('./review/*.md')
+const reviews = Object.values(import.meta.glob('./review/*.md', { eager: true })) as MarkdownInstance<ReviewProps>[]
 const latestReview = reviews
-  .filter((review) => review.frontmatter.status !== 'draft')
+  .filter((review) => review.frontmatter.status === 'published')
   .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())[0]
 ---
 
@@ -36,7 +37,14 @@ const latestReview = reviews
     </p>
 
     <h2 class="mb-4 mt-6">Latest blog</h2>
-    <Card {image} {title} {description} {publishedAt} imageAlt={imageCaption} link={latestBlog.url} />
+    <Card
+      image={image.src}
+      {title}
+      {description}
+      publishedAt={publishedAt.toISOString()}
+      imageAlt={imageCaption}
+      link={`/blog/${latestBlog.id}`}
+    />
 
     <div class="grid grid-cols-1 lg:grid-cols-2 lg:auto-rows-[1fr] gap-4">
       <div class="flex flex-col">

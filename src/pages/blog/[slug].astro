@@ -1,38 +1,40 @@
 ---
-import type { MarkdownLayoutProps } from 'astro'
+import { getEntry, render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { formatLongDate } from '../../utils/date'
+import { getReadingTime } from '../../utils/readingTime'
 import { Image } from 'astro:assets'
-import BaseLayout from './BaseLayout.astro'
-import { formatLongDate } from '../utils/date'
-import { getReadingTime } from '../utils/readingTime'
+import { getCollection } from 'astro:content'
 
-export interface BlogProps {
-  title: string
-  image: string
-  description: string
-  imageCaption: string
-  publishedAt: string
-  imageCredit?: string
-  imageLink?: string
-  status?: string
+export async function getStaticPaths() {
+  const blogs = await getCollection('blogs')
+  return blogs.map((blog) => ({
+    params: { slug: blog.id },
+    props: { blog }
+  }))
 }
 
-type Props = MarkdownLayoutProps<BlogProps>
+const { blog } = Astro.props
 
-const { rawContent, frontmatter } = Astro.props
-const { title, image, imageCaption, imageCredit, imageLink, publishedAt, description, status } = frontmatter
+if (!blog) {
+  return Astro.redirect('/404')
+}
+
+const { title, image, imageCaption, imageCredit, imageLink, publishedAt, description, status } = blog.data
+const { Content } = await render(blog)
 ---
 
-<BaseLayout {title} {description} {image} showMeter>
+<BaseLayout {title} {description} image={image.src} showMeter>
   <article class="mt-2 lg:mt-4">
     <header>
-      <time datetime={publishedAt} class="text-neutral-500 dark:text-neutral-400 block mb-4">
+      <time datetime={publishedAt.toISOString()} class="text-neutral-500 dark:text-neutral-400 block mb-4">
         <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight text-sm">
           <span>
             {formatLongDate(publishedAt)}
           </span>
           <span class="hidden sm:inline-block">|</span>
           <span>
-            {getReadingTime(rawContent())}
+            {getReadingTime(blog.body || '')}
           </span>
         </div>
       </time>
@@ -41,7 +43,7 @@ const { title, image, imageCaption, imageCredit, imageLink, publishedAt, descrip
       </h1>
 
       <figure class="mt-6 font-normal text-balance">
-        <a href={image} target="_blank">
+        <a href={image.src} target="_blank">
           <Image
             src={image}
             alt={imageCaption}
@@ -59,7 +61,7 @@ const { title, image, imageCaption, imageCredit, imageLink, publishedAt, descrip
     </header>
 
     <div class="mt-8">
-      {status === 'draft' ? <p>Regrettably, the material is still in its draft stage.</p> : <slot />}
+      {status === 'draft' ? <p>Regrettably, the material is still in its draft stage.</p> : <Content />}
     </div>
   </article>
 </BaseLayout>

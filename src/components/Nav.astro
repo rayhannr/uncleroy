@@ -1,6 +1,6 @@
 ---
 import { twMerge } from 'tailwind-merge'
-import { ScrollMeter } from './ScrollMeter'
+import ScrollMeter from './ScrollMeter.astro'
 import ThemeToggler from './ThemeToggler.astro'
 const links = [
   {
@@ -57,7 +57,7 @@ const { showMeter = false } = Astro.props
 
     <ThemeToggler />
   </div>
-  {showMeter && <ScrollMeter client:only />}
+  {showMeter && <ScrollMeter />}
 </nav>
 
 <script>

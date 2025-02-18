@@ -5,6 +5,7 @@ description: A Visual Exploration of Stoic Philosophy
 publishYear: 2023
 publishedAt: 2024-06-30T14:45:09.226Z
 rating: 5
+status: published
 layout: ../../layouts/Review.astro
 ---
 

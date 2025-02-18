@@ -1,7 +1,7 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 import SpeedInsights from '@vercel/speed-insights/astro'
-import '../styles/globals.css'
+import '../styles/global.css'
 
 interface Props {
   title: string
@@ -22,13 +22,13 @@ const imageUrl = `${url}${image}`
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="sitemap" href="/sitemap-0.xml" />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
 
   <title>{title}</title>
-  <ViewTransitions />
+  <ClientRouter />
   <meta name="title" content={title} />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#f5f5f5" />

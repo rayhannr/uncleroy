@@ -1,13 +1,12 @@
 ---
 title: Begin Again
-image: /images/blog/begin-again.webp
+image: ./images/begin-again.webp
 imageCaption: An image with the text "begin again"
 imageCredit: Wahyu Pratama
 imageLink: https://unsplash.com/photos/jco-signage-Ps6OvCkHSlM
 description: Yup, i begin to blog again
 publishedAt: 2024-04-14T08:56:39.248Z
 status: published
-layout: ../../layouts/Blog.astro
 ---
 
 I've had several blogging experiences, each marking a different phase in my journey. In total, I can identify at least three such phases.

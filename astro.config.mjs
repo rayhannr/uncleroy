@@ -1,10 +1,10 @@
+// @ts-check
 import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
-import vercel from '@astrojs/vercel/static'
+import tailwindcss from '@tailwindcss/vite'
 import sitemap from '@astrojs/sitemap'
-import react from '@astrojs/react'
+import vercel from '@astrojs/vercel'
 import expressiveCode from 'astro-expressive-code'
-import htmlClassNames from './plugins/html-classnames.mjs'
+import { htmlClassNames } from './plugins/html-classnames.mjs'
 import { externalLink } from './plugins/external-link'
 
 const siteUrl =
@@ -16,17 +16,14 @@ const siteDomain = siteUrl?.replace('https://', '')
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,
+  vite: {
+    plugins: [tailwindcss()]
+  },
   integrations: [
-    tailwind({
-      applyBaseStyles: false
-    }),
-    sitemap({
-      lastmod: new Date()
-    }),
+    sitemap({ lastmod: new Date() }),
     expressiveCode({
       themes: ['catppuccin-mocha', 'catppuccin-latte']
-    }),
-    react()
+    })
   ],
   server: {
     port: 3000

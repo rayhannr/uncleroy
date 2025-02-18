@@ -1,13 +1,12 @@
 ---
 title: Install NPM dependencies from multiple registries
-image: /images/blog/install-npm-dependencies-from-multiple-registries.webp
+image: ./images/install-npm-dependencies-from-multiple-registries.webp
 imageCaption: An image with the text "install npm dependencies from multiple registries"
 imageCredit: Paul Esch-Laurent
 imageLink: https://unsplash.com/photos/orange-pink-keyboard-oZMUrWFHOB4
 description: You may need this when you're working on Javascript project that requires installing dependencies from a private registry
 publishedAt: 2024-07-28T14:55:39.942Z
 status: published
-layout: ../../layouts/Blog.astro
 ---
 
 <strong>TL;DR:</strong> Add this line to your `.npmrc` file

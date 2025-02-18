@@ -1,13 +1,12 @@
 ---
 title: Show Reading Time Estimator in Your Astro Blog
-image: /images/blog/show-reading-time-estimator-in-your-astro-blog.webp
+image: ./images/show-reading-time-estimator-in-your-astro-blog.webp
 imageCaption: An image with the text "show reading time estimator in your astro blog"
 imageCredit: Callum Shaw
 imageLink: https://unsplash.com/photos/gray-laptop-beside-white-teacup-and-book-TLxaYmixZ3k
 description: Show a reading time estimator as if you were writing on Medium
 publishedAt: 2024-11-28T14:55:55.043Z
 status: published
-layout: ../../layouts/Blog.astro
 ---
 
 If you’ve ever read a blog on Medium, you’ve probably noticed the reading time estimator (e.g., "10 min read") displayed next to the author’s avatar. Adding a similar feature to your website is simple! In this post, I’ll show you how to implement it using [Astro](https://astro.build/).

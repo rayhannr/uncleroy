@@ -3,6 +3,6 @@ const classMap = {
   'paragraph inlineCode': 'text-neutral-950 dark:text-neutral-50'
 }
 
-export default function htmlClassNames() {
+export function htmlClassNames() {
   return remarkClassNames({ classMap })
 }

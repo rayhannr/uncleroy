@@ -1,13 +1,12 @@
 ---
 title: Cache Control for React App Using Nginx
-image: /images/blog/cache-control-for-react-app-using-nginx.webp
+image: ./images/cache-control-for-react-app-using-nginx.webp
 imageCaption: An image with the text "cache control for react app using nginx"
 imageCredit: Rahul Mishra
 imageLink: https://unsplash.com/photos/a-computer-screen-with-a-program-running-on-it-JpF58ANavoc
 description: Speed up your React app's reload time with cache control
 publishedAt: 2024-09-08T15:12:01.841Z
 status: published
-layout: ../../layouts/Blog.astro
 ---
 
 At the time of writing this blog, I’m maintaining a React app with a hefty initial bundle size of 1.5 MB. The `.nginx.conf` file initially looked like this

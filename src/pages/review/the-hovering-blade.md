@@ -5,6 +5,7 @@ description: Diving deeper into grief and now fueled by anger, Nagamine harbored
 publishYear: 2008
 publishedAt: 2024-04-15T12:59:01.226Z
 rating: 4
+status: published
 layout: ../../layouts/Review.astro
 ---
 
