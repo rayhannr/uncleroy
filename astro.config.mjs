@@ -17,7 +17,10 @@ const siteDomain = siteUrl?.replace('https://', '')
 export default defineConfig({
   site: siteUrl,
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: {
+      assetsInlineLimit: 61440
+    }
   },
   integrations: [
     sitemap({ lastmod: new Date() }),

@@ -1,6 +1,7 @@
 ---
 import SpeedInsights from '@vercel/speed-insights/astro'
 import '../styles/global.css'
+import { ClientRouter } from 'astro:transitions'
 
 interface Props {
   title: string
@@ -44,6 +45,7 @@ const imageUrl = `${url}${image}`
   <meta property="twitter:image" content={imageUrl} />
 
   <SpeedInsights />
+  <ClientRouter />
 
   {
     ['Geist-Bold.woff2', 'Geist-Regular.woff2', 'GeistMono-Medium.woff2', 'Geist-Medium.woff2', 'Geist-ExtraBold.woff2'].map(
