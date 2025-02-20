@@ -1,12 +1,11 @@
 ---
 title: Talangeen
 description: Shared expenses tracker for friends
-image: /images/project/talangeen.webp
+image: ./images/talangeen.webp
 imageCaption: Talangeen UI showing list of members and transactions in Bahasa
 publishedAt: 2024-05-19T14:34:08.000Z
 projectUrl: https://talangeen.vercel.app
 status: published
-layout: ../../layouts/Project.astro
 ---
 
 `Talangeen` is an app that enables users to track shared expenses with friends, ensuring everyone gets reimbursed.

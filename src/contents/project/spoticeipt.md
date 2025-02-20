@@ -1,12 +1,11 @@
 ---
 title: Spoticeipt
 description: Spotify top track receipt generator
-image: /images/project/spoticeipt.webp
+image: ./images/spoticeipt.webp
 imageCaption: Spoticeipt UI showing a receipt of current user's stats from last year
 publishedAt: 2024-11-24T13:55:07.182Z
 projectUrl: https://spoticeipt.vercel.app
 status: published
-layout: ../../layouts/Project.astro
 ---
 
 I never planned to build this app, but one day I saw many people on X sharing their Spotify top tracks in a receipt-like format, inspired by [@albumreceipts](https://www.instagram.com/albumreceipts/). I thought it would be awesome to create an app that generates something like that— and that's how `Spoticeipt` was born.

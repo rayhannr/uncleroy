@@ -1,12 +1,11 @@
 ---
 title: AccelPlay
 description: TMDB clone
-image: /images/project/accelplay.webp
+image: ./images/accelplay.webp
 imageCaption: AccelPlay home page showing Kung Fu Panda 4 in the hero section
 publishedAt: 2021-04-12T04:00:51.000Z
 projectUrl: https://neatflex.netlify.app/movies
 status: published
-layout: ../../layouts/Project.astro
 ---
 
 `AccelPlay` is a TMDB (The Movie Database) clone [React](https://react.dev/) app. The home page showcases the top 5 latest movies and a list of movies that users can filter by genre or year. On the movie detail page, users can view the trailer, synopsis, cast, and other movie recommendations.

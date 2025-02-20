@@ -1,12 +1,11 @@
 ---
 title: Premarital Q&A
 description: 260 essential questions (and sample answers) to ask your future spouse
-image: /images/project/premarital-qna.webp
+image: ./images/premarital-qna.webp
 imageCaption: A sleek, dark-themed UI with a categorized list of 260 premarital questions, featuring an expandable Q&A layout for easy navigation.
 publishedAt: 2025-01-28T15:05:43.218Z
 projectUrl: https://premarital-qna.vercel.app/
 status: published
-layout: ../../layouts/Project.astro
 ---
 
 A couple of weeks ago, I came across a PDF containing 260 marriage-related questions on X. It turns out, the file was from [Suhbah Institute](https://suhbah.com/).

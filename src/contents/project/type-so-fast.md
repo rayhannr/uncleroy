@@ -1,12 +1,11 @@
 ---
 title: TypeSoFast!
 description: A simple 10fastfingers clone to test typing speed in Indonesian
-image: /images/project/type-so-fast.webp
+image: ./images/type-so-fast.webp
 imageCaption: TypeSoFast! landing page UI
 publishedAt: 2021-02-04T15:40:13.000Z
 projectUrl: https://typesofast.vercel.app
 status: published
-layout: ../../layouts/Project.astro
 ---
 
 I created `TypeSoFast!` to clone [10fastfingers](https://10fastfingers.com/) in Indonesian using [CRA](https://create-react-app.dev/). I compiled the dictionary by scraping articles from various news outlets.

@@ -1,37 +1,41 @@
 ---
-import type { MarkdownLayoutProps } from 'astro'
+import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
-import BaseLayout from './BaseLayout.astro'
-import { formatLongDate } from '../utils/date'
-import { getReadingTime } from '../utils/readingTime'
+import { render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { formatLongDate } from '../../utils/date'
+import { getReadingTime } from '../../utils/readingTime'
 
-export interface ProjectProps {
-  title: string
-  description: string
-  publishedAt: string
-  image: string
-  imageCaption: string
-  projectUrl?: string
-  status?: string
+export async function getStaticPaths() {
+  const projects = await getCollection('projects')
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project }
+  }))
 }
 
-type Props = MarkdownLayoutProps<ProjectProps>
-const { frontmatter, rawContent } = Astro.props
-const { title, description, publishedAt, projectUrl, image, imageCaption } = frontmatter
+const { project } = Astro.props
+
+if (!project) {
+  return Astro.redirect('/404')
+}
+
+const { title, description, image, imageCaption, publishedAt, projectUrl } = project.data
+const { Content } = await render(project)
 ---
 
-<BaseLayout {title} {description} {image} showMeter>
+<BaseLayout {title} {description} image={image.src} showMeter>
   <article class="mt-2 lg:mt-4">
     <header>
       <div class="text-neutral-500 dark:text-neutral-400 mb-4">
-        <time datetime={publishedAt}>
+        <time datetime={publishedAt.toISOString()}>
           <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight text-sm">
             <span>
               {formatLongDate(publishedAt)}
             </span>
             <span class="hidden sm:inline-block">|</span>
             <span>
-              {getReadingTime(rawContent())}
+              {getReadingTime(project.body || '')}
             </span>
           </div>
         </time>
@@ -65,7 +69,7 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
       </h1>
 
       <figure class="mt-6 font-normal text-balance">
-        <a href={image} target="_blank">
+        <a href={image.src} target="_blank">
           <Image
             src={image}
             alt={imageCaption}
@@ -81,7 +85,7 @@ const { title, description, publishedAt, projectUrl, image, imageCaption } = fro
     </header>
 
     <div class="mt-6">
-      <slot />
+      <Content />
     </div>
   </article>
 </BaseLayout>

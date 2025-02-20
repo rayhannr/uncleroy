@@ -1,12 +1,11 @@
 ---
 title: tic-tac-cok
 description: Offline 2-player tic-tac-toe game
-image: /images/project/tic-tac-cok.webp
+image: ./images/tic-tac-cok.webp
 imageCaption: tic-tac-cok light mode UI
 publishedAt: 2020-01-15T16:19:52.000Z
 projectUrl: https://tic-tac-cok.vercel.app
 status: published
-layout: ../../layouts/Project.astro
 ---
 
 `tic-tac-cok` is the inaugural [React](https://react.dev/) application I developed upon completing a React course on Udemy, which I undertook in mid-2019. It's a tic-tac-toe game inspired by a tutorial from [a YouTube video](https://www.youtube.com/watch?v=Y-GkMjUZsmM) by Web Dev Simplified, one of my favorite channel for learning web development.
