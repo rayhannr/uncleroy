@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
-import tailwindcss from '@tailwindcss/vite'
-import sitemap from '@astrojs/sitemap'
 import vercel from '@astrojs/vercel'
+import sitemap from '@astrojs/sitemap'
+import tailwindcss from '@tailwindcss/vite'
 import expressiveCode from 'astro-expressive-code'
 import { htmlClassNames } from './plugins/html-classnames.mjs'
 import { externalLink } from './plugins/external-link'
@@ -16,30 +16,24 @@ const siteDomain = siteUrl?.replace('https://', '')
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,
-  vite: {
-    plugins: [tailwindcss()],
-    build: {
-      assetsInlineLimit: 61440
-    }
-  },
+  output: 'static',
+  adapter: vercel({ webAnalytics: { enabled: true } }),
   integrations: [
     sitemap({ lastmod: new Date() }),
     expressiveCode({
       themes: ['catppuccin-mocha', 'catppuccin-latte']
     })
   ],
-  server: {
-    port: 3000
+  server: { port: 3000 },
+  vite: {
+    plugins: [tailwindcss()],
+    build: {
+      assetsInlineLimit: 61440
+    }
   },
   markdown: {
     syntaxHighlight: 'prism',
     remarkPlugins: [htmlClassNames],
     rehypePlugins: [[externalLink, { domain: siteDomain }]]
-  },
-  output: 'static',
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true
-    }
-  })
+  }
 })

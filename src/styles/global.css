@@ -55,7 +55,3 @@ body {
 .bg-reverse {
   @apply bg-neutral-950 dark:bg-neutral-100;
 }
-
-.text-reverse {
-  @apply text-neutral-300 dark:text-neutral-800;
-}
