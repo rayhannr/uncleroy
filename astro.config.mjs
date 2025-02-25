@@ -21,7 +21,10 @@ export default defineConfig({
   integrations: [
     sitemap({ lastmod: new Date() }),
     expressiveCode({
-      themes: ['catppuccin-mocha', 'catppuccin-latte']
+      themes: ['material-theme-ocean'],
+      styleOverrides: {
+        uiFontFamily: 'Geist, sans-serif'
+      }
     })
   ],
   server: { port: 3000 },
