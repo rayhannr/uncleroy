@@ -13,15 +13,10 @@ export const externalLink: RehypePlugin = (options?: Options) => {
 
   return (tree) => {
     visit(tree, (node) => {
-      if (node.type != 'element') {
-        return
-      }
+      if (node.type != 'element') return
 
       const element = node as Element
-
-      if (!isAnchor(element)) {
-        return
-      }
+      if (!isAnchor(element)) return
 
       const url = getUrl(element)
 
@@ -35,15 +30,10 @@ export const externalLink: RehypePlugin = (options?: Options) => {
 const isAnchor = (element: Element) => element.tagName == 'a' && element.properties && 'href' in element.properties
 
 const getUrl = (element: Element) => {
-  if (!element.properties) {
-    return ''
-  }
+  if (!element.properties) return ''
 
   const url = element.properties['href']
-
-  if (!url) {
-    return ''
-  }
+  if (!url) return ''
 
   return url.toString()
 }

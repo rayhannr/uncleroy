@@ -23,7 +23,8 @@ export default defineConfig({
     expressiveCode({
       themes: ['material-theme-ocean'],
       styleOverrides: {
-        uiFontFamily: 'Geist, sans-serif'
+        uiFontFamily: 'Geist, sans-serif',
+        codeFontFamily: "'Geist Mono', ui-monospace, monospace"
       }
     })
   ],
