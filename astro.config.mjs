@@ -19,7 +19,13 @@ export default defineConfig({
   output: 'static',
   adapter: vercel({ webAnalytics: { enabled: true } }),
   integrations: [
-    sitemap({ lastmod: new Date() }),
+    sitemap({
+      lastmod: new Date(),
+      serialize(item) {
+        item.url = item.url.endsWith('/') ? item.url.slice(0, -1) : item.url
+        return item
+      }
+    }),
     expressiveCode({
       themes: ['material-theme-ocean'],
       styleOverrides: {
