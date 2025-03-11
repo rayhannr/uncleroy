@@ -17,6 +17,7 @@ const siteDomain = siteUrl?.replace('https://', '')
 export default defineConfig({
   site: siteUrl,
   output: 'static',
+  trailingSlash: 'never',
   adapter: vercel({ webAnalytics: { enabled: true } }),
   integrations: [
     sitemap({
@@ -24,7 +25,8 @@ export default defineConfig({
       serialize(item) {
         item.url = item.url.endsWith('/') ? item.url.slice(0, -1) : item.url
         return item
-      }
+      },
+      filter: (page) => !page.includes('merawat-luka-batin')
     }),
     expressiveCode({
       themes: ['material-theme-ocean'],
