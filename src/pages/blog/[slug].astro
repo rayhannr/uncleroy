@@ -20,11 +20,11 @@ if (!blog) {
   return Astro.redirect('/404')
 }
 
-const { title, image, imageCaption, imageCredit, imageLink, publishedAt, description, status } = blog.data
+const { title, image, imageCaption, imageCredit, imageLink, publishedAt, description, metaDescription, status } = blog.data
 const { Content } = await render(blog)
 ---
 
-<BaseLayout {title} {description} image={image.src} showMeter>
+<BaseLayout {title} description={metaDescription || description} image={image.src} showMeter>
   <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedAt.toISOString()} class="text-neutral-500 dark:text-neutral-400 block mb-4">

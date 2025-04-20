@@ -19,6 +19,9 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   adapter: vercel({ webAnalytics: { enabled: true } }),
+  redirects: {
+    '/blog/what-it-means-to-be-a-qawwam': '/blog/qawwam-meaning-in-the-quran'
+  },
   integrations: [
     sitemap({
       lastmod: new Date(),

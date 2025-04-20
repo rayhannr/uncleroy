@@ -11,6 +11,7 @@ const blogs = defineCollection({
       imageCredit: z.string(),
       imageLink: z.string(),
       description: z.string(),
+      metaDescription: z.string().optional(),
       publishedAt: z.date(),
       status: z.enum(['draft', 'published'])
     })
