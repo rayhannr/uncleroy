@@ -20,7 +20,8 @@ export default defineConfig({
   trailingSlash: 'never',
   adapter: vercel({ webAnalytics: { enabled: true } }),
   redirects: {
-    '/blog/what-it-means-to-be-a-qawwam': '/blog/qawwam-meaning-in-the-quran'
+    '/blog/what-it-means-to-be-a-qawwam': '/blog/qawwam-meaning-in-the-quran',
+    '/blog/500-days-of': '/blog/relationship-lessons-500-days-of-summer'
   },
   integrations: [
     sitemap({
