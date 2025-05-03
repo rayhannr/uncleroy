@@ -21,7 +21,8 @@ export default defineConfig({
   adapter: vercel({ webAnalytics: { enabled: true } }),
   redirects: {
     '/blog/what-it-means-to-be-a-qawwam': '/blog/qawwam-meaning-in-the-quran',
-    '/blog/500-days-of': '/blog/relationship-lessons-500-days-of-summer'
+    '/blog/500-days-of': '/blog/relationship-lessons-500-days-of-summer',
+    '/blog/begin-again': '/blog/blogging-journey-technical-writing'
   },
   integrations: [
     sitemap({

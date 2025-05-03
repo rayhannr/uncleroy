@@ -16,11 +16,11 @@ This 2009 romantic drama tells the story of Tom, a hopeless romantic who believe
 
 After watching the movie at least three times and discussing it with others, I've gathered several key takeaways—especially for men looking for a serious, committed relationship. If you've ever found yourself in a situation like Tom's, these lessons might save you some heartache.
 
-## Lower your expectations early
+## Lower Your Expectations Early
 
 Just because you click with someone or share similar interests doesn't automatically mean she's “the one.” Sometimes, two people can have romantic chemistry without being right for each other long-term. Learn to recognize the difference before you get too invested.
 
-## Listen to what she wants
+## Listen to What She Wants
 
 If she says she's not looking for anything serious, believe her.
 
@@ -28,7 +28,7 @@ You can ask about her future goals, but if her timeline or expectations don't al
 
 Don't try to change her mind. Instead, find someone whose values and vision align with yours.
 
-## Don't misread affection as commitment
+## Don't Misread Affection as Commitment
 
 Just because she texts you first, compliments you, goes on dates, or shows playful affection doesn't mean she sees you as more than a friend or casual companion.
 
@@ -36,13 +36,13 @@ Some people are naturally warm or flirtatious without intending anything serious
 
 If she enjoys your company but explicitly says she's not interested in a relationship, circle back to lesson #2.
 
-## Make room for disappointment
+## Make Room for Disappointment
 
 Not every connection will turn into a lasting relationship—and that's okay.
 
 It’s important to be emotionally prepared for the possibility that she might not be "the one." It’ll sting, but letting go is better than forcing something that's not meant to be. Trust that better-aligned opportunities will come your way.
 
-## Don’t blame it all on her
+## Don’t Blame It All on Her
 
 ![Joseph Gordon-Levitt tweet about Tom](./images/joseph-tweet.png)
 
