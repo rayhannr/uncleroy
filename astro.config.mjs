@@ -22,7 +22,8 @@ export default defineConfig({
   redirects: {
     '/blog/what-it-means-to-be-a-qawwam': '/blog/qawwam-meaning-in-the-quran',
     '/blog/500-days-of': '/blog/relationship-lessons-500-days-of-summer',
-    '/blog/begin-again': '/blog/blogging-journey-technical-writing'
+    '/blog/begin-again': '/blog/blogging-journey-technical-writing',
+    '/blog/digital-wedding-invitation-features-that-need-to-improve': '/blog/tired-of-digital-wedding-invites'
   },
   integrations: [
     sitemap({

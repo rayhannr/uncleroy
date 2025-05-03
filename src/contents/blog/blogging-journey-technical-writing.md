@@ -1,7 +1,7 @@
 ---
 title: 'How My Blogging Evolved: From Cringy Posts to Technical Writing'
 image: ./images/blogging-journey-technical-writing.webp
-imageCaption: An image with the text "begin again"
+imageCaption: 'An image with the text "how my blogging evolved: from cringy posts to technical writing"'
 imageCredit: Wahyu Pratama
 imageLink: https://unsplash.com/photos/jco-signage-Ps6OvCkHSlM
 description: How I stopped blogging like a middle schooler
