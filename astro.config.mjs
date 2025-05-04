@@ -25,7 +25,8 @@ export default defineConfig({
     '/blog/begin-again': '/blog/blogging-journey-technical-writing',
     '/blog/digital-wedding-invitation-features-that-need-to-improve': '/blog/tired-of-digital-wedding-invites',
     '/blog/install-npm-dependencies-from-multiple-registries': '/blog/install-npm-multiple-registries',
-    '/blog/cache-control-for-react-app-using-nginx': '/blog/nginx-cache-control-react-performance'
+    '/blog/cache-control-for-react-app-using-nginx': '/blog/nginx-cache-control-react-performance',
+    '/blog/show-reading-time-estimator-in-your-astro-blog': '/blog/astro-reading-time'
   },
   integrations: [
     sitemap({
