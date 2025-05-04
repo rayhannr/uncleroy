@@ -34,4 +34,4 @@ In contrast, great use of animation can be found on websites like [bijakmemilih.
 
 These frustrations led me to create my own minimalist wedding invitation template. You can view the details of this project [here](/project/folklore-invitation).
 
-My template features subtle animation and audio that plays only when the user chooses to, via a play button in the bottom-right corner. It’s built for elegance, clarity, and a more respectful user experience.
+My template features subtle animation and audio that plays only when the user chooses to, via a play button in the bottom-right corner. It's built for elegance, clarity, and a more respectful user experience.

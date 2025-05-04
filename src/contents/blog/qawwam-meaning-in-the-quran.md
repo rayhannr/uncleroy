@@ -18,13 +18,13 @@ In Surah An-Nisa (4:34), Allah says:
 
 The Arabic term **قَوَّٰمُونَ** (qawwam) is often translated as `caretakers`, reflecting responsibility, protection, and support. However, in many Indonesian translations, it's rendered as `leaders`, which shifts the nuance toward authority and control. This mistranslation has played a role in reinforcing patriarchal norms—casting women as subordinate, rather than as equal partners with different, but complementary, roles.
 
-Recently, I tuned into a powerful discussion hosted by [@themuslimgaze](https://x.com/themuslimgaze/status/1655196209232105474) on X. The conversation dove deep into the real meaning and implications of qawwam in the Qur’anic context. Here’s a breakdown of the key takeaways:
+Recently, I tuned into a powerful discussion hosted by [@themuslimgaze](https://x.com/themuslimgaze/status/1655196209232105474) on X. The conversation dove deep into the real meaning and implications of qawwam in the Qur'anic context. Here's a breakdown of the key takeaways:
 
 ## Being Active and Responsible
 
 The word qawwam stems from **ﻗَﺎﻡَ** (qaama), meaning `to stand`. In classical Arabic, it's tied to activity, action, and being upright. In a family context, this means the man is expected to be constantly active—providing, supporting, and protecting.
 
-Being qawwam isn’t about commanding authority—it’s about showing up consistently:
+Being qawwam isn't about commanding authority—it's about showing up consistently:
 
 - Financial provision is his duty.
 
@@ -34,17 +34,17 @@ Being qawwam isn’t about commanding authority—it’s about showing up consis
 
 The Prophet Muhammad ﷺ set the perfect example. He was involved in household chores, fixed his own sandals, helped his wives, and was emotionally present. A qawwam is not just a breadwinner; he's an engaged partner, a nurturing father, and a pillar in the home.
 
-## Meeting the Family’s Basic Needs
+## Meeting the Family's Basic Needs
 
-A qawwam must ensure the family’s essential needs are met—food, shelter, clothing, and emotional security. And this must come from his own earnings. Regardless of his wife’s financial status, the man’s duty remains unchanged.
+A qawwam must ensure the family's essential needs are met—food, shelter, clothing, and emotional security. And this must come from his own earnings. Regardless of his wife's financial status, the man's duty remains unchanged.
 
-Even if she earns more, it doesn't lighten his load. Being a provider isn’t about wealth; it’s about fulfilling the divine trust placed on him.
+Even if she earns more, it doesn't lighten his load. Being a provider isn't about wealth; it's about fulfilling the divine trust placed on him.
 
 ## Taking Initiative and Showing Up
 
 The qawwam is not passive. He actively manages and supports the women under his care—his wife, daughters, mother, or sisters. He is their advocate, not their boss.
 
-If a woman in his family is in distress, it’s his role to step in, shield her, and ensure her needs—physical, emotional, and spiritual—are met.
+If a woman in his family is in distress, it's his role to step in, shield her, and ensure her needs—physical, emotional, and spiritual—are met.
 
 ## A Righteous Balance
 
@@ -84,19 +84,19 @@ If his presence causes stress, fear, or emotional damage, he is failing in his r
 
 ## Leadership Through Responsibility, Not Control
 
-There’s a popular analogy: if the family is a school, the mother is the teacher, and the father is the **قَيِّم** (qayyim) (headmaster)—a word with similar root letters to qawwam.
+There's a popular analogy: if the family is a school, the mother is the teacher, and the father is the **قَيِّم** (qayyim) (headmaster)—a word with similar root letters to qawwam.
 
 But what does a headmaster do?
 
 - He sets direction.
 - He manages with wisdom.
-- He protects the school’s vision.
+- He protects the school's vision.
 - He leads through service.
 
 ### Final Thoughts
 
-To be a qawwam is to embody strength through service, leadership through care, and responsibility through love. It’s not about being "the boss"—it’s about being the rock your family can rely on.
+To be a qawwam is to embody strength through service, leadership through care, and responsibility through love. It's not about being "the boss"—it's about being the rock your family can rely on.
 
-Islam doesn’t place men above women—it assigns roles based on capacity and responsibility. When men fulfill the role of qawwam with sincerity, families thrive. When the term is twisted into dominance, everyone loses.
+Islam doesn't place men above women—it assigns roles based on capacity and responsibility. When men fulfill the role of qawwam with sincerity, families thrive. When the term is twisted into dominance, everyone loses.
 
-If you found this helpful, share it with someone who needs a reminder of what true Islamic leadership looks like. Let’s reshape our understanding—one word at a time.
+If you found this helpful, share it with someone who needs a reminder of what true Islamic leadership looks like. Let's reshape our understanding—one word at a time.
