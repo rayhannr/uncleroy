@@ -26,7 +26,8 @@ export default defineConfig({
     '/blog/digital-wedding-invitation-features-that-need-to-improve': '/blog/tired-of-digital-wedding-invites',
     '/blog/install-npm-dependencies-from-multiple-registries': '/blog/install-npm-multiple-registries',
     '/blog/cache-control-for-react-app-using-nginx': '/blog/nginx-cache-control-react-performance',
-    '/blog/show-reading-time-estimator-in-your-astro-blog': '/blog/astro-reading-time'
+    '/blog/show-reading-time-estimator-in-your-astro-blog': '/blog/astro-reading-time',
+    '/blog/optimizing-vite-bundles-with-rollup-plugin-visualizer': '/blog/vite-bundle-visualizer'
   },
   integrations: [
     sitemap({
