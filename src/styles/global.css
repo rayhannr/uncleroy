@@ -59,7 +59,3 @@ body {
   font-family: 'Geist', sans-serif;
   @apply bg-neutral-100 dark:bg-neutral-950 text-neutral-800 dark:text-neutral-300;
 }
-
-.bg-reverse {
-  @apply bg-neutral-950 dark:bg-neutral-100;
-}
