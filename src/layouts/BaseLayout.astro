@@ -19,7 +19,9 @@ const pageTitle = `${prefix}rayhannr`
 ---
 
 <html lang="en">
-  <Head title={pageTitle} description={desc} {image} {permalink} />
+  <Head title={pageTitle} description={desc} {image} {permalink}>
+    <slot name="structured-data" />
+  </Head>
   <body class="min-h-screen flex flex-col text-sm md:text-base relative">
     <Nav {showMeter} />
     <main

@@ -4,6 +4,7 @@ import Card from '../components/Card.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import type { ReviewProps } from '../layouts/Review.astro'
 import type { MarkdownInstance } from 'astro'
+import MainStructuredData from '../components/structured-data/MainStructuredData.astro'
 
 const blogs = await getCollection('blogs')
 const latestBlog = blogs
@@ -22,6 +23,7 @@ const latestReview = reviews
 ---
 
 <BaseLayout showMeter>
+  <MainStructuredData slot="structured-data" />
   <div class="mt-2 lg:mt-6">
     <h1>Hi, Rayhan here!</h1>
     <p>

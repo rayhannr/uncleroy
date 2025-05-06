@@ -5,6 +5,7 @@ import { formatLongDate } from '../../utils/date'
 import { getReadingTime } from '../../utils/readingTime'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
+import BlogStructuredData from '../../components/structured-data/BlogStructuredData.astro'
 
 export async function getStaticPaths() {
   const blogs = await getCollection('blogs')
@@ -25,6 +26,7 @@ const { Content } = await render(blog)
 ---
 
 <BaseLayout {title} description={metaDescription || description} image={image.src} showMeter>
+  <BlogStructuredData slot="structured-data" {...blog.data} />
   <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedAt.toISOString()} class="text-neutral-500 dark:text-neutral-400 block mb-4">

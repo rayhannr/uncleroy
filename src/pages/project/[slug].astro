@@ -5,6 +5,7 @@ import { render } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { formatLongDate } from '../../utils/date'
 import { getReadingTime } from '../../utils/readingTime'
+import ProjectStructuredData from '../../components/structured-data/ProjectStructuredData.astro'
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects')
@@ -25,6 +26,7 @@ const { Content } = await render(project)
 ---
 
 <BaseLayout {title} {description} image={image.src} showMeter>
+  <ProjectStructuredData slot="structured-data" {...project.data} />
   <article class="mt-2 lg:mt-4">
     <header>
       <div class="text-neutral-500 dark:text-neutral-400 mb-4">
