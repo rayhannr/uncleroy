@@ -16,15 +16,15 @@ In Surah An-Nisa (4:34), Allah says:
 
 "Men are the caretakers of women."
 
-The Arabic term **قَوَّٰمُونَ** (qawwam) is often translated as `caretakers`, reflecting responsibility, protection, and support. However, in many Indonesian translations, it's rendered as `leaders`, which shifts the nuance toward authority and control. This mistranslation has played a role in reinforcing patriarchal norms—casting women as subordinate, rather than as equal partners with different, but complementary, roles.
+The Arabic term **قَوَّٰمُونَ** (qawwam) is often translated as `caretakers`, reflecting responsibility, protection, and support. However, in many Indonesian translations, it's rendered as `leaders`, which shifts the nuance toward authority and control. This mistranslation has played a role in reinforcing patriarchal norms. Casting women as subordinate, rather than as equal partners with different, but complementary, roles.
 
 Recently, I tuned into a powerful discussion hosted by [@themuslimgaze](https://x.com/themuslimgaze/status/1655196209232105474) on X. The conversation dove deep into the real meaning and implications of qawwam in the Qur'anic context. Here's a breakdown of the key takeaways:
 
 ## Being Active and Responsible
 
-The word qawwam stems from **ﻗَﺎﻡَ** (qaama), meaning `to stand`. In classical Arabic, it's tied to activity, action, and being upright. In a family context, this means the man is expected to be constantly active—providing, supporting, and protecting.
+The word qawwam stems from **ﻗَﺎﻡَ** (qaama), meaning `to stand`. In classical Arabic, it's tied to activity, action, and being upright. In a family context, this means the man is expected to be constantly active. Providing, supporting, and protecting.
 
-Being qawwam isn't about commanding authority—it's about showing up consistently:
+Being qawwam isn't about commanding authority, it's about showing up consistently:
 
 - Financial provision is his duty.
 
@@ -36,15 +36,15 @@ The Prophet Muhammad ﷺ set the perfect example. He was involved in household c
 
 ## Meeting the Family's Basic Needs
 
-A qawwam must ensure the family's essential needs are met—food, shelter, clothing, and emotional security. And this must come from his own earnings. Regardless of his wife's financial status, the man's duty remains unchanged.
+A qawwam must ensure the family's essential needs are met. Food, shelter, clothing, and emotional security. And this must come from his own earnings. Regardless of his wife's financial status, the man's duty remains unchanged.
 
 Even if she earns more, it doesn't lighten his load. Being a provider isn't about wealth; it's about fulfilling the divine trust placed on him.
 
 ## Taking Initiative and Showing Up
 
-The qawwam is not passive. He actively manages and supports the women under his care—his wife, daughters, mother, or sisters. He is their advocate, not their boss.
+The qawwam is not passive. He actively manages and supports the women under his care. His wife, daughters, mother, or sisters. He is their advocate, not their boss.
 
-If a woman in his family is in distress, it's his role to step in, shield her, and ensure her needs—physical, emotional, and spiritual—are met.
+If a woman in his family is in distress, it's his role to step in, shield her, and ensure her physical, emotional, and spiritual needs are met.
 
 ## A Righteous Balance
 
@@ -62,17 +62,17 @@ A qawwam practices this moderation:
 
 - He balances provision with wisdom.
 
-His financial leadership reflects justice and care—not excess or neglect.
+His financial leadership reflects justice and care, not excess or neglect.
 
 ## A Pillar in the Storm
 
-Imagine a house without a roof—it might survive. But without a pillar, it collapses. A qawwam is that central pillar.
+Imagine a house without a roof, it might survive. But without a pillar, it collapses. A qawwam is that central pillar.
 
 When challenges arise, the man must be the last to give up. He stands firm, offers stability, and continues to protect and serve, even when things get tough. His strength is not in control, but in endurance.
 
 ## Consistency is Key
 
-A qawwam embodies **اِسْتِقَامَة** (istiqamah)—steadfastness in thoughts, words, and actions. He is trustworthy, not fickle. His character is aligned, and he follows through on his commitments.
+A qawwam embodies **اِسْتِقَامَة** (istiqamah), steadfastness in thoughts, words, and actions. He is trustworthy, not fickle. His character is aligned, and he follows through on his commitments.
 
 This internal consistency builds respect. A man cannot demand trust while living a double standard. A qawwam earns his place not through authority, but through integrity.
 
@@ -95,8 +95,8 @@ But what does a headmaster do?
 
 ### Final Thoughts
 
-To be a qawwam is to embody strength through service, leadership through care, and responsibility through love. It's not about being "the boss"—it's about being the rock your family can rely on.
+To be a qawwam is to embody strength through service, leadership through care, and responsibility through love. It's not about being "the boss." It's about being the rock your family can rely on.
 
-Islam doesn't place men above women—it assigns roles based on capacity and responsibility. When men fulfill the role of qawwam with sincerity, families thrive. When the term is twisted into dominance, everyone loses.
+Islam doesn't place men above women. It assigns roles based on capacity and responsibility. When men fulfill the role of qawwam with sincerity, families thrive. When the term is twisted into dominance, everyone loses.
 
-If you found this helpful, share it with someone who needs a reminder of what true Islamic leadership looks like. Let's reshape our understanding—one word at a time.
+If you found this helpful, share it with someone who needs a reminder of what true Islamic leadership looks like. Let's reshape our understanding one word at a time.

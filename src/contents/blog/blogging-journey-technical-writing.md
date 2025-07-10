@@ -10,13 +10,13 @@ publishedAt: 2024-04-14T08:56:39.248Z
 status: published
 ---
 
-Over the years, my relationship with blogging has evolved through three distinct phases—each reflecting where I was in life and how I expressed myself online. Here's a look back at my blogging journey, from my early experiments to my current, more intentional approach.
+Over the years, my relationship with blogging has evolved through three distinct phases, each reflecting where I was in life and how I expressed myself online. Here's a look back at my blogging journey, from my early experiments to my current, more intentional approach.
 
 ## Phase 1: Junior High – Discovering Blogging (and Adding Too Many Widgets)
 
 My very first exposure to blogging came during an IT class in junior high school. We were assigned to create personal blogs using Blogspot to introduce ourselves. I started with a basic template and posted a simple intro just to fulfill the assignment. But when I saw my friends customizing their blogs with flashy anime themes like Naruto, I couldn't help but join in.
 
-Before long, my blog was filled with quirky add-ons: visitor counters, spinning text that followed the cursor, autoplaying music, and other nostalgic 2000s internet chaos. Looking back, it makes me cringe—but at the time, it felt cool and creative.
+Before long, my blog was filled with quirky add-ons: visitor counters, spinning text that followed the cursor, autoplaying music, and other nostalgic 2000s internet chaos. Looking back, it makes me cringe but at the time, it felt cool and creative.
 
 I published a lot of blog posts back then, though none were original. Most of them were copy-pasted trivia from Wikipedia. In hindsight, it wasn't exactly a proud start to my blogging journey. Eventually, I deleted that blog entirely.
 
@@ -34,4 +34,4 @@ Now, as a working professional and frontend engineer, I've entered a new phase o
 
 This time around, my blogging goals are different. I'm focused on sharing technical insights, documenting my projects, and providing helpful content to others in the development community. While I may still write personal reflections occasionally, I aim to create content that I'll be proud to stand by in the future.
 
-And so, on a quiet Sunday at a cafe, I find myself blogging again—this time with clarity, purpose, and lessons learned from every version of me that came before.
+And so, on a quiet Sunday at a cafe, I find myself blogging again. This time with clarity, purpose, and lessons learned from every version of me that came before.

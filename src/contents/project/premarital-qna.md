@@ -20,6 +20,6 @@ I’ve already answered them myself for my own future use, though I’ve kept th
 
 The Q&As are accessible in formal English and casual Indonesian. I chose formal English because that’s how they were originally structured, while I used casual Indonesian because it’s my native language and feels far more natural.
 
-Let’s be honest—formal Indonesian feels unnecessarily stiff.
+Let’s be honest, formal Indonesian feels unnecessarily stiff.
 
 Lastly, if you're curious, this website is built using Astro, taking advantage of its built-in [i18n support](https://docs.astro.build/en/recipes/i18n/), along with [Tailwind](https://tailwindcss.com/) and [shadcn](https://ui.shadcn.com/). Pretty standard setup for a modern website, really.

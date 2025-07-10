@@ -10,11 +10,11 @@ publishedAt: 2024-04-30T15:01:20.942Z
 status: published
 ---
 
-Over the past year, I've received a growing number of wedding invitations from friends—nearly all of them delivered as digital websites. While I appreciate the convenience and creativity of online invites, there are two recurring features that consistently frustrate me as a user.
+Over the past year, I've received a growing number of wedding invitations from friends which nearly all of them delivered as digital websites. While I appreciate the convenience and creativity of online invites, there are two recurring features that consistently frustrate me as a user.
 
 ## Autoplay Audio Without Consent
 
-Most digital invitations stay silent on the initial load. But as soon as I click the “Open Invitation” button, background music suddenly begins to play—often loudly and without warning.
+Most digital invitations stay silent on the initial load. But as soon as I click the “Open Invitation” button, background music suddenly begins to play, often loudly and without warning.
 
 This has led to several uncomfortable moments, especially in quiet places like libraries or trains, where unexpected audio can cause disruption and embarrassment.
 
@@ -26,7 +26,7 @@ If you must include background music, it should be subtle and ambient. A great e
 
 While animations can enhance a digital experience when used sparingly, I've found them to be excessive and distracting in many of the invitations I've received. Consider the following issues:
 
-- Overuse of animation: Every element seems to move—sometimes even nested layers animate simultaneously, creating visual chaos.
+- Overuse of animation: Every element seems to move and sometimes even nested layers animate simultaneously, creating visual chaos.
 - Slow transitions: Animations that exceed 500ms, especially those involving opacity, tend to feel sluggish and awkward.
 - Long transition distances: Elements that animate over 200px across the screen, regardless of speed, create a jarring user experience.
 

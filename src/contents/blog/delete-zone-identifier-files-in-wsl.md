@@ -18,7 +18,7 @@ find . -name "*:Zone.Identifier" -type f -delete
 
 As a software engineer working primarily on a Windows laptop, I often rely on [WSL](https://learn.microsoft.com/en-us/windows/wsl/) (Windows Subsystem for Linux) for development tasks.
 
-Recently, I downloaded design assets from Figma and saved them in my Windows Downloads folder. After moving them into my WSL project directory, I noticed something odd—extra files with `:Zone.Identifier` suffixes appeared alongside the actual files.
+Recently, I downloaded design assets from Figma and saved them in my Windows Downloads folder. After moving them into my WSL project directory, I noticed something odd. An extra files with `:Zone.Identifier` suffixes appeared alongside the actual files.
 
 Here's what I expected:
 

@@ -10,7 +10,7 @@ publishedAt: 2025-04-17T14:50:03.517Z
 status: published
 ---
 
-[Vite](https://vite.dev/) is widely known for its speed and simplicity in building modern frontend applications. But as your project scales, so does your JavaScript bundle—and that’s when performance can start to suffer.
+[Vite](https://vite.dev/) is widely known for its speed and simplicity in building modern frontend applications. But as your project scales, so does your JavaScript bundle, and that’s when performance can start to suffer.
 
 One of the most effective tools for identifying what’s inflating your bundle size is `rollup-plugin-visualizer`. It offers a visual breakdown of your production build, highlighting large dependencies, duplicate modules, and how your code is split. Think of it as a bundle inspection tool that helps you quickly spot performance bottlenecks.
 
