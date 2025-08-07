@@ -66,7 +66,6 @@ jobs:
       - name: Ping and update
         id: update
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" [your_page_url])
           curl -s [your_page_url] -o page.html
 
           if [ ! -f data.txt ]; then
