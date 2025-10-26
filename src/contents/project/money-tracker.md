@@ -50,7 +50,11 @@ Categories can be added, deleted, or rearranged with drag and drop. You can also
 
 ## Future work
 
-I plan to add import and export options for JSON and CSV so data can be easily backed up or restored. A search function will also be added to find transactions by note or category, making navigation faster. Lastly, I'll expand date filters beyond monthly views to include annual and custom ranges, allowing users to review their income and expenses across any period.
+I plan to add import and export options for JSON and CSV so data can be easily backed up or restored.
+
+A search function will also be added to find transactions by note or category, making navigation faster.
+
+Lastly, I'll expand date filters beyond monthly views to include annual and custom ranges, allowing users to review their income and expenses across any period.
 
 ## Note
 
