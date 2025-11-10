@@ -1,6 +1,6 @@
 ---
 title: TypeSoFast!
-description: A simple 10fastfingers clone to test typing speed in Indonesian
+description: A 10fastfingers clone to test typing speed in Indonesian
 image: ./images/type-so-fast.webp
 imageCaption: TypeSoFast! landing page UI
 publishedAt: 2021-02-04T15:40:13.000Z

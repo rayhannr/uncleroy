@@ -1,6 +1,6 @@
 ---
 title: Money Tracker
-description: A simple cloud-based expense tracker built for easy shared budgeting
+description: Cloud-based expense tracker built for easy shared budgeting
 image: ./images/money-tracker.webp
 imageCaption: Transaction page in dark mode UI
 publishedAt: 2025-10-26T13:33:09.051Z

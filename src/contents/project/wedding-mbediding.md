@@ -3,7 +3,7 @@ title: wedding-mbediding
 description: Another simple Indonesian digital wedding invitation template
 image: ./images/wedding-mbediding.webp
 imageCaption: The greeting section of the invitation page
-publishedAt: 2025-11-09T14:45:16.911Z
+publishedAt: 2025-07-28T14:45:16.911Z
 projectUrl: https://wedding-mbediding.netlify.app/5JBFMJ
 status: published
 ---
