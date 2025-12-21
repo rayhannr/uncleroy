@@ -36,11 +36,24 @@ Each transaction shows details like category, account, and a short note to remin
 
 Adding or editing a transaction is straightforward. You can set whether it's Income or Expense, fill in the date, amount, category, account (such as Cash, Account, or Card), and a short note. The form is intentionally minimal to make input fast and consistent.
 
+I've also added an Advanced Search feature that lets you filter transactions by keyword, category, date range, or amount range. This makes it easy to find specific expenses or analyze spending over custom periods.
+
+### Investments
+
+Tracking cash flow is essential, but building wealth requires investing. I added a dedicated Investment Portfolio module to separate long-term assets from daily spending.
+
+You can record 'Buy', 'Sell', and 'Dividend' actions, specifying the platform, and the asset type (Stocks, Gold, Mutual Funds, Crypto). Similar to transactions, the investment search lets you filter by any of these fields to analyze your portfolio performance.
+
 ### Statistics
 
-The Statistics page gives a visual summary of where your money goes each month. It has two pie charts: one for income and one for expenses, both grouped by category.
+The Statistics page gives a visual summary of your financial health.
 
-You can switch between months to see changes over time. Income categories may include Salary or Business Profit, while expenses can be grouped under Health, Food, Transportation, and others. This makes it easy to see where most of your money goes without checking each transaction.
+For daily finances, two pie charts show Income and Expense distribution by category. You can switch between months to see changes over time. Income categories may include Salary or Business Profit, while expenses can be grouped under Health, Food, Transportation, and others.
+
+For investments, there are new charts to track your portfolio:
+
+- Action Breakdown: See the distribution of your 'Buy', 'Sell', and 'Dividend' activities.
+- Portfolio Allocation: visualize your asset distribution (e.g., Stocks vs. Crypto) to help you rebalance effectively.
 
 ### Settings
 
@@ -48,13 +61,11 @@ The Settings page manages app configurations. You can edit categories, switch th
 
 Categories can be added, deleted, or rearranged with drag and drop. You can also switch between Light, Dark, or System themes. The Payday Settings section lets you define your payday date and decide what happens if it falls on a weekend, either move it to Friday or Monday.
 
+I also added Investment Settings to manage your portfolio data. You can define custom Investment Types (like Gold, Stock, Crypto) and Platforms (like Bibit, Ajaib). These settings populate dropdown menus when you add a new investment, replacing manual text entry for faster and more consistent tracking.
+
 ## Future work
 
 I plan to add import and export options for JSON and CSV so data can be easily backed up or restored.
-
-A search function will also be added to find transactions by note or category, making navigation faster.
-
-Lastly, I'll expand date filters beyond monthly views to include annual and custom ranges, allowing users to review their income and expenses across any period.
 
 ## Note
 
