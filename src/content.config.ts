@@ -25,7 +25,7 @@ const projects = defineCollection({
       imageCaption: z.string(),
       description: z.string(),
       publishedAt: z.date(),
-      projectUrl: z.string(),
+      projectUrl: z.string().nullish(),
       status: z.enum(['draft', 'published'])
     })
 })
