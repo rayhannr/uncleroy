@@ -1,48 +1,37 @@
-# Astro Starter Kit: Basics
+# uncleroy (`rayhannr`), A Cozy Digital Home
 
-```sh
-npm create astro@latest -- --template basics
-```
+Hello there. You've stumbled upon the source code of my digital home.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+If the modern internet is a sprawling metropolis of corporate skyscrapers, algorithm-driven feeds, and noisy social platforms, this website is my quiet, custom-built cabin in the woods. It's a personal corner of the web where I write about technology, document my reflections on life, review books, and host my gallery of creative side projects.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## The Backstory: From Anime Widgets to Purposeful Code
 
-## 🚀 Project Structure
+My relationship with coding and writing online has been a journey of evolution:
 
-Inside of your Astro project, you'll see the following folders and files:
+1. **The Junior High Chaos**: My very first blog was built on Blogspot for an IT class assignment. It was a beautiful, cringy disaster filled with anime templates, visitor counters, autoplaying MIDI music, and text that followed the cursor. Almost all content was copy-pasted trivia from Wikipedia.
+2. **The College WordPress and LINE Years**: I moved to WordPress and LINE to share my voice. I ended up oversharing personal details, felt embarrassed years later, and deleted everything.
+3. **The Professional Developer Era**: Now, as a fullstack engineer, this site represents my third, and most intentional, attempt at building a digital home.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Instead of relying on rigid, pre-built template systems or commercial blogging platforms, I wanted to craft this space myself from the ground up. I wanted it to be fast, minimal, and fully owned by me. So, I built it with **Astro**, **Tailwind CSS**, and **TypeScript**, powered by **Bun**.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## What Lives Here?
 
-All commands are run from the root of the project, from a terminal:
+Instead of a polished portfolio, this codebase acts as a living journal and workbench. It houses:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **The Blog**: A collection of writings ranging from technical deep-dives (like performance tweaks and server configurations) to personal reflections on life and movies.
+- **The Project Archive**: A graveyard and gallery of random mini-apps I built to solve my own hyper-specific problems, from custom trackers to visual experiments.
+- **The Reviews**: Book and media logs detailing thoughts on things that made me think or learn.
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## A Note on the Setup
+
+While details like package managers and build configurations aren't the main focus, this repository is designed to be simple and long-lasting. It uses static HTML compilation for speed, custom remark/rehype markdown plugins for custom rendering, and deploys effortlessly to Vercel.
+
+Ultimately, this site exists to be fast, clean, and most of all, mine.
+
+Thanks for stopping by. If you want to check out the live site, head over to [rayhannr.dev](https://rayhannr.dev).
