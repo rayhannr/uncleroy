@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
+import { unified } from '@astrojs/markdown-remark'
 import vercel from '@astrojs/vercel'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
@@ -55,7 +56,9 @@ export default defineConfig({
   },
   markdown: {
     syntaxHighlight: 'prism',
-    remarkPlugins: [htmlClassNames],
-    rehypePlugins: [[externalLink, { domain: siteDomain }]]
+    processor: unified({
+      remarkPlugins: [htmlClassNames],
+      rehypePlugins: [[externalLink, { domain: siteDomain }]]
+    })
   }
 })

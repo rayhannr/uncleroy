@@ -9,12 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.6.0",
-    "@astrojs/vercel": "9.0.0",
+    "@astrojs/sitemap": "3.7.3",
+    "@astrojs/vercel": "10.0.8",
     "@tailwindcss/vite": "4.0.8",
     "@vercel/speed-insights": "1.2.0",
-    "astro": "5.15.1",
-    "astro-expressive-code": "0.40.2",
+    "astro": "6.4.8",
+    "astro-expressive-code": "0.43.1",
     "reading-time": "1.5.0",
     "remark-class-names": "0.1.0",
     "tailwind-merge": "3.0.2",
