@@ -16,11 +16,11 @@ So I started using a Google Sheets table to track places I wanted to visit. That
 
 I got tired of that whole routine, so I started looking for a way to automate it. I came across a tutorial showing that [OpenClaw](https://openclaw.ai/), an open-source locally-running AI agent, could connect to Telegram. I tried it, it worked, but it had to run on my laptop the whole time. I looked into deploying it somewhere for free, but the options I found were either too slow or hit the memory limit before the app could even run properly.
 
-Around the same time, I remembered a conversation I had with my manager at work about the Vercel AI SDK. That gave me the idea to just build something myself, cloud-native, free to deploy, and does exactly what I need. So here we are.
+Around the same time, I remembered a conversation I had with my manager at work about the Vercel AI SDK. That gave me the idea to just build something myself, cloud-native, free to deploy, and does exactly what I need. So here we are. I've been using it daily since and my bookmarks folder is finally irrelevant.
 
 ## How it works
 
-Places To Go is a personal food destination tracker built around a conversational AI interface. Instead of filling out forms or switching between apps, I just chat with it naturally and it does the rest. It works on both a Next.js web app and a Telegram bot, so I can use it from anywhere.
+Instead of filling out forms or switching between apps, I just chat with it naturally and it does the rest. It works on a Next.js web app, a Telegram bot, and any MCP-compatible client like Claude Desktop, so I can use it from anywhere.
 
 The AI assistant runs on [Mistral AI](https://mistral.ai/) with a sarcastic persona that speaks English, Indonesian, and Javanese. It sticks to one language per message and uses no emojis. The Telegram bot is locked down with user ID filtering, so only authorized users can interact with it.
 
@@ -40,22 +40,22 @@ After I visit a place, I can tell the assistant to mark it as visited with the d
 
 The AI already has a random pick tool, but I wanted something more visual and satisfying. I had been wanting to build a spin wheel, something like Wheel of Names, for a long time, way before the AI hype. I just never had the time or the motivation to sit down and build it for its own sake. This project finally gave me a good enough reason.
 
-The wheel pulls my full place list and lets me cherry-pick which entries go in, filter by visit status, or search by name or city to narrow the selection. Once I spin and land on a place, it gets struck through in the list and excluded from the next spin, so I don't keep landing on the same spot. A reset button brings everything back. The winner modal shows the place name, city, distance, travel time, and a direct Google Maps link to get there.
+The wheel pulls my full place list, lets me pick which entries go in, and spins to a random winner. Already-picked places are excluded from subsequent spins so I don't keep landing on the same spot.
 
 ### Live GPS location
 
 The app supports real-time location tracking from both the web and Telegram. To keep Google Maps API costs low, it only recalculates distances when I move more than 2 kilometers from my last known position. My location is stored in a dedicated tab named "Session" on Google Sheets, so it persists between conversations.
 
+### Rate limiting
+
+Several tools in this app call Google Maps APIs, which cost money per request. I added per-tool rate limiting to make sure no runaway AI loop or accidental abuse ever pushes my bill above zero.
+
 ### MCP server
 
-The app exposes a [Model Context Protocol](https://modelcontextprotocol.io/) server at `/api/mcp`, so I can connect my tracker directly to MCP-compatible AI clients like Claude Desktop. That means I can query and manage my list from inside any chat interface that supports MCP tools, without opening the web app at all. Since the Vercel AI SDK and MCP work with tools in a similar way, I define them once and share the same instance between both, so the two interfaces always stay in sync.
+The app exposes a [Model Context Protocol](https://modelcontextprotocol.io/) server at `/api/mcp`, so I can connect my tracker directly to MCP-compatible AI clients like Claude Desktop. That means I can query and manage my list from inside any chat interface that supports MCP tools, without opening the web app at all. Since the Vercel AI SDK and MCP work with tools in a similar way, I define them once and share the same instance between both, without duplicating tool definitions.
 
 ## Tech stack
 
-The web frontend is built with [Next.js 16](https://nextjs.org/) using the App Router, styled with [Tailwind CSS 4](https://tailwindcss.com/) and [Shadcn UI](https://ui.shadcn.com/). The Telegram bot runs on [grammY](https://grammy.dev/).
+The frontend is [Next.js 16](https://nextjs.org/) with [Tailwind CSS 4](https://tailwindcss.com/) and [Shadcn UI](https://ui.shadcn.com/). The Telegram bot runs on [grammY](https://grammy.dev/). The AI layer uses [Vercel AI SDK v6](https://sdk.vercel.ai/docs) with Mistral AI. I used [Google Sheets](https://developers.google.com/sheets/api) as the database to keep everything free-tier, with Google Maps APIs handling location features and [Upstash Redis](https://upstash.com/) powering the rate limiter. The whole thing is deployed on [Vercel](https://vercel.com/).
 
-On the backend, everything runs as Next.js API routes. The AI layer uses [Vercel AI SDK v6](https://sdk.vercel.ai/docs) with Mistral AI as the LLM provider. The MCP server is built with the [Model Context Protocol SDK](https://github.com/modelcontextprotocol/typescript-sdk).
-
-I intentionally used my personal [Google Sheets](https://developers.google.com/sheets/api) as the database to keep the project completely free-tier and low-maintenance. It eliminates the need for a traditional database and provides a built-in UI for managing data manually when needed. For anyone looking to build a similar system, setting up a dedicated Google Sheet with the correct schema is a core requirement, as the application logic is tightly coupled with the sheet's structure. Location features rely on the Google Maps Geocoding, Places, and Routes APIs, and the entire application is deployed on [Vercel](https://vercel.com/).
-
-Since this app is backed by my personal Google Sheet, I needed a way to let others explore it without giving them access to my actual data. The project link above points to a public demo that uses [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) as storage instead, so anyone can try the full web experience on a shared, isolated list. The Telegram bot and MCP server are disabled in demo mode, and the list is capped at 75 places to keep the shared store clean.
+Since the app is backed by my personal sheet, the public demo runs on [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) instead, with the Telegram bot and MCP server disabled and a 75-place cap on the shared list.
