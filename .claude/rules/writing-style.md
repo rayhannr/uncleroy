@@ -4,31 +4,49 @@ These rules apply to all content — project posts, blog posts, reviews, anythin
 
 ## Anti-AI patterns
 
-These are tells that make content read as AI-generated. Avoid all of them:
+These are tells that make content read as AI-generated. Avoid all of them.
 
-**Punctuation**
-- Em dashes (—) used as separators or for dramatic pauses — use a comma, period, or rewrite the sentence instead
+**Punctuation & formatting**
+- Em dashes used excessively as separators or for dramatic effect — rewrite or use a comma instead
+- Title Case on every header (only capitalize the first word unless it's a proper noun)
+- Stacking two or more adjectives in a row when one would do
+- Bullet-pointing everything instead of writing it out as prose
 
-**Overused words and phrases**
-- "leverage" (as a verb)
-- "delve", "dive deep", "explore"
-- "robust", "powerful", "seamless", "cutting-edge", "innovative", "revolutionary", "revolutionize"
-- "unleash", "unlock" (in a figurative/hype sense, e.g. "unlock your potential")
-- "game-changer", "game-changing"
-- "savvy" (as an adjective, e.g. "savvy marketers")
-- "it's worth noting that", "it's important to note that"
-- "moreover", "furthermore", "additionally" as paragraph openers
-- "in today's [world/landscape/era]", "in the realm of", "in an era of…", "now more than ever"
-- "navigate" (metaphorically, e.g. "navigate the complexity")
-- "say goodbye to X and say hello to Y"
+**Opener patterns**
+- "In today's fast-paced world…" / "In today's [any noun] world"
+- "Have you ever wondered…"
+- "Imagine a world where…"
+- "Now more than ever…"
+- "In an era of unprecedented [anything]…"
+- Long preamble before getting to the actual point of the piece
+- Generic introductions that could be copy-pasted onto any article about the same topic
 
-**Structure**
-- Ending with "In conclusion", "To summarize", or any wrap-up that restates what was just said
-- Bullet-pointing everything instead of writing it out naturally
-- Starting every paragraph with a rigid topic sentence
-- Transitions that feel like a chain ("First... Then... Finally...")
-- TED Talk-style openers: "Have you ever wondered…", "Imagine a world where…", "In today's fast-paced world…"
-- Excessive exclamation points that don't match the actual tone of the content
+**Overused words**
+- "delve", "align", "tapestry"
+- "seamless", "robust", "powerful", "cutting-edge", "innovative", "revolutionary"
+- "unleash", "unlock", "revolutionize" (in a hype sense)
+- "savvy" as an adjective (e.g., "savvy marketers")
+
+**Phrases**
+- "Say goodbye to X and say hello to Y"
+- "It's not X, it's Y" / "It isn't just X, it's actually Y"
+- "Here's the kicker"
+- "I hope this email/message finds you well"
+
+**Tone tells**
+- Over-the-top enthusiasm that doesn't match the actual content
+- Takes no real positions — risk-averse, conformist, inoffensive to a fault
+- Forced quirkiness or try-hard sassiness that reads as performative
+- Every sentence treated as profound, even mundane ones
+- Verbosity that sounds smart but says nothing concrete
+- No genuine personal experience, original take, or specific reasoning
+
+**Structure tells**
+- Conclusions titled "Conclusion" or that just restate what was already said
+- Paragraph transitions done via rhetorical questions ("So what does this mean for you?")
+- Short clipped sentences used back-to-back throughout, creating a breathless rhythm
+- Platitudinal closing lines that tie everything back to a vague theme
+- Strong middle sections bracketed by weak, generic openings and closings
 
 ## General voice
 
