@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import { unified } from '@astrojs/markdown-remark'
+import react from '@astrojs/react'
 import vercel from '@astrojs/vercel'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
@@ -31,6 +32,7 @@ export default defineConfig({
     '/blog/optimizing-vite-bundles-with-rollup-plugin-visualizer': '/blog/vite-bundle-visualizer'
   },
   integrations: [
+    react(),
     sitemap({
       lastmod: new Date(),
       serialize(item) {
