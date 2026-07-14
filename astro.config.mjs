@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite'
 import expressiveCode from 'astro-expressive-code'
 import { htmlClassNames } from './plugins/html-classnames.mjs'
 import { externalLink } from './plugins/external-link'
+import remarkUnwrapImages from 'remark-unwrap-images'
+import remarkCaptions from 'remark-captions'
 
 const siteUrl =
   process.env.VERCEL_ENV === 'production'
@@ -57,7 +59,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'prism',
     processor: unified({
-      remarkPlugins: [htmlClassNames],
+      remarkPlugins: [htmlClassNames, remarkUnwrapImages, remarkCaptions],
       rehypePlugins: [[externalLink, { domain: siteDomain }]]
     })
   }

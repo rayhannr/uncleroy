@@ -16,7 +16,9 @@
     "astro": "7.0.0",
     "astro-expressive-code": "0.43.1",
     "reading-time": "1.5.0",
+    "remark-captions": "2.2.4",
     "remark-class-names": "0.1.0",
+    "remark-unwrap-images": "4",
     "tailwind-merge": "3.0.2",
     "tailwindcss": "4.0.8"
   },

@@ -45,8 +45,7 @@ It's important to be emotionally prepared for the possibility that she might not
 ## Don't Blame It All on Her
 
 ![Joseph Gordon-Levitt tweet about Tom](./images/joseph-tweet.png)
-
-Actor Joseph Gordon-Levitt, who played Tom, once said that the real issue wasn't Summer. It was Tom's unrealistic expectations.
+Figure: Actor Joseph Gordon-Levitt, who played Tom, once said that the real issue wasn't Summer. It was Tom's unrealistic expectations.
 
 If a relationship doesn't work out, take a step back and reflect: Did you ignore red flags? Were you honest with yourself about what she wanted? Sometimes, the disappointment we feel is a result of the story we told ourselves, not what actually happened.
 

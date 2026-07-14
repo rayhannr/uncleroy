@@ -3,7 +3,7 @@ title: Places To Go
 description: Personal food destination tracker with a sarcastic AI assistant
 image: ./images/places-to-go.webp
 imageCaption: Places To Go showing the chat interface with the AI recommending nearby places in Bandung, and the Wheel of Places with 9 places ready to spin
-publishedAt: 2026-05-05T14:44:29.000Z
+publishedAt: 2026-06-23T14:44:29.000Z
 projectUrl: https://places-to-go-demo.vercel.app
 status: published
 ---
@@ -26,9 +26,15 @@ The AI assistant runs on [Mistral AI](https://mistral.ai/) with a sarcastic pers
 
 ### Adding places to the tracker
 
+![Assistant adding Naughty Neighbors Bandung to the tracker after a single chat message, showing distance and city details in the response](./images/places-to-go-web.webp)
+Figure: Asking the assistant via web app to search for a place on Google Maps and add it to the list. It resolves the location, calculates the distance from my current position, and saves it to the sheet all in one message.
+
 This is the main workflow. When I ask the assistant to add a place, it takes care of everything: resolving Google Maps short links, extracting coordinates and the place name, calculating the distance in kilometers and travel time in minutes using the [Google Maps Routes API](https://developers.google.com/maps/documentation/routes), and saving it all to a Google Sheet. What used to take several minutes of copying and pasting now takes a single chat message.
 
 ### Smart recommendations
+
+![Telegram bot showing smart recommendations for nearby food spots and a quick way to pick where to eat next](./images/places-to-go-telegram-redacted.webp)
+Figure: The Telegram bot surfaces nearby food options and helps me choose with quick recommendations when I cannot decide where to eat.
 
 Once the list grows, the assistant can help me decide where to eat. It can sort by the nearest spots, the quickest to reach, a specific city, or a fuzzy search by name. When I genuinely can't decide, there's a random pick option too. For discovering new restaurants outside my tracker, it searches Google Maps directly and returns the top three results with names, cities, and links.
 
@@ -51,6 +57,9 @@ The app supports real-time location tracking from both the web and Telegram. To 
 Several tools in this app call Google Maps APIs, which cost money per request. I added per-tool rate limiting to make sure no runaway AI loop or accidental abuse ever pushes my bill above zero.
 
 ### MCP server
+
+![Claude Desktop connected to the Places To Go MCP server, showing the assistant managing the tracker from inside chat](./images/places-to-go-claude.webp)
+Figure: Using Claude Desktop with the MCP server lets me manage my place tracker directly from chat without opening the web app.
 
 The app exposes a [Model Context Protocol](https://modelcontextprotocol.io/) server at `/api/mcp`, so I can connect my tracker directly to MCP-compatible AI clients like Claude Desktop. That means I can query and manage my list from inside any chat interface that supports MCP tools, without opening the web app at all. Since the Vercel AI SDK and MCP work with tools in a similar way, I define them once and share the same instance between both, without duplicating tool definitions.
 
