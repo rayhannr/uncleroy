@@ -10,38 +10,35 @@ publishedAt: 2026-07-15T15:23:08.666Z
 status: published
 ---
 
-Ever since I started working, I've been tracking every transaction in [Money Manager](https://play.google.com/store/apps/details?id=com.realbyteapps.moneymanagerfree) by Realbyte. Completely offline, clean UI, free. Does exactly what I need without asking me to pay for features I'd never use.
+Ever since I started my first professional job, I've been tracking every transaction in [Money Manager](https://play.google.com/store/apps/details?id=com.realbyteapps.moneymanagerfree) by Realbyte. Found it randomly on Google Play, installed it, and it just clicked. Intuitive, offline by default, no unnecessary friction. I've stuck with it since.
 
-That worked fine when it was just me. But once I started thinking about marriage, the workflow fell apart. My wife and I would both need visibility into our finances, and the app stores everything locally on your device. There's a backup feature where you can link a Google account and schedule daily or weekly backups to Google Drive, but that just shifts the problem. I'd have to manually open her Drive, download the backup, and import it into the app every time I wanted to see her logs. Not practical.
+That setup was fine when it was just me. But once I got married, I started thinking about how we'd manage finances together. The app stores everything locally on my device, so there's no shared view. My wife would have to use my phone every time she wanted to see where the money was going. Not ideal.
 
-So I built [a web app](/project/money-tracker) where we both log in with a shared account. She uses her phone, I use mine, and all the data ends up in one place. That solved the visibility problem.
+So I built [a web app](/project/money-tracker) where we can both log in with a shared account and track everything in one place. While figuring out how to seed the initial data, I remembered that Money Manager has a backup feature that uploads a file to Google Drive on a schedule. I tried it, but the file came out with a `.mmbak` extension. I had no idea what that was, so I asked Gemini. It told me `.mmbak` was a Money Manager-specific format with special encryption that could only be read by the app itself.
 
-## The new problem: logging twice
+I just believed it. Didn't Google it, didn't ask another model. My bad.
 
-The web app introduced a different annoyance. I still can't shake the habit of logging transactions in the mobile app, since I do it offline, in the moment, wherever I am. But I also can't abandon the web app because my wife relies on it. So I was logging every transaction twice. Once on mobile, once on the web.
+So instead I used the app's export to Excel feature to seed the web app. That worked. With the data in, my wife and I could both log in from our own devices and track everything together without touching each other's phones.
 
-That's obviously not sustainable.
+## The double-logging problem
 
-## The .mmbak file
+The problem was I still couldn't shake the habit of logging in Money Manager. It's instant and works offline. But since I thought the backup was unreadable, I had no way to sync that data into the web app automatically. So I was logging every transaction twice. Mobile first, then the web app.
 
-My first instinct was to use the mobile app's backup feature to sync data into the web app automatically. But I hesitated when I saw the file extension: `.mmbak`. That looked proprietary. I assumed it was proprietary, something that only works inside Money Manager, or would need a custom script to make sense of it.
+## What .mmbak actually is
 
-Turns out it's just a SQLite database. If you're trying to open a `.mmbak` file, just drag it into [DB Browser for SQLite](https://sqlitebrowser.org/) and it works as-is. No renaming, no conversion. Browse the tables, export to CSV or JSON, done. I also dropped it into Claude Desktop with my free account and it read the schema fine and analyzed the data without any trouble.
+Eventually I went back and looked more carefully. Turns out it's just a SQLite database. Just drop it into [DB Browser for SQLite](https://sqlitebrowser.org/) and it opens without any issues. No renaming, no conversion. Browse the tables, export to CSV or JSON, done. I even threw it at my free Claude account and it analyzed the file just fine.
 
-## The sync plan
+If you're trying to open a `.mmbak` file, that's the whole answer.
 
-With that sorted, here's what I'm thinking for the sync:
+## The sync
 
-- Enable automatic backup in the mobile app (daily seems fine)
-- Build a cron job in the web app that runs on a schedule and does the following:
-  - Fetches the latest backup from Google Drive
-  - Stores a timestamp in [Upstash Redis](https://upstash.com/) so the next run knows what's already been processed
-  - Compares the backup against what's already in the web app under my user ID
-  - Deletes anything that's been soft-deleted in the backup
-  - Upserts any records that were updated after that stored timestamp
+With that cleared up, the actual solution became straightforward. I enabled automatic daily backup in Money Manager so it uploads to Google Drive automatically. Then I built a scheduled function in the web app that runs daily and handles the sync.
 
-The initial data migration was already done when I seeded the web app using an earlier backup file, so I don't have to worry about handling historical data. The cron job only needs to deal with incremental changes going forward.
+- Downloads the latest `.mmbak` from Drive
+- Opens it with [sql.js](https://sql.js.org/) to query the SQLite database directly
+- Pulls transactions updated since the last run, with the timestamp stored in [Upstash Redis](https://upstash.com/)
+- Cleans up duplicates I'd manually entered in the web app during the double-logging phase, matched by date, amount, type, note, and account
+- Upserts the active transactions into Supabase in batches
+- Deletes anything that's been removed in the backup
 
-Once this is built, I enter my transactions on the mobile app, its backup syncs to Drive, the cron job picks it up, and the web app stays up to date. My wife sees everything from her own device without me having to touch anything twice.
-
-My workflow stays exactly the same as before. I keep logging in Money Manager like I always have. The only difference is my wife can now see everything from her own device through the web app.
+Now my workflow is exactly the same as before. I log in Money Manager like I always have. The sync runs in the background. My wife sees everything from her own device through the web app, without me touching anything twice.
