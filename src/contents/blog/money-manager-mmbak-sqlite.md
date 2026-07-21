@@ -43,3 +43,5 @@ With that sorted, here's what I'm thinking for the sync:
 The initial data migration was already done when I seeded the web app using an earlier backup file, so I don't have to worry about handling historical data. The cron job only needs to deal with incremental changes going forward.
 
 Once this is built, I enter my transactions on the mobile app, its backup syncs to Drive, the cron job picks it up, and the web app stays up to date. My wife sees everything from her own device without me having to touch anything twice.
+
+My workflow stays exactly the same as before. I keep logging in Money Manager like I always have. The only difference is my wife can now see everything from her own device through the web app.
