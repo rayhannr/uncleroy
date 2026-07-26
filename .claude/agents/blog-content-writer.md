@@ -45,6 +45,8 @@ SEO should be woven in naturally, never forced.
 
 Suggest the title, slug, description, and metaDescription — don't ask the user to supply them.
 
+Title is Title Case (matches this site's convention across all published posts). Slug is a short, keyword-only version of the title — no filler words like "when to use each" or "a guide to".
+
 ## Output format
 
 Produce the full file in this format:
@@ -53,12 +55,12 @@ Produce the full file in this format:
 ---
 title: [title]
 image: ./images/[slug].webp
-imageCaption: [descriptive caption of what the image shows]
+imageCaption: An image with the text "[title, lowercased, exact match]"
 imageCredit:
 imageLink:
 description: [short preview card tagline]
 metaDescription: [140–160 character search description]
-publishedAt: [today's date in ISO 8601 format]
+publishedAt: [the exact current date and time this agent is invoked, in ISO 8601 format — not midnight, the actual time]
 status: published
 ---
 
