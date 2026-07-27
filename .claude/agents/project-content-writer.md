@@ -55,9 +55,8 @@ title: [title]
 description: [description]
 image: ./images/[slug].webp
 imageCaption: [descriptive caption of what the screenshot shows]
-publishedAt: [today's date in ISO 8601 format]
 projectUrl: [ask the user]
-status: published
+status: draft
 ---
 
 [content]

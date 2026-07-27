@@ -60,8 +60,7 @@ imageCredit:
 imageLink:
 description: [short preview card tagline]
 metaDescription: [140–160 character search description]
-publishedAt: [the exact current date and time this agent is invoked, in ISO 8601 format — not midnight, the actual time]
-status: published
+status: draft
 ---
 
 [content]

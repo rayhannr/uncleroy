@@ -12,7 +12,7 @@ const blogs = defineCollection({
       imageLink: z.string(),
       description: z.string(),
       metaDescription: z.string().optional(),
-      publishedAt: z.date(),
+      publishedAt: z.date().optional(),
       status: z.enum(['draft', 'published'])
     })
 })
@@ -24,7 +24,7 @@ const projects = defineCollection({
       image: image(),
       imageCaption: z.string(),
       description: z.string(),
-      publishedAt: z.date(),
+      publishedAt: z.date().optional(),
       projectUrl: z.string().nullish(),
       status: z.enum(['draft', 'published'])
     })
