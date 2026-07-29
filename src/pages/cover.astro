@@ -1,0 +1,38 @@
+---
+export const prerender = false
+
+if (!import.meta.env.DEV) {
+  return new Response(null, { status: 404 })
+}
+
+import '../styles/global.css'
+
+const bg = Astro.url.searchParams.get('bg') ?? ''
+const title = Astro.url.searchParams.get('title') ?? ''
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@1&display=swap" rel="stylesheet" />
+    <title>cover</title>
+    <style define:vars={{ bg: `url(${bg})` }}>
+      html {
+        font-family: 'IM Fell DW Pica', serif;
+      }
+      .hero {
+        background-image: var(--bg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero h-screen bg-cover bg-center text-slate-50 text-8xl">
+      <div class="backdrop-brightness-[.6] w-full h-full flex items-center justify-center backdrop-blur-[1px] text-center">
+        <p class="mx-60 lowercase text-balance">{title}</p>
+      </div>
+    </div>
+  </body>
+</html>
