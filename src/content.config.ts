@@ -4,30 +4,54 @@ import { defineCollection, z } from 'astro:content'
 const blogs = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/contents/blog' }),
   schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      image: image(),
-      imageCaption: z.string(),
-      imageCredit: z.string(),
-      imageLink: z.string(),
-      description: z.string(),
-      metaDescription: z.string().optional(),
-      publishedAt: z.date().optional(),
-      status: z.enum(['draft', 'published'])
-    })
+    z.discriminatedUnion('status', [
+      z.object({
+        title: z.string(),
+        image: image(),
+        imageCaption: z.string(),
+        imageCredit: z.string(),
+        imageLink: z.string(),
+        description: z.string(),
+        metaDescription: z.string().optional(),
+        publishedAt: z.date().optional(),
+        status: z.literal('draft')
+      }),
+      z.object({
+        title: z.string(),
+        image: image(),
+        imageCaption: z.string(),
+        imageCredit: z.string(),
+        imageLink: z.string(),
+        description: z.string(),
+        metaDescription: z.string().optional(),
+        publishedAt: z.date(),
+        status: z.literal('published')
+      })
+    ])
 })
 const projects = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: './src/contents/project' }),
   schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      image: image(),
-      imageCaption: z.string(),
-      description: z.string(),
-      publishedAt: z.date().optional(),
-      projectUrl: z.string().nullish(),
-      status: z.enum(['draft', 'published'])
-    })
+    z.discriminatedUnion('status', [
+      z.object({
+        title: z.string(),
+        image: image(),
+        imageCaption: z.string(),
+        description: z.string(),
+        publishedAt: z.date().optional(),
+        projectUrl: z.string().nullish(),
+        status: z.literal('draft')
+      }),
+      z.object({
+        title: z.string(),
+        image: image(),
+        imageCaption: z.string(),
+        description: z.string(),
+        publishedAt: z.date(),
+        projectUrl: z.string().nullish(),
+        status: z.literal('published')
+      })
+    ])
 })
 
 export const collections = { blogs, projects }

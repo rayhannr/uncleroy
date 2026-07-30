@@ -29,7 +29,12 @@ const { Content } = await render(blog)
   <BlogStructuredData slot="structured-data" {...blog.data} />
   <article class="mt-2 lg:mt-4">
     <header>
-      <time datetime={publishedAt.toISOString()} class="text-neutral-500 dark:text-neutral-400 block mb-4">
+      <h1 class="font-semibold text-balance">
+        {title}
+      </h1>
+
+      {publishedAt && (
+        <time datetime={publishedAt.toISOString()} class="text-neutral-500 dark:text-neutral-400 block mb-4">
         <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight text-sm">
           <span>
             {formatLongDate(publishedAt)}
@@ -40,9 +45,7 @@ const { Content } = await render(blog)
           </span>
         </div>
       </time>
-      <h1 class="font-semibold text-balance">
-        {title}
-      </h1>
+      )}
 
       <figure class="mt-6 font-normal text-balance">
         <a href={image.src} target="_blank">

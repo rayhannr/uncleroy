@@ -20,11 +20,9 @@ const title = Astro.url.searchParams.get('title') ?? ''
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica:ital@1&display=swap" rel="stylesheet" />
     <title>cover</title>
     <style define:vars={{ bg: `url(${bg})` }}>
-      html {
-        font-family: 'IM Fell DW Pica', serif;
-      }
       .hero {
         background-image: var(--bg);
+        font-family: 'IM Fell DW Pica', serif;
       }
     </style>
   </head>

@@ -11,6 +11,7 @@ These are tells that make content read as AI-generated. Avoid all of them.
 - Title Case on every header (only capitalize the first word unless it's a proper noun)
 - Stacking two or more adjectives in a row when one would do
 - Bullet-pointing everything instead of writing it out as prose
+- Colons in post titles (e.g. "X: How Y") — rephrase as a single clause instead
 
 **Opener patterns**
 - "In today's fast-paced world…" / "In today's [any noun] world"

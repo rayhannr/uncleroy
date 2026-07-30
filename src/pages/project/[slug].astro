@@ -30,17 +30,19 @@ const { Content } = await render(project)
   <article class="mt-2 lg:mt-4">
     <header>
       <div class="text-neutral-500 dark:text-neutral-400 mb-4">
-        <time datetime={publishedAt.toISOString()}>
-          <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight text-sm">
-            <span>
-              {formatLongDate(publishedAt)}
-            </span>
-            <span class="hidden sm:inline-block">|</span>
-            <span>
-              {getReadingTime(project.body || '')}
-            </span>
-          </div>
-        </time>
+        {publishedAt && (
+          <time datetime={publishedAt.toISOString()}>
+            <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight text-sm">
+              <span>
+                {formatLongDate(publishedAt)}
+              </span>
+              <span class="hidden sm:inline-block">|</span>
+              <span>
+                {getReadingTime(project.body || '')}
+              </span>
+            </div>
+          </time>
+        )}
         {
           projectUrl && (
             <span>

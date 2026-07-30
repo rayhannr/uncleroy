@@ -1,20 +1,27 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, type CollectionEntry } from 'astro:content'
 import Card from '../components/Card.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import type { ReviewProps } from '../layouts/Review.astro'
 import type { MarkdownInstance } from 'astro'
 import MainStructuredData from '../components/structured-data/MainStructuredData.astro'
 
+const isBlogPublished = (
+  blog: CollectionEntry<'blogs'>
+): blog is CollectionEntry<'blogs'> & { data: { status: 'published' } } => blog.data.status === 'published'
+
+const isProjectPublished = (
+  project: CollectionEntry<'projects'>
+): project is CollectionEntry<'projects'> & { data: { status: 'published' } } =>
+  project.data.status === 'published'
+
 const blogs = await getCollection('blogs')
-const latestBlog = blogs
-  .filter((blog) => blog.data.status === 'published')
-  .sort((a, b) => new Date(b.data.publishedAt).valueOf() - new Date(a.data.publishedAt).valueOf())[0]
+const latestBlog = blogs.filter(isBlogPublished).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())[0]
 
 const projects = await getCollection('projects')
 const latestProject = projects
-  .filter((project) => project.data.status === 'published')
-  .sort((a, b) => new Date(b.data.publishedAt).valueOf() - new Date(a.data.publishedAt).valueOf())[0]
+  .filter(isProjectPublished)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())[0]
 
 const reviews = Object.values(import.meta.glob('./review/*.md', { eager: true })) as MarkdownInstance<ReviewProps>[]
 const latestReview = reviews
