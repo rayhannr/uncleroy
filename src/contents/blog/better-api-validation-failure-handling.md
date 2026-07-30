@@ -4,7 +4,7 @@ image: ./images/better-api-validation-failure-handling.webp
 imageCaption: An image with the text "how a feature flag saved our api response validation"
 imageCredit: Nong
 imageLink: https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-sign-on-it-O_Xy25Dj7Mo
-description: How one feature flag saved our team from production errors and midnight wake-ups
+description: One feature flag saved our team from production errors and midnight wake-ups
 metaDescription: How a simple feature flag helped us control API validation, prevent Zod errors in production, unblock clients instantly, and stop overnight wake-ups for trivial fixes.
 publishedAt: 2025-12-10T14:42:30.714Z
 status: published

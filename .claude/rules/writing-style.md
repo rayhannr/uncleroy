@@ -12,6 +12,8 @@ These are tells that make content read as AI-generated. Avoid all of them.
 - Stacking two or more adjectives in a row when one would do
 - Bullet-pointing everything instead of writing it out as prose
 - Colons in post titles (e.g. "X: How Y") — rephrase as a single clause instead
+- Question words leading post titles or descriptions ("How I…", "Why X…", "What Is…") — rephrase as a statement instead. metaDescription is exempt.
+- Title Case applied to short particles in titles (articles, prepositions, conjunctions like "a", "an", "the", "if", "from", "to", "and", "or", "in", "on", "with") — keep these lowercase unless they're the first word
 
 **Opener patterns**
 - "In today's fast-paced world…" / "In today's [any noun] world"

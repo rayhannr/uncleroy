@@ -1,7 +1,7 @@
 ---
-title: 'Qawwam Meaning in the Quran: Responsibility, Not Domination'
+title: Qawwam Meaning in the Quran is about Responsibility, Not Domination
 image: ./images/qawwam-meaning-in-the-quran.webp
-imageCaption: 'An image with the text "qawwam meaning in the quran: responsibility, not domination"'
+imageCaption: 'An image with the text "qawwam meaning in the quran is about responsibility, not domination"'
 imageCredit: Kelli McClintock
 imageLink: https://unsplash.com/photos/man-in-white-shirt-carrying-boy-wBgAVAGjzFg
 description: A rather comprehensive explanation about the true meaning of qawwam

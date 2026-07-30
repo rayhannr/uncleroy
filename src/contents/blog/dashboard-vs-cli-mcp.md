@@ -1,11 +1,11 @@
 ---
-title: 'Dashboard vs CLI vs MCP: When to Use Which'
+title: Dashboards still matter, even with CLI and MCP
 image: ./images/dashboard-vs-cli-mcp.webp
-imageCaption: 'An image with the text "dashboard vs cli vs mcp: when to use which"'
+imageCaption: 'An image with the text "dashboards still matter, even with cli and mcp"'
 imageCredit: fruitfullmedia
 imageLink: https://unsplash.com/photos/a-person-driving-a-car-on-a-road-next-to-a-forest-fey671cCzNo
-description: How I actually choose between dashboard, CLI, and MCP
-metaDescription: Comparing dashboards, CLIs, and MCP tools with real-world examples from Supabase, Vercel, a game admin portal, and a personal side project.
+description: I stopped worrying about the dashboard becoming a relic
+metaDescription: CLI and MCP can do everything a dashboard does, but that was never the question. Real examples from Supabase, Vercel, a game admin portal, and a personal side project on why the dashboard still earns its place.
 publishedAt: 2026-07-26T14:55:27.000Z
 status: published
 ---

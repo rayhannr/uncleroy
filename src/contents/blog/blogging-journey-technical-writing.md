@@ -1,10 +1,10 @@
 ---
-title: 'How My Blogging Evolved: From Cringy Posts to Technical Writing'
+title: My Blogging Evolved from Cringy Posts to Technical Writing
 image: ./images/blogging-journey-technical-writing.webp
-imageCaption: 'An image with the text "how my blogging evolved: from cringy posts to technical writing"'
+imageCaption: 'An image with the text "my blogging evolved from cringy posts to technical writing"'
 imageCredit: Wahyu Pratama
 imageLink: https://unsplash.com/photos/jco-signage-Ps6OvCkHSlM
-description: How I stopped blogging like a middle schooler
+description: I stopped blogging like a middle schooler
 metaDescription: A frontend developer reflects on years of blogging — from early Blogspot experiments and cringy copy-paste posts to building a modern tech blog with Astro. Here's what changed.
 publishedAt: 2024-04-14T08:56:39.248Z
 status: published

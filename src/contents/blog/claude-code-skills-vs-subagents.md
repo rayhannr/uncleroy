@@ -1,5 +1,5 @@
 ---
-title: No More Skill Issues (Or Subagent Ones)
+title: No More Skill Issues (or Subagent Ones)
 image: ./images/claude-code-skills-vs-subagents.webp
 imageCaption: A billboard reading "no more skill issues"
 imageCredit: Igor Shalyminov
