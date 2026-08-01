@@ -10,25 +10,35 @@ status: published
 publishedAt: 2026-07-30T09:58:38Z
 ---
 
-When there's a chore you keep repeating with roughly the same input and output, and it takes several steps or is just boring enough that you dread it, you don't want to re-explain the whole thing to an agent every time. You want to hand over the context once and then delegate. Claude Code gives you two ways to do that: skills and subagents. These are the tools we use at my office, so what I know about them comes from work rather than documentation.
+It hasn't been long since my last post, and here I am writing another one already. A few years back I'd go months, sometimes almost a year, between posts. Lately it's been every week or so, and a lot of that comes down to Claude Code taking over the chores I used to dread, writing included.
+
+That's the pattern behind this post too. When there's a chore you keep repeating with roughly the same input and output, and it takes several steps or is just boring enough that you dread it, you don't want to re-explain the whole thing to an agent every time. You want to hand over the context once and then delegate. Claude Code gives you two ways to do that: skills and subagents. These are the tools we use at my office, so what I know about them comes from work rather than documentation.
 
 They look the same on the surface. Both are a markdown file where you describe a task, lay out the steps, and set some rules. But the way they run is genuinely different, and once the mechanics click, it's obvious why you'd reach for one over the other.
 
 ## The mechanical differences
 
-A subagent gets its own context window, completely separate from the main chat session. Whatever it thinks through or churns on during execution stays in that separate window, and the main session only ever sees the final result it hands back. A skill doesn't get any of that. It runs inside the main session, so everything it does piles onto the same context you're already chatting in.
+### Context
 
-That separation changes how you work while one is running. Kick off a subagent and you can keep talking in the main session while it does its thing in the background, then it reports back when it's done. Roughly like calling an async function. A skill blocks you. If you want to keep chatting, you either wait for it to finish or open a new session.
+A subagent gets its own context window, separate from the main chat session, and only hands back the final result. A skill has no such separation. It runs inside the main session, so everything it does piles onto the context you're already chatting in.
 
-Invocation differs too. Both can get summoned automatically based on what you asked Claude Code for, but only a skill gives you an explicit `/{skill-name}` you can type yourself. A subagent has no slash-command equivalent. You either let the main agent pick it or name it directly in plain language.
+### Blocking
 
-Subagents also give you a knob skills don't. You can restrict which tools a subagent has access to and which model it runs on, while a skill just runs with whatever the current session already has available.
+That separation changes how you work while one is running. Kick off a subagent and you can keep talking in the main session while it works in the background, roughly like calling an async function. A skill blocks you until it finishes or you open a new session.
+
+### Invocation
+
+Both can get summoned automatically, but only a skill gives you an explicit `/{skill-name}` to type yourself. A subagent has no slash-command equivalent, you either let the main agent pick it or name it directly in plain language.
+
+### Configuration
+
+Subagents also give you a knob skills don't: you can restrict which tools they access and which model they run on. A skill just uses whatever the current session already has.
 
 None of this adds up to a rule like "always use a subagent for X." These are mechanics, and you match them against whatever you're building.
 
 ## The subagents I built for this site
 
-There are four subagents in this repo: a content auditor and a content writer, each split into a blog version and a project version.
+There are four subagents for maintaining this website: a content auditor and a content writer, each split into a blog version and a project version.
 
 The auditor takes a draft, whatever rough notes I've pushed here, and checks it against the writing rules I've set for this site. It flags what's off and reports back to the main agent. That context then goes to the writer subagent, which composes the real post from it.
 
@@ -56,5 +66,3 @@ Picking the background photo is the one part I kept manual on purpose. Choosing 
 A script only does what you explicitly coded it to do. Every variation has to be anticipated up front as a flag or an argument, and anything you didn't think of either breaks loudly or does the wrong thing quietly. With a subagent or a skill, you describe what changed in plain language and it adjusts.
 
 The cover generator shows this well. Hand it an Unsplash link where the og:image tag is missing or the dimensions come back weird, and a plain script would just fail. The skill can reason about it, find another way to get the asset, and keep going. Same with the auditor and writer pipeline. A script checking "writing rules" would need every rule spelled out as a regex or a condition, whereas the auditor subagent reads the draft, works out what's wrong with the phrasing or the structure, and explains it back.
-
-That's the part I keep coming back to. Everyone in tech has an opinion about AI right now, and I'd rather spend the time learning how the pieces work before I add mine to the pile. Sitting down with skills and subagents for a few weekends taught me more than any of those takes did.
