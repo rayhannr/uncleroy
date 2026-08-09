@@ -1,7 +1,7 @@
 ---
-title: Solve Supabase Auto-Sleep on Unlaunched Projects with GitHub Actions
+title: Stop Supabase Auto-Sleep Before Launch with GitHub Actions
 image: ./images/supabase-auto-sleep-fix.webp
-imageCaption: An image with the text "solve supabase auto-sleep on unlaunched projects with gitHub actions"
+imageCaption: An image with the text "stop supabase auto-sleep before launch with GitHub Actions"
 imageCredit: Annie Spratt
 imageLink: https://unsplash.com/photos/white-bed-comforter-set-and-brown-wooden-bed-frame-beside-brown-wooden-nightstand-4Wlp6m8hroE
 description: Keep Supabase alive automatically with a simple GitHub Actions setup
@@ -20,19 +20,19 @@ Supabase is my go-to for side projects. It's free, easy to set up, and the docum
 
 Supabase gave me everything I needed out of the box: authentication, a Postgres database, REST and realtime APIs, and a nice dashboard to manage it all. I could focus on building the actual product instead of worrying about infrastructure.
 
-## The Problem with Auto-Sleep
+## The problem with auto-sleep
 
 Auto-sleep might save resources, but it's a headache when you're actively developing. Imagine trying to test something quickly and suddenly realizing your backend is paused. You waste time logging in, waiting for things to spin back up, and only then can you continue.
 
 I needed a way to keep my Supabase project alive without relying on real user traffic.
 
-## My Solution: Ping the Project Daily with GitHub Actions
+## My solution, pinging the project daily with GitHub Actions
 
 I came up with a simple automation using GitHub Actions workflow that runs every night, pings a public page in my project, and updates a `data.txt` file to log the visit. Then it auto-commits the change, so I also get a bonus daily green square on my GitHub contribution graph.
 
-This keeps my Supabase project awake and helps maintain a clean commit streak. Double win.
+This keeps my Supabase project awake and gives me a clean commit streak as a side effect.
 
-## What the GitHub Action Does
+## What the GitHub Action does
 
 The action runs every 24 hours using a scheduled cron job. It:
 
@@ -93,13 +93,8 @@ jobs:
 
 After generating the token, go to Settings → Secrets and variables → Actions → New repository secret, and add it using the same name you reference in the workflow script.
 
-## Why This Setup Works So Well
+## Why this setup works
 
-This tiny workflow solves two problems at once:
+This tiny workflow solves two problems at once: it keeps your Supabase project alive by simulating traffic, and it logs visits while keeping your commit streak alive. You don't need a third-party uptime checker, manual clicks, or a complex backend script for any of it.
 
-- Keeps your Supabase project alive by simulating traffic
-- Logs visits and keeps your commit streak alive
-
-No need for third-party uptime checkers. No need for manual clicks. And no need to write complex backend scripts.
-
-If you're working on a Supabase project that's not yet live, this is one of the easiest and most effective ways to keep things running.
+If you're working on a Supabase project that's not yet live, this is one of the easiest ways to keep things running.
