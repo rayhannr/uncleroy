@@ -56,7 +56,7 @@ On a normal login, the user starts at no subdomain and gets redirected once. Tha
 The redirect logic doesn't need to live inside `SessionManager`. More importantly, it doesn't need the entire app to be loaded before it runs. So I moved it out.
 
 ```js
-// entry file
+// main.ts
 const didRedirect = resolveRedirection()
 if (!didRedirect) {
   const { mountApp } = await import('./mountApp')

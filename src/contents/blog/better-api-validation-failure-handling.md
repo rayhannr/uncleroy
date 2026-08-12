@@ -1,16 +1,16 @@
 ---
-title: A Better Way to Handle API Validation Failures
+title: A Feature Flag for Controlling API Validation in Production
 image: ./images/better-api-validation-failure-handling.webp
-imageCaption: An image with the text "how a feature flag saved our api response validation"
+imageCaption: An image with the text "a feature flag for controlling api validation in production"
 imageCredit: Nong
 imageLink: https://unsplash.com/photos/a-close-up-of-a-computer-screen-with-a-sign-on-it-O_Xy25Dj7Mo
 description: One feature flag saved our team from production errors and midnight wake-ups
-metaDescription: How a simple feature flag helped us control API validation, prevent Zod errors in production, unblock clients instantly, and stop overnight wake-ups for trivial fixes.
+metaDescription: A simple feature flag to soft-disable API validation in production, unblock clients from Zod errors instantly, and avoid overnight wake-ups over trivial contract mismatches.
 publishedAt: 2025-12-10T14:42:30.714Z
 status: published
 ---
 
-API response validation sounds straightforward until it breaks in production at 3 AM. This is the story of how a simple feature flag saved my team from API validation errors, contract drift, and unnecessary midnight on-calls.
+API response validation sounds straightforward until it breaks in production at 3 AM. A simple feature flag is how my team stopped losing sleep over it.
 
 ## Building our frontend and the need for validation
 
@@ -18,7 +18,7 @@ In our frontend application, almost every API request targets our own internal b
 
 As the system grew, we introduced a new workflow that combined [Zod](https://zod.dev/) with a custom code generation tool. Instead of hand-maintaining io-ts schemas, the generator produced Zod schemas, data models, and API call functions all at once. 
 
-Moving to Zod and adopting codegen happened together, giving us cleaner types, more reliable validation, and a data layer that scaled without the constant risk of drifting out of sync. Or so we thought.
+Moving to Zod and adopting codegen happened together. The schemas were cleaner, easier to keep in sync, and we stopped hand-maintaining io-ts types. That mostly held up.
 
 ## When strict validation becomes a real problem
 
@@ -26,9 +26,7 @@ Zod is great, but strict validation has a dark side. Whenever the backend return
 
 Sometimes this was correct. Incorrect data can cause UI crashes or break interaction flows. But other times the issue was trivial. For example, one API contract defined `id`, `email`, and `updatedAt` as required strings. If the backend returned `updatedAt` as `null` for some edge case, the entire response was treated as invalid even though the UI only needed `id` and `email`.
 
-In development, this was not a big deal. We just fixed it, created a PR, merged to master, and moved on.
-
-In production, it was a different story.
+In development, this was easy to deal with. Fix it, open a PR, merge, move on. Production was a different situation entirely.
 
 ## A midnight incident that should not have been an incident
 
@@ -36,7 +34,7 @@ One of our clients is in a different timezone. While it was daytime for them in 
 
 LiveOps team on shift called me in the middle of the night. I checked the issue and the fix was literally a one line change. But deploying that fix to the client environment required a hotfix process that was much longer than a normal PR.
 
-This was not the first time it happened. The pattern was always the same. A tiny contract mismatch. A harmless backend quirk. A strict Zod validation. A blocked client. And someone on the engineering team losing sleep.
+This was not the first time. It was always the same sequence: a tiny contract mismatch, Zod fails hard, the client is blocked, and someone on the engineering team loses sleep over it.
 
 Something had to change.
 
@@ -44,11 +42,11 @@ Something had to change.
 
 Our application already had a feature flag system. Different clients have different needs, and we use feature flags to toggle features for specific customers. These flags are editable directly in the app and only our internal team can access them.
 
-So the idea hit me. What if API response validation itself could be toggled with a feature flag? If the flag is on, we validate as usual. If the flag is off, we skip validation and let the UI render whatever it can. This would not replace proper fixes, but it would give us a safety net.
+So the idea hit me. What if API response validation itself could be toggled with a feature flag? If the flag is on, we validate as usual. If the flag is off, we skip validation and let the UI render whatever it can. It would not replace proper fixes. It would just give us room to breathe.
 
-If a client encounters a Zod error, LiveOps can flip a switch and instantly unblock them. No emergency patch. No waking engineers in the middle of the night. No waiting for a hotfix pipeline.
+If a client encounters a Zod error, LiveOps can flip a switch and instantly unblock them without filing an emergency patch or waking anyone up.
 
-I tested the idea in our dev environment and it worked perfectly.
+I tested the idea in our dev environment and it worked.
 
 ## Operationalizing the safety net
 
@@ -60,11 +58,11 @@ To make this useful, I wrote a runbook for our team. It explains what to do when
 - If the UI is correct and stable, escalate the issue normally during work hours.
 - If the UI misbehaves without validation, escalate immediately to the responsible engineer.
 
-This simple change turned validation into a safety net instead of a hard wall.
+With this in place, a validation failure no longer had to block a client until a hotfix was deployed.
 
 ## How the validation flag actually works
 
-In practice, the validation flag is not read from a static constant. Instead, it lives inside our SDK configuration and is evaluated every time we make a request.
+In practice, the validation flag is not read from a static constant. Instead, it lives inside our SDK configuration and the SDK re-evaluates it on every request.
 
 ```javascript
 const sdk = {
@@ -79,7 +77,7 @@ const sdk = {
 }
 ```
 
-The important detail is that `config` is a function. Calling `sdk.config()` re-evaluates `useValidation` on every request, which means the flag is always up to date. If we had defined this as a plain constant, the value would only be read once on initial load, and changing the flag later would have had no effect.
+`config` being a function is what makes this work. Calling `sdk.config()` re-evaluates `useValidation` on every request, which means the flag is always up to date. If we had defined this as a plain constant, the value would only be read once on initial load, and changing the flag later would have had no effect.
 
 We also keep this logic out of the generated API layer. All API utilities are produced by codegen, and we intentionally avoid embedding feature flag logic there. That logic lives outside codegen and changes more frequently, while generated code should stay stable.
 
@@ -106,7 +104,7 @@ async function fetchWithOptionalValidation(fetcher, schema) {
 
 ## Keeping the flag in sync
 
-To make this reliable, we also keep the validation flag in sync with the rest of the app. Feature flags are fetched from the backend and stored in application state, but we additionally mirror the validation flag into `localStorage`.
+To make this reliable, we also keep the validation flag in sync with the rest of the app. Feature flags are fetched from the backend and stored in application state, but we also mirror the validation flag into `localStorage`.
 
 When a flag is updated manually, we update `localStorage` immediately.
 
@@ -135,6 +133,4 @@ When `getFlags` runs on page load, `localStorage` is updated as well. This preve
 
 Since adopting this approach, we have not had to wake anyone up at night to deal with trivial validation failures. Minor contract mismatches no longer block clients, and our LiveOps team has a safe and immediate way to mitigate incidents.
 
-Validation is still there when we need it. It is simply no longer a hard wall.
-
-Sometimes the most effective engineering solutions are not about adding more correctness, but about adding control.
+Validation is still in place when we need it. Now it can also be turned off without a deployment.

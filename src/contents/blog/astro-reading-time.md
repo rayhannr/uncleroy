@@ -4,17 +4,15 @@ image: ./images/astro-reading-time.webp
 imageCaption: An image with the text "display estimated reading time in astro blog posts"
 imageCredit: Callum Shaw
 imageLink: https://unsplash.com/photos/gray-laptop-beside-white-teacup-and-book-TLxaYmixZ3k
-description: Add clarity to your content by showing how long each post takes to read
-metaDescription: Enhance your Astro blog with estimated reading times for each post. A lightweight feature that improves readability and user engagement.
+description: Show estimated reading time on your Astro blog using the reading-time package
+metaDescription: Learn how to add estimated reading time to your Astro blog posts using the reading-time npm package. A quick, lightweight setup with no extra dependencies.
 publishedAt: 2024-11-28T14:55:55.043Z
 status: published
 ---
 
-Ever read a blog post on Medium and noticed the small reading time label like "10 min read"? It's a simple feature that enhances the reading experience by setting clear expectations. The good news? You can easily add this functionality to your own [Astro](https://astro.build/)-based blog in just a few steps.
+Medium shows a small "10 min read" label on every post. It's a simple touch that sets expectations before a reader commits. You can add the same thing to your [Astro](https://astro.build/) blog using the `reading-time` package. It takes maybe ten minutes to wire up.
 
-In this blog, we'll walk through how to display an estimated reading time using the `reading-time` package in an Astro project.
-
-## What You'll Need
+## What you'll need
 
 This tutorial assumes you're already comfortable with:
 
@@ -25,7 +23,7 @@ If you're new to Astro, check out their official [getting started guide](https:/
 
 ## Steps
 
-### Install the Reading Time Package
+### Install the reading-time package
 
 Run the following command in your project directory:
 
@@ -33,9 +31,7 @@ Run the following command in your project directory:
 npm install reading-time
 ```
 
-### Create a Utility Function
-
-Create a utility function to calculate reading time from the raw blog content.
+### Create a utility function
 
 ```ts
 // src/utils/readingTime.ts
@@ -49,9 +45,7 @@ export const getReadingTime = (content: string) => {
 
 This function returns a string like "3 min read" or "Less than 1 min read" based on content length.
 
-### Use It Inside Your Layout
-
-In your blog layout component, call the utility and pass in the raw Markdown content.
+### Use it inside your layout
 
 ```astro title="src/layouts/Blog.astro"
 ---
@@ -79,11 +73,11 @@ const { title, author, date } = frontmatter
 </article>
 ```
 
-`rawContent` contains the Markdown source of the blog post and is used here to compute the reading time dynamically.
+`rawContent` is the Markdown source of the post. The utility reads it to compute the estimate.
 
 ## Example
 
-Let's say you have the following blog post:
+Given this post:
 
 <!-- prettier-ignore -->
 ```md wrap
@@ -113,16 +107,6 @@ The rendered HTML will look like:
 </article>
 ```
 
-## Why Add a Reading Time Estimator?
+## Worth adding?
 
-Adding an estimated reading time:
-
-- Improves UX by setting expectations
-- Boosts engagement, especially for mobile readers
-- Adds polish to your blog layout with minimal effort
-
-Whether your posts are short updates or long-form tutorials, it's a small feature that creates a more reader-friendly experience.
-
-## Conclusion
-
-By using a simple utility and the `reading-time` package, you can quickly implement a reading time indicator for any Markdown blog post in Astro. It's a lightweight addition that adds real value for your readers.
+Reading time sets expectations before someone commits to a post, which tends to reduce bounce for longer content. For short posts it's a nice-to-have; for long-form tutorials it actually matters. Either way, the `reading-time` package is lightweight. It runs at build time, so there's no extra cost at runtime.
