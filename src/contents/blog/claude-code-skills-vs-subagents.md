@@ -4,7 +4,7 @@ image: ./images/claude-code-skills-vs-subagents.webp
 imageCaption: A billboard reading "no more skill issues"
 imageCredit: Igor Shalyminov
 imageLink: https://unsplash.com/photos/billboard-reads-no-more-skills-issues-OEmWOzDUx0g
-description: Two ways to hand a repeated chore to Claude Code
+description: Claude Code skills and subagents, compared
 metaDescription: Claude Code skills and subagents differ in context, execution, and invocation. A breakdown of those differences, which one to reach for, and the ones I use to write and review content on this site.
 status: published
 publishedAt: 2026-07-30T09:58:38Z
@@ -16,7 +16,7 @@ That's the pattern behind this post too. When there's a chore you keep repeating
 
 They look the same on the surface. Both are a markdown file where you describe a task, lay out the steps, and set some rules. But the way they run is genuinely different, and once the mechanics click, it's obvious why you'd reach for one over the other.
 
-## The mechanical differences
+## How skills and subagents differ
 
 ### Context
 
@@ -42,7 +42,7 @@ There are four subagents for maintaining this website: a content auditor and a c
 
 The auditor takes a draft, whatever rough notes I've pushed here, and checks it against the writing rules I've set for this site. It flags what's off and reports back to the main agent. That context then goes to the writer subagent, which composes the real post from it.
 
-The writer isn't paraphrasing my draft. It's writing the post properly, using the draft as source material. And the auditor isn't only a first-draft gate. I can point it at something already published and get it checked again, which is what happened to this post.
+The writer isn't paraphrasing my draft. It writes the post from scratch, using the draft as raw material. And the auditor isn't only a first-draft gate. I can point it at something already published and get it checked again, which is what happened to this post.
 
 Blog and project are split because they get graded on completely different things. A project post has to explain itself through situation, task, action, result, so the writer for that shapes everything around STAR. A blog post cares about SEO instead: title, slug, description, all of that. Rather than cram both into one subagent and hope it context-switches correctly, I kept them separate.
 
@@ -65,4 +65,4 @@ Picking the background photo is the one part I kept manual on purpose. Choosing 
 
 A script only does what you explicitly coded it to do. Every variation has to be anticipated up front as a flag or an argument, and anything you didn't think of either breaks loudly or does the wrong thing quietly. With a subagent or a skill, you describe what changed in plain language and it adjusts.
 
-The cover generator shows this well. Hand it an Unsplash link where the og:image tag is missing or the dimensions come back weird, and a plain script would just fail. The skill can reason about it, find another way to get the asset, and keep going. Same with the auditor and writer pipeline. A script checking "writing rules" would need every rule spelled out as a regex or a condition, whereas the auditor subagent reads the draft, works out what's wrong with the phrasing or the structure, and explains it back.
+The cover generator shows this well. Hand it an Unsplash link where the og:image tag is missing or the dimensions come back weird, and a plain script would just fail. The skill can work around it, find another way to get the asset, and keep going. Same with the auditor and writer pipeline. A script checking "writing rules" would need every rule spelled out as a regex or a condition, whereas the auditor subagent reads the draft, works out what's wrong with the phrasing or the structure, and explains what it found.

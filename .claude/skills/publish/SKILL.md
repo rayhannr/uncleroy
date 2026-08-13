@@ -34,16 +34,26 @@ Once confirmed, set:
 
 Leave every other field untouched.
 
-## 4. Stage and review
+## 4. Update llms.txt
 
-Stage only this file explicitly (`git add <path>` — never `-A` or `.`). Show the user
+After updating the frontmatter, add the new post to `public/llms.txt`.
+
+- Read the file's `title`, `description`, and `slug` (derived from the filename)
+- Determine the content type from the path (`blog` or `project`)
+- Append a new entry under the matching section (`## Blog` or `## Projects`) in the same format as existing entries:
+  `- [Title](https://rayhannr.dev/blog/slug): description`
+- Do not touch any other section or entry
+
+## 5. Stage and review
+
+Stage the post file and `public/llms.txt` explicitly (`git add <path>` — never `-A` or `.`). Show the user
 the diff before committing.
 
-## 5. Commit message
+## 6. Commit message
 
 Ask the user for the commit message. Do not generate one yourself. Commit with exactly
 what they give you — no `Co-Authored-By` trailer.
 
-## 6. Do not push
+## 7. Do not push
 
 Stop after the local commit. Only push if the user explicitly asks.

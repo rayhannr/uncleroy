@@ -1,13 +1,16 @@
 ---
-title: Install NPM dependencies from multiple registries
+title: Install NPM Dependencies from Multiple Registries
 image: ./images/install-npm-multiple-registries.webp
 imageCaption: An image with the text "install npm dependencies from multiple registries"
 imageCredit: Paul Esch-Laurent
 imageLink: https://unsplash.com/photos/orange-pink-keyboard-oZMUrWFHOB4
 description: Configure .npmrc to load npm packages from both private and public registries
+metaDescription: Set up .npmrc to install packages from a private npm registry and the public registry at the same time. Covers scoped packages, unscoped fallback, and auth tokens.
 publishedAt: 2024-07-28T14:55:39.942Z
 status: published
 ---
+
+At work I deal with an internal npm registry for shared packages. Getting those to install alongside public packages like `react` wasn't immediately obvious, since `npm` doesn't just figure it out on its own. Here's how to configure it properly using `.npmrc`.
 
 <strong>TL;DR:</strong> To use a private `npm` registry in your project, add the following lines to your `.npmrc` file:
 
@@ -43,7 +46,7 @@ Then:
 - `react` will be downloaded from the public `npm` registry
 - `@rayhannr/validator` will come from `@rayhannr` private registry
 
-## When Your Private Packages Aren't Scoped
+## When your private packages aren't scoped
 
 If your private package names aren't prefixed with a scope (e.g., `@rayhannr`), update your `.npmrc` to:
 
@@ -52,11 +55,13 @@ registry=https://registry.rayhannr.org
 //registry.rayhannr.org/:_authToken={YOUR_AUTH_TOKEN_HERE}
 ```
 
-This setup tells `npm` to fetch all packages from your private registry. Make sure your private registry is set up to proxy the public `npm` registry. Otherwise, public packages like `react` won't be accessible.
+This tells `npm` to fetch all packages from your private registry. For public packages like `react` to still resolve, your private registry needs to be configured to proxy requests it can't fulfill to `registry.npmjs.org`. If it isn't set up that way, `npm install` will fail for anything not hosted on your registry.
 
-<strong>Note:</strong> Accessing a private registry requires authentication. You'll need an access token and must include it in your `.npmrc`. If you're using Sonatype Nexus Repository Manager as your private npm registry, the authentication token is a Base64-encoded string of your Nexus username and password in the `username:password` format.
+## Auth tokens
 
-For example, if your username is `admin` and your password is `admin123`, your token would be:
+Private registries require an access token in your `.npmrc` to authenticate.
+
+If you're using Sonatype Nexus Repository Manager, the token format is slightly different: it expects a Base64-encoded string of `username:password`:
 
 ```bash
 echo -n "admin:admin123" | base64
@@ -67,3 +72,27 @@ Which outputs:
 ```bash
 YWRtaW46YWRtaW4xMjM=
 ```
+
+## A few things worth noting
+
+**Don't commit real tokens.** It's common to check `.npmrc` into version control so the registry URL is shared across the team, but the auth token should never be in there as a literal value. Use an environment variable reference instead:
+
+```ini
+@rayhannr:registry=https://registry.rayhannr.org
+//registry.rayhannr.org/:_authToken=${NPM_TOKEN}
+```
+
+Each developer sets `NPM_TOKEN` locally, and in CI it gets injected as a secret.
+
+**In GitHub Actions**, you can pass it in via your workflow:
+
+```yaml
+- name: Install dependencies
+  run: npm install
+  env:
+    NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
+`npm` will substitute `${NPM_TOKEN}` from the environment when it reads your `.npmrc`.
+
+**If you get a 401**, the token is either wrong or expired. Double-check the value and that it has read access to the registry. For Nexus, also make sure the token is re-encoded if the password changed.
