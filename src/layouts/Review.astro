@@ -3,6 +3,7 @@ import type { MarkdownLayoutProps } from 'astro'
 import BaseLayout from './BaseLayout.astro'
 import { formatLongDate } from '../utils/date'
 import { getReadingTime } from '../utils/readingTime'
+import ReviewStructuredData from '../components/structured-data/ReviewStructuredData.astro'
 
 export interface ReviewProps {
   title: string
@@ -20,6 +21,7 @@ const { title, author, description, publishYear, publishedAt, rating, status } =
 ---
 
 <BaseLayout title={`${title} by ${author} Review`} {description} showMeter>
+  <ReviewStructuredData slot="structured-data" {title} {author} {description} {publishYear} {publishedAt} {rating} {status} />
   <article class="mt-2 lg:mt-4">
     <header>
       <time datetime={publishedAt} class="text-neutral-500 dark:text-neutral-400 block mb-4">

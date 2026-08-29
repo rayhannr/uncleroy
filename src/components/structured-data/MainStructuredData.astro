@@ -1,11 +1,18 @@
 ---
-const pageUrl = new URL(Astro.url.pathname, Astro.site)
-
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'rayhannr',
-  url: pageUrl
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'rayhannr',
+      url: Astro.site
+    },
+    {
+      '@type': 'Person',
+      name: 'Rayhan',
+      url: Astro.site
+    }
+  ]
 }
 ---
 

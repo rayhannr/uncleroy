@@ -20,7 +20,7 @@ Around the same time, I remembered a conversation I had with my manager at work 
 
 ## How it works
 
-Instead of filling out forms or switching between apps, I just chat with it naturally and it does the rest. It works on a Next.js web app, a Telegram bot, and any MCP-compatible client like Claude Desktop, so I can use it from anywhere.
+Instead of filling out forms or switching between apps, I just chat with it naturally and it does the rest. It works on a Next.js web app, a Telegram bot, a CLI, and any MCP-compatible client like Claude Desktop, so I can use it from anywhere.
 
 The AI assistant runs on [Mistral AI](https://mistral.ai/) with a sarcastic persona that speaks English, Indonesian, and Javanese. It sticks to one language per message and uses no emojis. The Telegram bot is locked down with user ID filtering, so only authorized users can interact with it.
 
@@ -42,6 +42,10 @@ Once the list grows, the assistant can help me decide where to eat. It can sort 
 
 After I visit a place, I can tell the assistant to mark it as visited with the date. If I mark the wrong one by mistake, I can unmark it. I can also delete places permanently when they close or I'm no longer interested, and the assistant handles shifting the remaining rows in the sheet so nothing gets out of order. I don't need to type the exact name for any of this either.
 
+### Priority queue
+
+Having a long list is one thing, deciding what to go to next is another. I added a priority queue so I can rank the places I actually intend to visit soon, with rank 1 meaning go there first. If I insert a place at a rank that's already taken, the rest shift automatically to stay contiguous instead of me having to renumber everything by hand. Visiting or deleting a prioritized place clears its rank and renumbers the rest of the queue so there are no gaps left behind.
+
 ### Wheel of Places
 
 The AI already has a random pick tool, but I wanted something more visual and satisfying. I had been wanting to build a spin wheel, something like Wheel of Names, for a long time, way before the AI hype. I just never had the time or the motivation to sit down and build it for its own sake. This project finally gave me a good enough reason.
@@ -52,9 +56,13 @@ The wheel pulls my full place list, lets me pick which entries go in, and spins 
 
 The app supports real-time location tracking from both the web and Telegram. To keep Google Maps API costs low, it only recalculates distances when I move more than 2 kilometers from my last known position. My location is stored in a dedicated tab named "Session" on Google Sheets, so it persists between conversations.
 
+### CLI
+
+Sometimes I don't want to open a browser or reach for my phone just to look something up. I built `ptg.sh`, a local command-line tool that talks to the same backend as the web app and Telegram bot. It has direct commands for one-off lookups, like getting a random place or adding one by link, plus an interactive chat mode running the same AI persona and tools I use everywhere else. Commands that change data go through the same per-tool rate limiter as the web and Telegram front ends, since they all draw from the same Google API quota.
+
 ### Rate limiting
 
-Several tools in this app call Google Maps APIs, which cost money per request. I added per-tool rate limiting to make sure no runaway AI loop or accidental abuse ever pushes my bill above zero.
+Several tools in this app call Google Maps APIs, which cost money per request. I added per-tool rate limiting backed by Upstash Redis, using sliding-window limits with separate counters for demo and production, so no runaway AI loop or accidental abuse ever pushes my bill above zero. It also no-ops gracefully in local dev when Redis isn't configured.
 
 ### MCP server
 

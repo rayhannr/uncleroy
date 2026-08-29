@@ -2,19 +2,34 @@
 import type { CollectionEntry } from 'astro:content'
 
 type Props = CollectionEntry<'blogs'>['data']
-const { imageCredit, image, imageCaption } = Astro.props
+const { title, description, metaDescription, image, imageCaption, imageCredit, publishedAt } = Astro.props
 const imageUrl = new URL(image.src, Astro.site)
+const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'ImageObject',
-  contentUrl: imageUrl,
-  width: image.width,
-  height: image.height,
-  caption: imageCaption,
-  creator: {
+  '@type': 'BlogPosting',
+  headline: title,
+  description: metaDescription || description,
+  url: pageUrl,
+  datePublished: publishedAt?.toISOString(),
+  author: {
     '@type': 'Person',
-    name: imageCredit
+    name: 'Rayhan',
+    url: Astro.site
+  },
+  image: {
+    '@type': 'ImageObject',
+    contentUrl: imageUrl,
+    width: image.width,
+    height: image.height,
+    caption: imageCaption,
+    ...(imageCredit && {
+      creator: {
+        '@type': 'Person',
+        name: imageCredit
+      }
+    })
   }
 }
 ---
