@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+type Props = CollectionEntry<'projects'>['data']
+const { title, description, image, imageCaption, publishedAt, projectUrl } = Astro.props
+const imageUrl = new URL(image.src, Astro.site)
+const pageUrl = new URL(Astro.url.pathname, Astro.site)
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: title,
+  description,
+  url: projectUrl || pageUrl,
+  datePublished: publishedAt?.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Rayhan',
+    url: Astro.site
+  },
+  image: {
+    '@type': 'ImageObject',
+    contentUrl: imageUrl,
+    width: image.width,
+    height: image.height,
+    caption: imageCaption
+  }
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

@@ -1,0 +1,19 @@
+---
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'rayhannr',
+      url: Astro.site
+    },
+    {
+      '@type': 'Person',
+      name: 'Rayhan',
+      url: Astro.site
+    }
+  ]
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

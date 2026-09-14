@@ -1,7 +1,7 @@
 {
   "name": "uncleroy-v2",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -12,7 +12,24 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.3.2"
+    "@astrojs/markdown-remark": "7.3.1",
+    "@astrojs/sitemap": "3.7.4",
+    "@astrojs/vercel": "11.0.10",
+    "@tailwindcss/vite": "4.3.3",
+    "@vercel/speed-insights": "2.0.0",
+    "astro": "7.3.2",
+    "astro-expressive-code": "0.44.2",
+    "reading-time": "1.5.0",
+    "remark-captions": "2.2.4",
+    "remark-class-names": "0.1.0",
+    "remark-unwrap-images": "4",
+    "tailwind-merge": "3.7.0",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "0.5.20",
+    "@types/bun": "1.4.2",
+    "prettier-plugin-astro": "1.0.0"
   },
   "allowScripts": {
     "esbuild": true

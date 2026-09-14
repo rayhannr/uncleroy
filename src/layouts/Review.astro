@@ -1,0 +1,60 @@
+---
+import type { MarkdownLayoutProps } from 'astro'
+import BaseLayout from './BaseLayout.astro'
+import { formatLongDate } from '../utils/date'
+import { getReadingTime } from '../utils/readingTime'
+import ReviewStructuredData from '../components/structured-data/ReviewStructuredData.astro'
+
+export interface ReviewProps {
+  title: string
+  author: string
+  description: string
+  publishYear: string
+  publishedAt: string
+  rating: number
+  status: string
+}
+
+type Props = MarkdownLayoutProps<ReviewProps>
+const { frontmatter, rawContent } = Astro.props
+const { title, author, description, publishYear, publishedAt, rating, status } = frontmatter
+---
+
+<BaseLayout title={`${title} by ${author} Review`} {description} showMeter>
+  <ReviewStructuredData slot="structured-data" {title} {author} {description} {publishYear} {publishedAt} {rating} {status} />
+  <article class="mt-2 lg:mt-4">
+    <header>
+      <time datetime={publishedAt} class="text-neutral-500 dark:text-neutral-400 block mb-4">
+        <div class="flex flex-col sm:flex-row gap-x-3 gap-y-1 leading-tight text-sm">
+          <span>
+            {formatLongDate(publishedAt)}
+          </span>
+          <span class="hidden sm:inline-block">|</span>
+          <span>
+            {getReadingTime(rawContent())}
+          </span>
+        </div>
+      </time>
+      <h1 class="font-semibold text-balance mb-0">{title}</h1>
+    </header>
+
+    <div class="mt-4">
+      <ul class="my-0 text-neutral-500 dark:text-neutral-400">
+        <li class="my-0">
+          <strong>Author:</strong>
+          {author}
+        </li>
+        <li class="my-0">
+          <strong>Publish Year:</strong>
+          {publishYear}
+        </li>
+        <li class="my-0">
+          <strong>Rating:</strong>
+          {rating}/5
+        </li>
+      </ul>
+    </div>
+
+    {status === 'draft' ? <p>Regrettably, the material is still in its draft stage.</p> : <slot />}
+  </article>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+import { formatShortDate } from '../utils/date'
+
+interface Props {
+  title: string
+  description: string
+  publishedAt: string
+  image?: string
+  imageAlt?: string
+  link?: string
+  className?: string
+}
+
+const { link, image, title, description, imageAlt, publishedAt, className } = Astro.props
+---
+
+<a href={link} class={className}>
+  <div class="w-full h-full lg:flex rounded border border-neutral-300 dark:border-neutral-800">
+    {
+      image && (
+        <div
+          class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center rounded-t lg:rounded-l lg:rounded-tr-none text-center overflow-hidden"
+          style={`background-image: url('${image}')`}
+          title={imageAlt}
+        />
+      )
+    }
+    <div class="p-4 flex flex-col justify-between leading-normal">
+      <div class="mb-8">
+        <h3 class="mt-0">{title}</h3>
+        <p class="text-neutral-600 dark:text-neutral-300 line-clamp-3 font-normal">{description}</p>
+      </div>
+
+      <p class="text-sm text-neutral-500 dark:text-neutral-400 my-0">{formatShortDate(publishedAt)}</p>
+    </div>
+  </div>
+</a>

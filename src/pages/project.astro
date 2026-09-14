@@ -1,0 +1,31 @@
+---
+import TimelineWrapper from '../components/TimelineWrapper.astro'
+import Timeline from '../components/Timeline.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getCollection, type CollectionEntry } from 'astro:content'
+
+const isPublished = (
+  project: CollectionEntry<'projects'>
+): project is CollectionEntry<'projects'> & { data: { status: 'published' } } =>
+  project.data.status === 'published'
+
+const allProjects = await getCollection('projects')
+const projects = allProjects
+  .filter(isPublished)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+---
+
+<BaseLayout title="Project" description="List of my personal frontend projects" showMeter>
+  <TimelineWrapper>
+    {
+      projects.map((project) => (
+        <Timeline
+          title={project.data.title}
+          description={project.data.description}
+          time={project.data.publishedAt.toISOString()}
+          url={`/project/${project.id}`}
+        />
+      ))
+    }
+  </TimelineWrapper>
+</BaseLayout>

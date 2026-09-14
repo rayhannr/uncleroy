@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const FIRST_PROFESSIONAL_YEAR = 2021
+const CURRENT_YEAR = new Date().getFullYear()
+---
+
+<BaseLayout title="About" description="Brief introduction about me" showMeter>
+  <div class="mt-2 lg:mt-6">
+    <h1>About me</h1>
+
+    <p>
+      I'm a fullstack engineer with {CURRENT_YEAR - FIRST_PROFESSIONAL_YEAR}+ years of experience building web applications
+      people actually enjoy using (hopefully). Frontend is where my strength lies, but I've picked up enough backend
+      experience, from building a Model Context Protocol (MCP) server to migrating a backend service from Node.js to Go and
+      maintaining it since, to call myself fullstack now. Here's my tech stack:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Basics:</strong> HTML, Markdown, CSS, Javascript, Typescript, Go
+      </li>
+      <li>
+        <strong>CSS libraries/extensions: </strong> Sass, Tailwind, Bootstrap
+      </li>
+      <li>
+        <strong>Web frameworks:</strong> React, Next, Astro
+      </li>
+      <li>
+        <strong>Node.js frameworks:</strong> Koa, Express
+      </li>
+      <li>
+        <strong>Documentation tool:</strong> Storybook, Docusaurus
+      </li>
+      <li>
+        <strong>Databases:</strong> PostgreSQL, Redis
+      </li>
+      <li>
+        <strong>Bundlers:</strong> Vite, Rollup
+      </li>
+      <li>
+        <strong>Deployments:</strong> Netlify, Vercel
+      </li>
+      <li>
+        <strong>Testing:</strong> Playwright, Vitest
+      </li>
+      <li>
+        <strong>AI-assisted coding:</strong> Claude Code
+      </li>
+    </ul>
+
+    <p>
+      Aside from those, I'm comfortable working with Docker, MongoDB, and Github Actions. Day to day I code with Claude, and
+      I'm happy to try whatever tool gets the job done. I used to fall back to Antigravity whenever I burned through Claude's
+      usage limit, back when Antigravity's free tier was still generous. That's rarely an issue now, so I've mostly stuck with
+      Claude for the actual coding, though I still keep the Antigravity IDE open for its autocomplete, since yes, I still write
+      code by hand sometimes, and it feels basically unlimited compared to Copilot's. I've also tried Opencode and keep an eye
+      on what else is out there.
+    </p>
+
+    <p>
+      Back in college, I used Python heavily for my final assignment on Natural Language Processing (NLP). My lecturer liked
+      the work enough to have me assist non-IT master's students with their NLP theses. I haven't touched Python much since
+      graduating though.
+    </p>
+
+    <p>
+      I think of myself mainly as a technical person, but this blog won't stay strictly technical. Expect some personal posts
+      and non-technical book reviews mixed in too.
+    </p>
+  </div>
+</BaseLayout>

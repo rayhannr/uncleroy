@@ -1,0 +1,77 @@
+---
+import { twMerge } from 'tailwind-merge'
+import ScrollMeter from './ScrollMeter.astro'
+import ThemeToggler from './ThemeToggler.astro'
+const links = [
+  {
+    title: 'Home',
+    link: '/'
+  },
+  {
+    title: 'About',
+    link: '/about'
+  },
+  {
+    title: 'Blog',
+    link: '/blog'
+  },
+  {
+    title: 'Project',
+    link: '/project'
+  },
+  {
+    title: 'Review',
+    link: '/review'
+  }
+]
+
+interface Props {
+  showMeter?: boolean
+}
+
+const { showMeter = false } = Astro.props
+---
+
+<nav
+  class={twMerge(
+    'flex flex-col items-center px-4 sm:px-0 w-full sm:m-auto sticky top-0 z-10 bg-neutral-100/30 dark:bg-neutral-950/30 backdrop-blur-sm',
+    showMeter ? 'pt-4' : 'py-4'
+  )}
+>
+  <div class="flex justify-between items-center w-full sm:w-3/4 lg:w-1/2 font-medium">
+    <ul class="flex flex-wrap gap-3 md:gap-6">
+      {
+        links.map(({ link, title }) => (
+          <li>
+            <a
+              href={link}
+              data-nav-link
+              class="text-sm hover:border-b-2 hover:border-neutral-800 dark:hover:border-neutral-300"
+            >
+              {title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <ThemeToggler />
+  </div>
+  {showMeter && <ScrollMeter />}
+</nav>
+
+<script>
+  const addActiveClass = () => {
+    const activeLink = `/${window.location.pathname.split('/')[1]}`
+    const activeNavEl = document.querySelector(`nav a[href="${activeLink}"]`)
+    if (activeNavEl) {
+      activeNavEl.classList.add('border-b-2')
+      activeNavEl.classList.add('border-neutral-800')
+      activeNavEl.classList.add('dark:border-neutral-300')
+      activeNavEl.classList.remove('hover:border-neutral-800')
+      activeNavEl.classList.remove('dark:hover:border-neutral-300')
+    }
+  }
+  addActiveClass()
+  document.addEventListener('astro:after-swap', addActiveClass)
+</script>

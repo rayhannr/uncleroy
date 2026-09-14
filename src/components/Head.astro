@@ -1,0 +1,102 @@
+---
+import SpeedInsights from '@vercel/speed-insights/astro'
+import '../styles/global.css'
+import { ClientRouter } from 'astro:transitions'
+
+interface Props {
+  title: string
+  description: string
+  permalink: string
+  image?: string
+}
+
+const { title, description, permalink, image = '/images/base/rayhannr.webp' } = Astro.props
+
+let url = Astro.site?.href || ''
+if (url.endsWith('/')) {
+  url = url.slice(0, -1)
+}
+
+const imageUrl = `${url}${image}`
+---
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="sitemap" href="/sitemap-0.xml" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#f5f5f5" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={permalink} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={imageUrl} />
+
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={permalink} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={imageUrl} />
+
+  <SpeedInsights />
+  <ClientRouter />
+
+  {
+    [
+      'Geist-SemiBold.woff2',
+      'Geist-Regular.woff2',
+      'GeistMono-Regular.woff2',
+      'GeistMono-Medium.woff2',
+      'Geist-Medium.woff2'
+    ].map((font) => <link rel="preload" href={`/fonts/${font}`} as="font" type="font/woff2" crossorigin />)
+  }
+
+  <script is:inline>
+    const DARK_THEME_CLASS = 'dark'
+    const COLOR_MODE = 'colorMode'
+    const LIGHT_THEME = 'light'
+    const DARK_THEME = 'dark'
+
+    const root = document.documentElement
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+
+    const getInitialColorMode = () => {
+      const prevColorMode = localStorage.getItem(COLOR_MODE)
+
+      if (prevColorMode) return prevColorMode
+      if (window.matchMedia('prefers-color-scheme: dark').matches) {
+        return DARK_THEME
+      }
+
+      return LIGHT_THEME
+    }
+
+    const setInitialColorMode = (mode) => {
+      let color = '#f5f5f5'
+
+      if (mode === LIGHT_THEME) {
+        root.classList.remove(DARK_THEME_CLASS)
+      } else {
+        root.classList.add(DARK_THEME_CLASS)
+        color = '#0a0a0a'
+      }
+      metaThemeColor.setAttribute('content', color)
+    }
+
+    const init = () => {
+      const initialColorMode = getInitialColorMode()
+      setInitialColorMode(initialColorMode)
+    }
+
+    init()
+    document.addEventListener('astro:after-swap', init)
+  </script>
+
+  <slot />
+</head>

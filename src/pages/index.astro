@@ -1,17 +1,80 @@
 ---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import Card from '../components/Card.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import type { ReviewProps } from '../layouts/Review.astro'
+import type { MarkdownInstance } from 'astro'
+import MainStructuredData from '../components/structured-data/MainStructuredData.astro'
 
+const isBlogPublished = (
+  blog: CollectionEntry<'blogs'>
+): blog is CollectionEntry<'blogs'> & { data: { status: 'published' } } => blog.data.status === 'published'
+
+const isProjectPublished = (
+  project: CollectionEntry<'projects'>
+): project is CollectionEntry<'projects'> & { data: { status: 'published' } } =>
+  project.data.status === 'published'
+
+const blogs = await getCollection('blogs')
+const latestBlog = blogs.filter(isBlogPublished).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())[0]
+
+const projects = await getCollection('projects')
+const latestProject = projects
+  .filter(isProjectPublished)
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())[0]
+
+const reviews = Object.values(import.meta.glob('./review/*.md', { eager: true })) as MarkdownInstance<ReviewProps>[]
+const latestReview = reviews
+  .filter((review) => review.frontmatter.status === 'published')
+  .sort((a, b) => new Date(b.frontmatter.publishedAt).valueOf() - new Date(a.frontmatter.publishedAt).valueOf())[0]
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout showMeter>
+  <MainStructuredData slot="structured-data" />
+  <div class="mt-2 lg:mt-6">
+    <h1>Hi, Rayhan here!</h1>
+    <p>
+      I write tech, life, and book review thingy. If you're reading this, most likely you either:
+      <ul>
+        <li>found one of my blog from your browser's search result</li>
+        <li>know my social media which has the link to this page</li>
+      </ul>
+      I hope you find this website by browsing something and my contents show up at the top of the search result because that means
+      they have a good SEO rank
+    </p>
+
+    <h2 class="mb-4 mt-6">Latest blog</h2>
+    <Card
+      image={latestBlog.data.image.src}
+      title={latestBlog.data.title}
+      description={latestBlog.data.description}
+      publishedAt={latestBlog.data.publishedAt.toISOString()}
+      imageAlt={latestBlog.data.imageCaption}
+      link={`/blog/${latestBlog.id}`}
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:auto-rows-[1fr] gap-4">
+      <div class="flex flex-col">
+        <h2 class="mb-4 mt-6">Latest project</h2>
+        <Card
+          title={latestProject.data.title}
+          description={latestProject.data.description}
+          publishedAt={latestProject.data.publishedAt.toISOString()}
+          link={`/project/${latestProject.id}`}
+          className="flex-grow"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <h2 class="mb-4 mt-2 lg:mt-6">Latest review</h2>
+        <Card
+          title={latestReview.frontmatter.title}
+          description={latestReview.frontmatter.description}
+          publishedAt={latestReview.frontmatter.publishedAt}
+          link={latestReview.url}
+          className="flex-grow"
+        />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

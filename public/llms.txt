@@ -1,0 +1,51 @@
+# Rayhan's Portfolio
+
+> Personal portfolio and blog by Rayhan — a software engineer writing about frontend development, web tooling, and occasional non-tech topics. Also showcases personal projects and book/film reviews.
+
+## Pages
+
+- [Home](https://rayhannr.dev): Portfolio landing page
+- [About](https://rayhannr.dev/about): About Rayhan
+- [Blog](https://rayhannr.dev/blog): All blog posts
+- [Projects](https://rayhannr.dev/project): All personal projects
+- [Reviews](https://rayhannr.dev/review): Book and film reviews
+
+## Blog
+
+- [From cringy Blogspot posts to a technical blog](https://rayhannr.dev/blog/blogspot-to-technical-blog): How this blog started
+- [Display Estimated Reading Time in Astro Blog Posts](https://rayhannr.dev/blog/astro-reading-time): Show reading time in Astro using the reading-time package
+- [Delete Zone.Identifier Files in WSL After Moving Files from Windows](https://rayhannr.dev/blog/delete-zone-identifier-files-in-wsl): Clean up Zone.Identifier metadata files in WSL with one find command
+- [Install NPM Dependencies from Multiple Registries](https://rayhannr.dev/blog/install-npm-multiple-registries): Configure .npmrc to use a private and public npm registry together
+- [Nginx Cache-Control Guide for High-Performance React Apps](https://rayhannr.dev/blog/nginx-cache-control-react-performance): Configure Nginx Cache-Control for React apps
+- [Analyze and Optimize Vite Bundle Size Using rollup-plugin-visualizer](https://rayhannr.dev/blog/vite-bundle-visualizer): Analyze and reduce Vite bundle size with a visual breakdown
+- [Stop Supabase Auto-Sleep Before Launch with GitHub Actions](https://rayhannr.dev/blog/supabase-auto-sleep-fix): Keep Supabase alive with a scheduled GitHub Actions workflow
+- [Converting Notion Database to Anki Using AI](https://rayhannr.dev/blog/notion-to-anki-ai): Sync Notion databases to Anki with AI-generated example sentences
+- [.mmbak is just a SQLite file](https://rayhannr.dev/blog/money-manager-mmbak-sqlite): Open and analyze Money Manager .mmbak backup files with SQLite
+- [Dashboards still matter, even with CLI and MCP](https://rayhannr.dev/blog/dashboard-vs-cli-mcp): When dashboards beat CLI and MCP tools in real projects
+- [Avoid duplicate bundle downloads on redirect with dynamic import](https://rayhannr.dev/blog/dynamic-import-avoid-bundle-redownload-on-redirect): Use dynamic imports to avoid redownloading bundles on redirect
+- [No More Skill Issues (or Subagent Ones)](https://rayhannr.dev/blog/claude-code-skills-vs-subagents): Claude Code skills vs subagents compared
+- [A Feature Flag for Controlling API Validation in Production](https://rayhannr.dev/blog/better-api-validation-failure-handling): Using a feature flag to handle API validation errors safely in production
+- [Qawwam Meaning in the Quran is about Responsibility, Not Domination](https://rayhannr.dev/blog/qawwam-meaning-in-the-quran): A deep look at the true meaning of qawwam
+- [I Got Tired of Loud Wedding Invites, So I Made My Own](https://rayhannr.dev/blog/tired-of-digital-wedding-invites): A personal story about digital wedding invitations
+- [Relationship Lessons from "500 Days of Summer" for Serious Men](https://rayhannr.dev/blog/relationship-lessons-500-days-of-summer): Lessons from the film for men in serious relationships
+- [Sounds Like an Extortion](https://rayhannr.dev/blog/sounds-like-an-extortion): On corruption and informal fees
+
+## Projects
+
+- [AccelPlay](https://rayhannr.dev/project/accelplay): TMDB clone
+- [folklore-invitation](https://rayhannr.dev/project/folklore-invitation): Bare minimum wedding invitation template
+- [Image Color Picker](https://rayhannr.dev/project/image-color-picker): Upload an image, click any pixel to pick its color and the closest Tailwind color
+- [Kantle](https://rayhannr.dev/project/kantle): Six-letter Indonesian Wordle clone
+- [Money Tracker](https://rayhannr.dev/project/money-tracker): Cloud-based expense tracker built for easy shared budgeting
+- [Places To Go](https://rayhannr.dev/project/places-to-go): Personal food destination tracker with a sarcastic AI assistant
+- [Premarital Q&A](https://rayhannr.dev/project/premarital-qna): 260 essential questions (and sample answers) to ask your future spouse
+- [Spoticeipt](https://rayhannr.dev/project/spoticeipt): Spotify top track receipt generator
+- [Talangeen](https://rayhannr.dev/project/talangeen): Shared expenses tracker for friends
+- [tic-tac-cok](https://rayhannr.dev/project/tic-tac-cok): Offline 2-player tic-tac-toe game
+- [TypeSoFast!](https://rayhannr.dev/project/type-so-fast): A 10fastfingers clone to test typing speed in Indonesian
+- [wedding-mbediding](https://rayhannr.dev/project/wedding-mbediding): Another simple Indonesian digital wedding invitation template
+
+## Reviews
+
+- [The Hovering Blade](https://rayhannr.dev/review/the-hovering-blade): Diving deeper into grief and now fueled by anger, Nagamine harbored a belief that the perpetrators, due to their minor status, would receive only a lenient sentence. In response, Nagamine resolved to seek justice with his own hands.
+- [The Stoic Mind](https://rayhannr.dev/review/the-stoic-mind): A visual exploration of Stoic philosophy

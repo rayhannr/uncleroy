@@ -1,0 +1,28 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import Timeline from '../components/Timeline.astro'
+import TimelineWrapper from '../components/TimelineWrapper.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const isPublished = (
+  blog: CollectionEntry<'blogs'>
+): blog is CollectionEntry<'blogs'> & { data: { status: 'published' } } => blog.data.status === 'published'
+
+const allBlogs = await getCollection('blogs')
+const blogs = allBlogs.filter(isPublished).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+---
+
+<BaseLayout title="Blog" description="List of my blogs I've written since I built this site" showMeter>
+  <TimelineWrapper>
+    {
+      blogs.map((blog) => (
+        <Timeline
+          title={blog.data.title}
+          description={blog.data.description}
+          time={blog.data.publishedAt.toISOString()}
+          url={`/blog/${blog.id}`}
+        />
+      ))
+    }
+  </TimelineWrapper>
+</BaseLayout>

@@ -1,5 +1,66 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config'
+import { unified } from '@astrojs/markdown-remark'
+import vercel from '@astrojs/vercel'
+import sitemap from '@astrojs/sitemap'
+import tailwindcss from '@tailwindcss/vite'
+import expressiveCode from 'astro-expressive-code'
+import { htmlClassNames } from './plugins/html-classnames.mjs'
+import { externalLink } from './plugins/external-link'
+import remarkUnwrapImages from 'remark-unwrap-images'
+import remarkCaptions from 'remark-captions'
+
+const siteUrl =
+  process.env.VERCEL_ENV === 'production'
+    ? `https://${process.env.CUSTOM_VERCEL_URL || process.env.VERCEL_URL}`
+    : 'http://localhost:3000'
+const siteDomain = siteUrl?.replace('https://', '')
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  site: siteUrl,
+  output: 'static',
+  trailingSlash: 'never',
+  adapter: vercel({ webAnalytics: { enabled: true } }),
+  redirects: {
+    '/blog/what-it-means-to-be-a-qawwam': '/blog/qawwam-meaning-in-the-quran',
+    '/blog/500-days-of': '/blog/relationship-lessons-500-days-of-summer',
+    '/blog/digital-wedding-invitation-features-that-need-to-improve': '/blog/tired-of-digital-wedding-invites',
+    '/blog/install-npm-dependencies-from-multiple-registries': '/blog/install-npm-multiple-registries',
+    '/blog/cache-control-for-react-app-using-nginx': '/blog/nginx-cache-control-react-performance',
+    '/blog/show-reading-time-estimator-in-your-astro-blog': '/blog/astro-reading-time',
+    '/blog/optimizing-vite-bundles-with-rollup-plugin-visualizer': '/blog/vite-bundle-visualizer',
+    '/blog/blogging-journey-technical-writing': '/blog/blogspot-to-technical-blog'
+  },
+  integrations: [
+    sitemap({
+      lastmod: new Date(),
+      serialize(item) {
+        item.url = item.url.endsWith('/') ? item.url.slice(0, -1) : item.url
+        return item
+      },
+      filter: (page) => !page.includes('merawat-luka-batin')
+    }),
+    expressiveCode({
+      themes: ['material-theme-ocean'],
+      styleOverrides: {
+        uiFontFamily: 'Geist, sans-serif',
+        codeFontFamily: "'Geist Mono', ui-monospace, monospace"
+      }
+    })
+  ],
+  server: { port: 3000 },
+  vite: {
+    plugins: [tailwindcss()],
+    build: {
+      assetsInlineLimit: 61440
+    }
+  },
+  markdown: {
+    syntaxHighlight: 'prism',
+    processor: unified({
+      remarkPlugins: [htmlClassNames, remarkUnwrapImages, remarkCaptions],
+      rehypePlugins: [[externalLink, { domain: siteDomain }]]
+    })
+  }
+})
