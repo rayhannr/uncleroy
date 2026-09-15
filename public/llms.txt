@@ -26,6 +26,7 @@
 - [No More Skill Issues (or Subagent Ones)](https://rayhannr.dev/blog/claude-code-skills-vs-subagents): Claude Code skills vs subagents compared
 - [A Feature Flag for Controlling API Validation in Production](https://rayhannr.dev/blog/better-api-validation-failure-handling): Using a feature flag to handle API validation errors safely in production
 - [Qawwam Meaning in the Quran is about Responsibility, Not Domination](https://rayhannr.dev/blog/qawwam-meaning-in-the-quran): A deep look at the true meaning of qawwam
+- [Browser Autoplay Audio Policy](https://rayhannr.dev/blog/browser-autoplay-audio-policy): The browsers block audio to play on load on purpose
 - [I Got Tired of Loud Wedding Invites, So I Made My Own](https://rayhannr.dev/blog/tired-of-digital-wedding-invites): A personal story about digital wedding invitations
 - [Relationship Lessons from "500 Days of Summer" for Serious Men](https://rayhannr.dev/blog/relationship-lessons-500-days-of-summer): Lessons from the film for men in serious relationships
 - [Sounds Like an Extortion](https://rayhannr.dev/blog/sounds-like-an-extortion): On corruption and informal fees

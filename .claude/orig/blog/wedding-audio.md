@@ -1,0 +1,8 @@
+in my earlier blog (you can check tired-of-digital-wedding-invites), i discussed about a certain behavior in wedding invitations i got from friends, which is a song starts playing when i click the "open invitation" button. i never asked "why does it start playing when i click the button? why not just play immediately when the page loads?"
+
+i thought it's just the preference of the invitation developer then other developers copy it and it becomes the norm. turns out that's just how the browser works. it blocks automatically played audio on initial load without user interaction such as clicking a button. it's just not gonna work even if we try to fake the interaction in the code to force playing the audio. i found this when i want to implement autoplay audio in the 404 page of my own wedding invitation which acts as a surprise when someone try to mess with the unique code in the url. i thought it's just gonna work, but it's not. so to overcome that, i keep the audio to play in 404 page, but it will only play if someone open the invitation url without unique code (basically the index page), then they fill random code, which if it doesnt exist in the db, they will be redirected to 404 page which will then play the audio. you can try that yourself in my wedding-mbediding project. (it's not my real wedding invitation though)
+
+note to agent: 
+- please do real research on this topic to back my theory because i might be wrong
+- show demo video taken from src/blog/videos
+- check wedding-mbediding project especially related to reason why unique code exists

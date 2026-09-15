@@ -9,6 +9,7 @@ import { htmlClassNames } from './plugins/html-classnames.mjs'
 import { externalLink } from './plugins/external-link'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import remarkCaptions from 'remark-captions'
+import mdx from '@astrojs/mdx'
 
 const siteUrl =
   process.env.VERCEL_ENV === 'production'
@@ -32,23 +33,20 @@ export default defineConfig({
     '/blog/optimizing-vite-bundles-with-rollup-plugin-visualizer': '/blog/vite-bundle-visualizer',
     '/blog/blogging-journey-technical-writing': '/blog/blogspot-to-technical-blog'
   },
-  integrations: [
-    sitemap({
-      lastmod: new Date(),
-      serialize(item) {
-        item.url = item.url.endsWith('/') ? item.url.slice(0, -1) : item.url
-        return item
-      },
-      filter: (page) => !page.includes('merawat-luka-batin')
-    }),
-    expressiveCode({
-      themes: ['material-theme-ocean'],
-      styleOverrides: {
-        uiFontFamily: 'Geist, sans-serif',
-        codeFontFamily: "'Geist Mono', ui-monospace, monospace"
-      }
-    })
-  ],
+  integrations: [sitemap({
+    lastmod: new Date(),
+    serialize(item) {
+      item.url = item.url.endsWith('/') ? item.url.slice(0, -1) : item.url
+      return item
+    },
+    filter: (page) => !page.includes('merawat-luka-batin')
+  }), expressiveCode({
+    themes: ['material-theme-ocean'],
+    styleOverrides: {
+      uiFontFamily: 'Geist, sans-serif',
+      codeFontFamily: "'Geist Mono', ui-monospace, monospace"
+    }
+  }), mdx()],
   server: { port: 3000 },
   vite: {
     plugins: [tailwindcss()],

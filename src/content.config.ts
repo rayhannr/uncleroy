@@ -2,7 +2,7 @@ import { glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
 
 const blogs = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.md', base: './src/contents/blog' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/contents/blog' }),
   schema: ({ image }) =>
     z.discriminatedUnion('status', [
       z.object({

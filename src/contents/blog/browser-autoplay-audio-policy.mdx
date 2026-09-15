@@ -1,0 +1,55 @@
+---
+title: Browser Autoplay Audio Policy
+image: ./images/browser-autoplay-audio-policy.webp
+imageCaption: An image with the text "browser autoplay audio policy"
+imageCredit: Norbert Buduczki
+imageLink: https://unsplash.com/photos/black-flat-screen-computer-monitor-BZO2k7sCsWk
+description: The browsers block audio to play on load on purpose
+metaDescription: Browsers block autoplay audio unless a user gesture preceded the page load. A wedding invite side project makes this rule surprisingly concrete.
+status: published
+publishedAt: 2026-09-15T22:45:50+07:00
+---
+
+import videoSrc from './videos/browser-autoplay-audio-policy.mp4'
+
+In my [earlier blog](/blog/tired-of-digital-wedding-invites), I talked about one of the things that bothers me about digital wedding invitations: background music that starts playing the moment I click "Open Invitation." I framed it as a design choice, audio that activates on click rather than on page load.
+
+Turns out it's not really a choice. It's a browser constraint.
+
+## Browsers block autoplay by default
+
+The [browser autoplay policy](https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide) is a rule that prevents audio and video from playing automatically on page load without prior user interaction. Most major browsers enforce this. Audio won't play unless the user has already done something on the page: a click, a tap, a key press. You can't fake it in code. Even if you dispatch a synthetic click event or call `.play()` programmatically, the browser knows the difference and will block it.
+
+This was introduced to stop pages from blasting audio at people who never asked for it. If you've ever opened a tab and immediately heard something you didn't expect, you already understand why this policy exists.
+
+So when a wedding invitation plays music only after you click "Open Invitation," it's not because the developer made a deliberate UX decision to put the trigger there. They put it there because that's the only place it'll actually work.
+
+## Where I ran into this
+
+I was building [wedding-mbediding](/project/wedding-mbediding), a public wedding invitation template I made after my own, and I wanted to add a small surprise. The URL structure for the invitation uses a unique 6-character code per guest. If someone tries to open the base URL without a code, or enters a code that doesn't exist in the database, they get redirected to a 404 page. I thought it'd be funny to have audio play on that 404 page, a little gotcha for anyone trying to mess with the URL.
+
+I assumed it would just work. It didn't.
+
+The 404 is a separate page load. With no prior interaction, autoplay is blocked.
+
+## The workaround
+
+After hitting that wall, I thought through the flow more carefully. So when someone tampers with the URL, they land on the index page first, interact with it somehow (maybe trying to enter a code), and that interaction triggers a lookup. If the code doesn't exist in the database, they get redirected to 404.
+
+The redirect is the key part. Because it was triggered by a user gesture (a real click or form submission), some browsers propagate that gesture context to the next page. The 404 page, when reached through that navigation, is allowed to autoplay audio. If someone types the 404 URL directly into their address bar, it won't work.
+
+<video controls class="w-full">
+  <source src={videoSrc} type="video/mp4" />
+</video>
+
+So I kept the audio on the 404 page, and it plays exactly when I wanted it to: when someone tries to sneak in through the back door, not when they land there on purpose.
+
+## The actual rule
+
+The browser enforces three things:
+
+- Audio won't autoplay on page load without prior user interaction on that page.
+- User interaction means a real event (click, tap, key press), not something dispatched from JavaScript.
+- Audio can autoplay on a page you navigated to if the navigation itself was initiated by a user gesture on the previous page.
+
+That third point is the one most people don't know about, and it's what makes the 404 trick possible. It's intentional behavior that accounts for user-initiated navigation, not a loophole.
