@@ -12,44 +12,59 @@ publishedAt: 2026-09-15T22:45:50+07:00
 
 import videoSrc from './videos/browser-autoplay-audio-policy.mp4'
 
-In my [earlier blog](/blog/tired-of-digital-wedding-invites), I talked about one of the things that bothers me about digital wedding invitations: background music that starts playing the moment I click "Open Invitation." I framed it as a design choice, audio that activates on click rather than on page load.
+In my [old blog](/blog/tired-of-digital-wedding-invites), I talked about one of the things that bothers me about digital wedding invitations which is background music that starts playing the moment I click "Open Invitation." 
 
-Turns out it's not really a choice. It's a browser constraint.
+I thought it was a design choice, audio wired to a click rather than to page load. Turns out it's a browser constraint.
 
 ## Browsers block autoplay by default
 
-The [browser autoplay policy](https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide) is a rule that prevents audio and video from playing automatically on page load without prior user interaction. Most major browsers enforce this. Audio won't play unless the user has already done something on the page: a click, a tap, a key press. You can't fake it in code. Even if you dispatch a synthetic click event or call `.play()` programmatically, the browser knows the difference and will block it.
+The [browser autoplay policy](https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide) is a rule that prevents audio and video from playing automatically on page load without prior user interaction. Most major browsers enforce this. Audio won't play unless the user has already clicked or typed on the page. You can't fake it in code. Even if you dispatch a synthetic click event or call `.play()` programmatically, the browser knows the difference and will block it.
 
 This was introduced to stop pages from blasting audio at people who never asked for it. If you've ever opened a tab and immediately heard something you didn't expect, you already understand why this policy exists.
 
-So when a wedding invitation plays music only after you click "Open Invitation," it's not because the developer made a deliberate UX decision to put the trigger there. They put it there because that's the only place it'll actually work.
+So when a wedding invitation plays music only after you click "Open Invitation," the developer didn't make some deliberate UX decision to put the trigger there. That's just where it'll work.
 
 ## Where I ran into this
 
-I was building [wedding-mbediding](/project/wedding-mbediding), a public wedding invitation template I made after my own, and I wanted to add a small surprise. The URL structure for the invitation uses a unique 6-character code per guest. If someone tries to open the base URL without a code, or enters a code that doesn't exist in the database, they get redirected to a 404 page. I thought it'd be funny to have audio play on that 404 page, a little gotcha for anyone trying to mess with the URL.
+I was building [wedding-mbediding](/project/wedding-mbediding), a public wedding invitation template I made after my own, and I wanted to add two small audio touches.
 
-I assumed it would just work. It didn't.
+The first was simple: clicking the logo at the bottom of the invitation page plays a sound. That works fine since it's directly triggered by a click.
 
-The 404 is a separate page load. With no prior interaction, autoplay is blocked.
+The second was trickier. The URL structure for the invitation uses a unique 6-character code per guest where a non-existent code leads to a 404. I thought it'd be funny to have audio play on that 404, a little gotcha for anyone trying to guess their way in.
+
+I assumed it would just work, but it didn't.
+
+The 404 is a separate page load and the code is straightforward:
+
+```html
+<audio id="notfound-audio" src="/audio/hey-foreign-stooges.mp3" preload="auto" />
+
+<script>
+  const nfAudio = document.getElementById('notfound-audio')
+  if (nfAudio) {
+    nfAudio.play().catch(() => {})
+  }
+</script>
+```
+
+It just calls `.play()` immediately on load, and with no prior interaction, the browser blocks it.
 
 ## The workaround
 
-After hitting that wall, I thought through the flow more carefully. So when someone tampers with the URL, they land on the index page first, interact with it somehow (maybe trying to enter a code), and that interaction triggers a lookup. If the code doesn't exist in the database, they get redirected to 404.
+The invitation already had an index page where guests enter their code before reaching the invite. That turned out to be the workaround. Without a page like that in the middle, every path to the 404 would be a direct navigation with no prior user gesture, and the audio would get blocked every time.
 
-The redirect is the key part. Because it was triggered by a user gesture (a real click or form submission), some browsers propagate that gesture context to the next page. The 404 page, when reached through that navigation, is allowed to autoplay audio. If someone types the 404 URL directly into their address bar, it won't work.
+But that page creates a scenario where a gesture happens before the redirect. Someone opens the index, types a random code into the form, submits it. The lookup fails and they land on the 404. Because that redirect was triggered by a real form submission, some browsers propagate the gesture context to the next page. The 404, reached through that navigation, is allowed to autoplay.
+
+If someone types a bad URL directly, none of that applies. The page loads, `play()` runs, the browser blocks it, the catch swallows the error silently. No audio.
+
+The video below shows the path that works: opening the index page, submitting a non-existent code, and landing on the 404 with the audio playing.
 
 <video controls class="w-full">
   <source src={videoSrc} type="video/mp4" />
 </video>
 
-So I kept the audio on the 404 page, and it plays exactly when I wanted it to: when someone tries to sneak in through the back door, not when they land there on purpose.
+## The rule
 
-## The actual rule
+Audio won't autoplay without prior user interaction on that page. That interaction has to be real, a click or key press, not a synthetic event dispatched from JavaScript. And if the navigation to that page was triggered by a user gesture on the previous page, the restriction doesn't apply.
 
-The browser enforces three things:
-
-- Audio won't autoplay on page load without prior user interaction on that page.
-- User interaction means a real event (click, tap, key press), not something dispatched from JavaScript.
-- Audio can autoplay on a page you navigated to if the navigation itself was initiated by a user gesture on the previous page.
-
-That third point is the one most people don't know about, and it's what makes the 404 trick possible. It's intentional behavior that accounts for user-initiated navigation, not a loophole.
+That last part is what most people don't know about, and it's what makes the 404 trick work. It's intentional behavior designed to account for user-initiated navigation.
