@@ -26,7 +26,7 @@ So when a wedding invitation plays music only after you click "Open Invitation,"
 
 ## Where I ran into this
 
-I was building [wedding-mbediding](/project/wedding-mbediding), a public wedding invitation template I made after my own, and I wanted to add two small audio touches.
+I hit this issue while trying to add two audio easter eggs to my wedding invitation.
 
 The first was simple: clicking the logo at the bottom of the invitation page plays a sound. That works fine since it's directly triggered by a click.
 
@@ -51,13 +51,13 @@ It just calls `.play()` immediately on load, and with no prior interaction, the 
 
 ## The workaround
 
-The invitation already had an index page where guests enter their code before reaching the invite. That turned out to be the workaround. Without a page like that in the middle, every path to the 404 would be a direct navigation with no prior user gesture, and the audio would get blocked every time.
+The invitation already had an index page where guests enter their code before reaching the invite, and that ended up being the workaround. Without something like that in the middle, every path to the 404 is a direct navigation with no prior user gesture, so the audio gets blocked every time.
 
-But that page creates a scenario where a gesture happens before the redirect. Someone opens the index, types a random code into the form, submits it. The lookup fails and they land on the 404. Because that redirect was triggered by a real form submission, some browsers propagate the gesture context to the next page. The 404, reached through that navigation, is allowed to autoplay.
+That index page changes things. Someone opens it, types a random code, submits the form. The lookup fails, they land on the 404, but because the redirect came from a real form submission, some browsers carry the gesture context forward. The 404 is allowed to autoplay.
 
-If someone types a bad URL directly, none of that applies. The page loads, `play()` runs, the browser blocks it, the catch swallows the error silently. No audio.
+If someone navigates directly to a bad URL, none of that applies. The page loads, `play()` runs, the browser blocks it, the catch swallows the error silently. No audio.
 
-The video below shows the path that works: opening the index page, submitting a non-existent code, and landing on the 404 with the audio playing.
+The video below shows the path that works: opening the index page, submitting a non-existent code, and landing on the 404 with the audio playing. This is from [a template](/project/wedding-mbediding) I made based on the same project, not my actual wedding invitation.
 
 <video controls class="w-full">
   <source src={videoSrc} type="video/mp4" />
