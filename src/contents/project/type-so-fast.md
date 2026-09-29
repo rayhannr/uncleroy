@@ -10,9 +10,9 @@ status: published
 
 ## Background
 
-I built [the first version of TypeSoFast!](./type-so-fast-legacy) in 2021 with Create React App. It was a 10fastfingers clone in Indonesian, a word list I scraped from news sites, a timer, and a WPM number at the end. Nothing was saved anywhere. Close the tab and your best run was gone.
+I built [the first version of TypeSoFast!](./type-so-fast-legacy) in 2021 with Create React App. It was a 10fastfingers clone in Indonesian, a word list I scraped from news sites, a timer, and a WPM number at the end. Your top three scores went into localStorage and came back as a podium. That was the extent of it, so a different browser or a cleared cache put you back at zero.
 
-I work at AccelByte, but not as a game developer. I'm on the web side, which means I read about our gaming backend far more often than I actually use it. That gap bothered me. If I want to have useful opinions about the product, I should know what it feels like to sit where our customers sit, with the docs open and nothing else.
+I work at AccelByte, but not as a game developer. I'm on the web side, so I barely touch how our services actually work inside a game. What I knew was the Admin Portal, the screens where game developers configure those services. If I want to have useful opinions about the product, I should know what it feels like to sit where our customers sit, with the same docs, SDKs, and tooling they get.
 
 There's a second reason. AccelByte gets associated with big publishers shipping AAA titles, which is fair, since that's a lot of our business. But the services themselves don't care how big your game is. Auth, leaderboards, achievements, matchmaking, and cloud saves are the same problems whether you have a 300-person studio or one guy rebuilding a typing test on weekends. I wanted a working counterexample I could point at.
 
@@ -50,15 +50,13 @@ There's also a friends list. You add people with a short public ID, see who's on
 
 ## The pain points
 
-This was the actual point of the exercise, so here's what I ran into.
-
-AGS Lobby's websocket can't be used from a browser. It wants an `Authorization` header at handshake time, and the browser `WebSocket` API has no way to send one. There's no query-param fallback and no post-connect auth frame either. I burned three spikes on this, including a Node experiment that only "worked" because Node's WebSocket supports a non-standard headers option no browser has. That's why friend presence and invites run on Pusher instead of Lobby.
+This was the actual point of the exercise. Lobby is the AGS service that would have carried friend presence and invites, and its websocket can't be used from a browser. It wants an `Authorization` header at handshake time, and the browser `WebSocket` API has no way to send one. There's no query-param fallback and no post-connect auth frame either. I burned three spikes on this, including a Node experiment that only "worked" because Node's WebSocket supports a non-standard headers option no browser has. That's why both ended up on Pusher instead.
 
 Session `PATCH` replaces the whole attributes object rather than deep merging it. In PvP, two writers touch session attributes independently. One writes the shared word list, the other writes the WebRTC offer and answer. With stale client-side copies, they silently wipe each other's fields. It showed up as a `words[0] is undefined` crash on roughly two out of three runs. The same endpoint also needs an optimistic-concurrency `version` field or it returns a 400, which is easy enough to handle once you know about it.
 
-`generate-code` returns nothing at all unless the session's joinability is `OPEN`. No error, no warning, just no code. On the good side, `generate-code` and `revoke-code` are leader-enforced server-side, so I didn't have to write my own host check.
+The endpoint that generates a room's join code returns nothing at all unless the session's joinability is `OPEN`. No error, no warning, just no code. On the good side, generating and revoking a code are both leader-enforced server-side, so I didn't have to write my own host check.
 
-The AGS gateway sends no CORS headers. Every `@accelbyte/sdk-*` package ships generated React Query hooks, and I was excited to use them, but they call AGS directly from the browser, so the browser blocks the responses. They're effectively server-side only, which is worth saying out loud in the docs.
+The AGS gateway sent no CORS headers at the time. Every `@accelbyte/sdk-*` package ships generated React Query hooks, and I was excited to use them, but they call AGS directly from the browser and the browser blocked every response. Anything touching AGS had to go through my own backend instead, which is where the hooks stop being any use. AGS has since added CORS configuration to the Admin Portal, so a customer can set it up themselves instead of filing a LiveOps ticket.
 
 Then the SDK-specific ones. In the Go SDK, the generated friends-list methods either route to an admin-only path that 403s with a player token, or declare the response as a one-element array when AGS actually returns a plain object, which fails to unmarshal. I ended up calling the self-scoped REST paths directly. The bulk display-name lookup hits `bulk/basic`, which 404s in this deployment, so I switched to the admin endpoint. And Cloud Save's `Value interface{}` decodes JSON numbers as `json.Number` rather than `float64`, so a bare type assertion fails quietly and makes every saved number look absent.
 
@@ -70,25 +68,25 @@ None of these are dealbreakers, and most cost me an afternoon each. But every on
 
 I did nearly all of the AGS configuration through our own AI plugin driving the `ags` CLI rather than clicking through the Admin Portal. That covered every achievement config, all the leaderboard configs across duration, mode, time range, and XP, the PvP match pool and rule set, and the session templates. Something like forty resources. It was easily the best part of the experience, and I never had to fall back to the portal after the first phase.
 
-Where it got shakier is exactly where the pain points above live. The gap between what an API looks like and how it actually behaves is the hardest thing for an agent to know, and it's also what a developer most needs warning about. Nothing told me upfront that the generated React Query hooks were unusable from a browser, that Lobby's websocket couldn't be reached from browser code, that `generate-code` needs `OPEN` joinability, or that session `PATCH` overwrites instead of merges. I found all four by running code against the real namespace and watching it fail.
+The pain points above were a different kind of problem. An API's signature rarely tells you how it actually behaves. That's the hardest thing for an agent to know, and the thing a developer most needs warning about. Nothing told me upfront that CORS would block the generated React Query hooks, that Lobby's websocket couldn't be reached from browser code, that a room's join code needs `OPEN` joinability, or that session `PATCH` overwrites instead of merges. I found all four by running code against the real namespace and watching it fail.
 
 So the working rule for the project became: don't trust a generated call until it has run against a live namespace and returned what it claimed it would. A type check or a successful build doesn't count. That habit caught every SDK defect listed above, and I'd want the tooling to push people toward it rather than assume the happy path. All of it went back as feedback, which was the point.
 
 ## Testing this was harder than building it
 
-Type checks and builds tell you nothing about a two-player race. Every concurrency bug in this project was found by Playwright driving two or three real browser contexts against the live AGS dev namespace.
+Type checks and builds tell you nothing about a two-player race. I found every concurrency bug in this project with Playwright, driving two or three real browser contexts against the live AGS dev namespace.
 
-The room test creates a room, joins with two more contexts, starts the match, then has a fourth context try the code and confirms it gets rejected. That last part is what proves the lock is real and not just a hidden button. Writing it caught a bug where the start handler fired two concurrent session writes that raced the same version field and blew through their retries. I also had to parallelize the test's own waits, because loading four real browsers one after another against live services timed out on wall clock alone.
+The room test creates a room, joins with two more contexts, starts the match, then has a fourth context try the code and confirms it gets rejected. That last part proves the lock actually rejects joins rather than hiding the button. Writing it caught a bug where the start handler fired two concurrent session writes that raced the same version field and blew through their retries. I also had to parallelize the test's own waits, because loading four real browsers one after another against live services timed out on wall clock alone.
 
-Anything on the Go side got verified with `go run .` and curl against the real namespace before deploying. A passing `go build` means very little when the bug is an SDK method pointing at the wrong endpoint.
+I verified anything on the Go side with `go run .` and curl against the real namespace before deploying. A passing `go build` means very little when the bug is an SDK method pointing at the wrong endpoint.
 
-## Known gaps
+## Known limitations
 
 There's no TURN relay, only public STUN, so two PvP players both behind symmetric NATs won't connect. That's acceptable on typical home and office networks and a real limitation everywhere else.
 
-Match invites are delivered live only. If you're not connected when the Pusher event fires, you miss it. Friends and blocks always read straight from AGS, so those are fine, but the invite itself has no persisted record to fall back on.
+Match invites only arrive live. If you're not connected when the Pusher event fires, you miss it. Friends and blocks always read straight from AGS, so those are fine, but the invite itself has no persisted record to fall back on.
 
-Room wins are decided client-side by comparing your WPM against the highest opponent WPM from a throttled progress stream. That's enough to gate an achievement. I wouldn't trust it if anything were actually at stake.
+The client decides room wins by comparing your WPM against the highest opponent WPM from a throttled progress stream. That's enough to gate an achievement. I wouldn't trust it if anything were actually at stake.
 
 ## The part I actually wanted to prove
 
