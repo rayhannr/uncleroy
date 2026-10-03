@@ -3,7 +3,7 @@ title: TypeSoFast!
 description: Typing speed test with computer, 1v1, and room races, backed by AccelByte Gaming Services
 image: ./images/type-so-fast.webp
 imageCaption: TypeSoFast! mid-run in Indonesian on a 60s test, with the 3D keyboard background reacting to each keystroke
-publishedAt: 2026-09-27T14:12:00.000Z
+publishedAt: 2026-07-05T03:07:10.000Z
 projectUrl: https://typesofast.rayhannr.dev
 status: published
 ---
