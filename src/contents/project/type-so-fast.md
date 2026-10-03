@@ -22,13 +22,13 @@ So I rebuilt the whole thing on AccelByte Gaming Services (AGS).
 
 ## The stack
 
-The frontend is Next.js with TypeScript, Tailwind, React Query, and [Three.js](https://threejs.org/) for the background and result animations. The backend is a Go service on Cloud Run wrapping the AGS Go SDK. Realtime messaging runs on AGS Lobby, relayed through the Go service.
+The frontend is Next.js with TypeScript, Tailwind, React Query, and [Three.js](https://threejs.org/) for the background and result animations. The backend is a Go service on Cloud Run wrapping the AGS Go SDK. Realtime messaging runs on AGS Lobby and the browser connects to it directly.
 
-Regular requests go to one domain. The Next.js config rewrites `/api/*` to the Cloud Run service, so there's no CORS setup for them. The websocket is the exception, because Vercel rewrites don't proxy upgrades. The browser dials Cloud Run directly for that one and an origin allowlist is the only thing gating it, since CORS doesn't apply to websocket handshakes.
+Requests go to one domain. The Next.js config rewrites `/api/*` to the Cloud Run service, so there's no CORS setup. Cloud Run only ever sees short REST calls and the Lobby socket never touches it.
 
 The backend started as about 35 Next.js API routes on the AccelByte TypeScript SDK. I moved all of it to Go later, partly to learn Go properly and partly because a stateless service on Cloud Run's free tier costs nothing when nobody's playing. Doing it route by route meant I wrote the same integrations twice, once in each SDK.
 
-Realtime went through a similar second pass. I started on [Pusher Channels](https://pusher.com/channels/) for reasons covered below and moved everything to AGS Lobby once the backend lived on Cloud Run.
+Realtime went through two more passes. I started on [Pusher Channels](https://pusher.com/channels/) for reasons covered below and moved everything to AGS Lobby once the backend lived on Cloud Run. At first the Go service held the Lobby sockets and relayed them to browsers. I later dropped the relay and let browsers connect to Lobby themselves.
 
 ## What AGS handles
 
@@ -54,7 +54,7 @@ There's also a friends list. You add people with a short public ID, see who's on
 
 This was the actual point of the exercise.
 
-- **Lobby's websocket can't be opened from a browser.** It wants an `Authorization` header at handshake time, and the browser `WebSocket` API has no way to send one. There's no query-param workaround, and I burned three spikes finding that out, including a Node experiment that only "worked" because Node's WebSocket supports a non-standard headers option no browser has.
+- **Lobby's websocket looks impossible to open from a browser.** It wants an `Authorization` header at handshake time, and the browser `WebSocket` API has no way to send one. I tried a query param, a few variations of it, and the token in the subprotocol list next to `Bearer`, and burned three spikes on it, including a Node experiment that only "worked" because Node's WebSocket supports a non-standard headers option no browser has. I concluded it couldn't be done and built a relay around that. It could. Lobby accepts the access token as the only requested subprotocol, which is what [`@accelbyte/sdk-lobby`](https://www.npmjs.com/package/@accelbyte/sdk-lobby) does, and I only found that after the relay was already live.
 - **Session `PATCH` replaces the whole attributes object instead of merging it.** In PvP, one writer sets the word list and another sets the WebRTC offer and answer, and with stale client copies they silently wipe each other's fields. It showed up as a `words[0] is undefined` crash on roughly two out of three runs. The same endpoint also needs an optimistic-concurrency `version` field or it returns a 400.
 - **A room's join code is generated only if the session's joinability is `OPEN`.** Otherwise the endpoint returns nothing, with no error and no warning. Generating and revoking a code are leader-enforced server-side, so I didn't have to write my own host check.
 - **The AGS gateway sent no CORS headers at the time.** The browser blocked every call from the generated `@accelbyte/sdk-*` React Query hooks, so everything had to go through my own backend, which is where the hooks stop being any use. AGS has since added CORS configuration to the Admin Portal.
@@ -62,7 +62,11 @@ This was the actual point of the exercise.
 
 The Lobby one is why realtime started on Pusher. The frontend and backend were both on Vercel, which is serverless. A function there lives for one request and then goes away, so there's nowhere to keep a socket open for a Lobby relay. Pusher holds the connections itself, so my backend only had to send it a message. Once the backend moved to Cloud Run, which runs a normal long-lived process, that reasoning stopped holding.
 
-So the browser now holds its own socket to the Go service, and the service holds the Lobby socket on its behalf, where a Go client sets the header freely. Senders push app payloads through Lobby's freeform notifications over REST and AGS delivers each one to whichever instance holds that player's socket, so the Go instances never need to talk to each other. Presence needed almost no code since AGS marks a player online while their socket is open. The cost is speed. Lobby was noticeably slower than Pusher in my tests from Indonesia, though part of that is distance. The AGS namespace is in the US and my Pusher cluster was in Singapore.
+My first Lobby version assumed the browser couldn't connect, so the browser held a socket to the Go service and the service held the Lobby socket on its behalf, where a Go client sets the header freely. That worked, but every open tab kept a Cloud Run instance billed for as long as the socket lived. I capped it at one instance, cut sockets after 15 minutes, and dropped hidden tabs, all to limit a cost that shouldn't have existed.
+
+Now the login response carries the Lobby URL and the browser dials it with its own access token. The relay, its origin allowlist, and the 15 minute request timeout are gone, and Cloud Run only handles short REST calls. Senders push app payloads through Lobby's freeform notifications over REST and AGS delivers each one to whichever socket belongs to that player. 
+
+Presence needed almost no code since AGS marks a player online while their socket is open. The cost is speed. Lobby was noticeably slower than Pusher in my tests from Indonesia, though part of that is distance because the AGS namespace is in the US and my Pusher cluster was in Singapore.
 
 None of these are dealbreakers, and most cost me an afternoon each. But every one of them is an afternoon a real customer would also spend, so I've filed them as such.
 
@@ -74,7 +78,7 @@ The portal was only needed for the IAM client and the third-party login setup fo
 
 Where the tooling couldn't help was the behavior behind the API, which is what the pain points above were about. A signature rarely tells you how an endpoint acts, so that's the hardest thing for an agent to know and the thing a developer most needs warning about. 
 
-Nothing told me upfront that CORS would block the generated React Query hooks, that a browser can't open Lobby's websocket, that a room's join code needs `OPEN` joinability, or that session `PATCH` overwrites instead of merges. I found all four by running code against the real namespace and watching it fail.
+Nothing told me upfront that CORS would block the generated React Query hooks, that a browser needs the token as a subprotocol to open Lobby's websocket, that a room's join code needs `OPEN` joinability, or that session `PATCH` overwrites instead of merges. I found all four by running code against the real namespace and watching it fail. For the Lobby one, the answer was in the SDK's source the whole time.
 
 So the working rule for the project became: don't trust a generated call until it has run against a live namespace and returned what it claimed it would. A type check or a successful build doesn't count. That habit caught every SDK defect listed above, and I'd want the tooling to push people toward it rather than assume the happy path. All of it went back as feedback, which was the point.
 
@@ -92,7 +96,7 @@ I verified anything on the Go side with `go run .` and curl against the real nam
 
 Match invites only arrive live. If you're not connected when the Lobby notification fires, you miss it. Friends and blocks always read straight from AGS, so those are fine, but the invite itself has no persisted record to fall back on.
 
-Websockets are the one place Cloud Run can cost money, since an open socket keeps the instance billed. I refuse to pay a single penny for a typing game, so the service is capped at one small instance, sockets get cut after 15 minutes, and a tab hidden for a minute drops its socket. 
+I refuse to pay a single penny for a typing game, so the Go service is capped at one small instance. Since browsers connect to Lobby directly, Cloud Run no longer holds a connection per open tab and only serves short requests, so the bill stays small. A tab hidden for a minute still drops its Lobby socket, so a forgotten tab doesn't show as online forever.
 
 If it feels slow when a lot of people are racing, sorry, that's by design. It still isn't a guarantee of zero, so there's a budget alert in case I'm wrong.
 
