@@ -16,7 +16,7 @@ I work at AccelByte, but not as a game developer. I'm on the web side, so I bare
 
 There's a second reason. AccelByte gets associated with big publishers shipping AAA titles, which is fair, since that's a lot of our business. But the services themselves don't care how big your game is. Auth, leaderboards, achievements, matchmaking, and cloud saves are the same problems whether you have a 300-person studio or one guy rebuilding a typing test on weekends. I wanted a working counterexample I could point at.
 
-The third reason turned up once I started. We ship an MCP server and an AI plugin so game developers can work with the SDKs through an agent instead of reading docs by hand. That tooling is only useful if what it tells you is correct. If it points someone confidently at the wrong endpoint, or at an API that doesn't behave the way it claims, it costs more time than it saves. The only way I could think of to check was to build a real integration and see where it led me wrong.
+The third reason turned up once I started. We ship an [MCP server](https://github.com/AccelByte/ags-api-mcp-server) and an [AI plugin](https://github.com/AccelByte/ai-plugins) so game developers can work with the SDKs through an agent instead of reading docs by hand. That tooling is only useful if what it tells you is correct. If it points someone confidently at the wrong endpoint, or at an API that doesn't behave the way it claims, it costs more time than it saves. The only way I could think of to check was to build a real integration and see where it led me wrong.
 
 So I rebuilt the whole thing on AccelByte Gaming Services (AGS).
 
@@ -54,21 +54,32 @@ There's also a friends list. You add people with a short public ID, see who's on
 
 This was the actual point of the exercise.
 
-- **Lobby's websocket looks impossible to open from a browser.** It wants an `Authorization` header at handshake time, and the browser `WebSocket` API has no way to send one. I tried a query param, a few variations of it, and the token in the subprotocol list next to `Bearer`, and burned three spikes on it, including a Node experiment that only "worked" because Node's WebSocket supports a non-standard headers option no browser has. I concluded it couldn't be done and built a relay around that. It could. Lobby accepts the access token as the only requested subprotocol, which is what [`@accelbyte/sdk-lobby`](https://www.npmjs.com/package/@accelbyte/sdk-lobby) does, and I only found that after the relay was already live.
-- **Session `PATCH` replaces the whole attributes object instead of merging it.** In PvP, one writer sets the word list and another sets the WebRTC offer and answer, and with stale client copies they silently wipe each other's fields. It showed up as a `words[0] is undefined` crash on roughly two out of three runs. The same endpoint also needs an optimistic-concurrency `version` field or it returns a 400.
-- **A room's join code is generated only if the session's joinability is `OPEN`.** Otherwise the endpoint returns nothing, with no error and no warning. Generating and revoking a code are leader-enforced server-side, so I didn't have to write my own host check.
-- **The AGS gateway sent no CORS headers at the time.** The browser blocked every call from the generated `@accelbyte/sdk-*` React Query hooks, so everything had to go through my own backend, which is where the hooks stop being any use. AGS has since added CORS configuration to the Admin Portal.
-- **The Go SDK's generated friends-list methods are unusable with a player token.** They either route to an admin-only path that 403s or expect the wrong response shape, so I call the self-scoped REST paths directly.
+- **Lobby's websocket looks impossible to open from a browser.**
+
+  It wants an `Authorization` header at handshake time, and the browser `WebSocket` API has no way to send one. I tried a query param, a few variations of it, and the token in the subprotocol list next to `Bearer`, and spent three separate attempts on it, including a Node experiment that only "worked" because Node's WebSocket supports a non-standard headers option no browser has.
+
+  I concluded it couldn't be done and built a relay around that. It could. Lobby accepts the access token as the only requested subprotocol, which is what [`@accelbyte/sdk-lobby`](https://www.npmjs.com/package/@accelbyte/sdk-lobby) does, and I only found that after the relay was already live.
+
+- **Session `PATCH` replaces the whole attributes object instead of merging it.** 
+
+  In PvP, one writer sets the word list and another sets the WebRTC offer and answer, and with stale client copies they silently wipe each other's fields. It showed up as a `words[0] is undefined` crash on roughly two out of three runs. The same endpoint also needs an optimistic-concurrency `version` field or it returns a 400.
+- **A room's join code is generated only if the session's joinability is `OPEN`.** 
+
+  Otherwise the endpoint returns nothing, with no error and no warning. Generating and revoking a code are leader-enforced server-side, so I didn't have to write my own host check.
+
+- **The Go SDK's generated friends-list methods are unusable with a player token.** 
+
+  They either route to an admin-only path that 403s or expect the wrong response shape, so I call the self-scoped REST paths directly.
 
 The Lobby one is why realtime started on Pusher. The frontend and backend were both on Vercel, which is serverless. A function there lives for one request and then goes away, so there's nowhere to keep a socket open for a Lobby relay. Pusher holds the connections itself, so my backend only had to send it a message. Once the backend moved to Cloud Run, which runs a normal long-lived process, that reasoning stopped holding.
 
-My first Lobby version assumed the browser couldn't connect, so the browser held a socket to the Go service and the service held the Lobby socket on its behalf, where a Go client sets the header freely. That worked, but every open tab kept a Cloud Run instance billed for as long as the socket lived. I capped it at one instance, cut sockets after 15 minutes, and dropped hidden tabs, all to limit a cost that shouldn't have existed.
+My first Lobby version assumed the browser couldn't connect, so the browser held a socket to the Go service and the service held the Lobby socket on its behalf, where a Go client sets the header freely. That worked, but every open tab kept a Cloud Run instance billed for as long as the socket lived. I limited it to one instance, cut sockets after 15 minutes, and dropped hidden tabs, all to limit a cost that shouldn't have existed.
 
 Now the login response carries the Lobby URL and the browser dials it with its own access token. The relay, its origin allowlist, and the 15 minute request timeout are gone, and Cloud Run only handles short REST calls. Senders push app payloads through Lobby's freeform notifications over REST and AGS delivers each one to whichever socket belongs to that player. 
 
 Presence needed almost no code since AGS marks a player online while their socket is open. The cost is speed. Lobby was noticeably slower than Pusher in my tests from Indonesia, though part of that is distance because the AGS namespace is in the US and my Pusher cluster was in Singapore.
 
-None of these are dealbreakers, and most cost me an afternoon each. But every one of them is an afternoon a real customer would also spend, so I've filed them as such.
+The only presence code I wrote disconnects a tab that's been hidden for a minute, so a forgotten tab doesn't look online to friends forever.
 
 ## How the agent tooling held up
 
@@ -96,9 +107,9 @@ I verified anything on the Go side with `go run .` and curl against the real nam
 
 Match invites only arrive live. If you're not connected when the Lobby notification fires, you miss it. Friends and blocks always read straight from AGS, so those are fine, but the invite itself has no persisted record to fall back on.
 
-I refuse to pay a single penny for a typing game, so the Go service is capped at one small instance. Since browsers connect to Lobby directly, Cloud Run no longer holds a connection per open tab and only serves short requests, so the bill stays small. A tab hidden for a minute still drops its Lobby socket, so a forgotten tab doesn't show as online forever.
+I refuse to pay a single penny for a typing game, so the Go service only runs on one small instance. Since browsers connect to Lobby directly, Cloud Run no longer holds a connection per open tab and only serves short requests, so the bill stays small.
 
-If it feels slow when a lot of people are racing, sorry, that's by design. It still isn't a guarantee of zero, so there's a budget alert in case I'm wrong.
+The downside is that it'll feel slow if a lot of people are racing at once. I'm okay with that. I'd rather it be slow than cost me money, and there's a budget alert in case it still does.
 
 PvP relays through AGS's TURN servers when two players can't connect directly, and falls back to public STUN alone if fetching the credentials fails. The Go SDK has no client for the TURN manager, so that's another direct REST call.
 
@@ -106,7 +117,7 @@ The client decides room wins by comparing your WPM against the highest opponent 
 
 ## The part I actually wanted to prove
 
-This is a browser typing game with no budget and one developer. It still ended up with real accounts, cross-device saves, per-mode leaderboards, thirty-something achievements, matchmaking, party rooms, and a friends list with live presence, all on a backend capped at one small Cloud Run instance.
+This is a browser typing game with no budget and one developer. It still ended up with real accounts, cross-device saves, per-mode leaderboards, thirty-something achievements, matchmaking, party rooms, and a friends list with live presence, all on a backend that runs on one small Cloud Run instance.
 
 AGS gets associated with big publishers because that's who you see using it, not because it's priced out of reach of anyone smaller. The services underneath are just the ordinary, tedious problems every game has, and a small web game runs into all of them too, usually with fewer people around to solve them.
 
