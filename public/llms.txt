@@ -30,6 +30,7 @@
 - [I Got Tired of Loud Wedding Invites, So I Made My Own](https://rayhannr.dev/blog/tired-of-digital-wedding-invites): A personal story about digital wedding invitations
 - [Relationship Lessons from "500 Days of Summer" for Serious Men](https://rayhannr.dev/blog/relationship-lessons-500-days-of-summer): Lessons from the film for men in serious relationships
 - [Sounds Like an Extortion](https://rayhannr.dev/blog/sounds-like-an-extortion): On corruption and informal fees
+- [The Cost of Working Remotely](https://rayhannr.dev/blog/cost-of-working-remotely): Five years of working from home still got to me even as an introvert
 
 ## Projects
 
