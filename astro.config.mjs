@@ -31,7 +31,8 @@ export default defineConfig({
     '/blog/cache-control-for-react-app-using-nginx': '/blog/nginx-cache-control-react-performance',
     '/blog/show-reading-time-estimator-in-your-astro-blog': '/blog/astro-reading-time',
     '/blog/optimizing-vite-bundles-with-rollup-plugin-visualizer': '/blog/vite-bundle-visualizer',
-    '/blog/blogging-journey-technical-writing': '/blog/blogspot-to-technical-blog'
+    '/blog/blogging-journey-technical-writing': '/blog/blogspot-to-technical-blog',
+    '/blog/dynamic-import-avoid-bundle-redownload-on-redirect': '/blog/skip-app-bundle-on-redirect'
   },
   integrations: [sitemap({
     lastmod: new Date(),

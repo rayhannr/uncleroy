@@ -22,7 +22,7 @@
 - [Converting Notion Database to Anki Using AI](https://rayhannr.dev/blog/notion-to-anki-ai): Sync Notion databases to Anki with AI-generated example sentences
 - [.mmbak is just a SQLite file](https://rayhannr.dev/blog/money-manager-mmbak-sqlite): Open and analyze Money Manager .mmbak backup files with SQLite
 - [Dashboards still matter, even with CLI and MCP](https://rayhannr.dev/blog/dashboard-vs-cli-mcp): When dashboards beat CLI and MCP tools in real projects
-- [Avoid duplicate bundle downloads on redirect with dynamic import](https://rayhannr.dev/blog/dynamic-import-avoid-bundle-redownload-on-redirect): Use dynamic imports to avoid redownloading bundles on redirect
+- [Redirect Without Downloading the Whole App](https://rayhannr.dev/blog/skip-app-bundle-on-redirect): Load only the logic needed to redirect and skip the app bundle
 - [No More Skill Issues (or Subagent Ones)](https://rayhannr.dev/blog/claude-code-skills-vs-subagents): Claude Code skills vs subagents compared
 - [A Feature Flag for Controlling API Validation in Production](https://rayhannr.dev/blog/better-api-validation-failure-handling): Using a feature flag to handle API validation errors safely in production
 - [Qawwam Meaning in the Quran is about Responsibility, Not Domination](https://rayhannr.dev/blog/qawwam-meaning-in-the-quran): A deep look at the true meaning of qawwam
