@@ -10,7 +10,7 @@ publishedAt: 2026-08-09T15:38:00Z
 status: published
 ---
 
-<strong>TL;DR:</strong> If a path redirects to a different domain (another app, or the same app on another subdomain), redirect immediately. Don't wait for the app bundle to load, especially when the bundle is big. Check for the redirect first in the entry file, and load the app with a dynamic `import()` only when there's nothing to redirect.
+<strong>TL;DR:</strong> If you know a path in your app will send the user to another domain (a separate app, or the same app on another subdomain), redirect immediately. Don't wait for the app bundle to load, especially when it's big. Run the redirect logic at the top of the entry file, before the app or its router (like React Router) is even set up, and load the app with a dynamic `import()` only when there's nothing to redirect.
 
 One of my favorite things to do at work between tasks is digging into performance issues. This one came from a multi-tenant React app I maintain, where multiple customers share the same environment and infrastructure, but each gets their own subdomain.
 
@@ -61,7 +61,9 @@ On a normal login, the user starts at no subdomain and gets redirected once. Tha
 
 ## The solution
 
-The redirect logic doesn't need to live inside `SessionManager`. More importantly, it doesn't need the entire app to be loaded before it runs. So I moved it out.
+The redirect logic doesn't need to live inside `SessionManager` and it doesn't belong in the router either. A redirect set up in React Router, whether it's a `<Navigate>` element or a loader, only runs after the router has mounted, and the router ships inside the bundle. By then the user has already downloaded the very thing we wanted to skip.
+
+The redirect has to run before the app exists at all, so I moved it to the top of the entry file.
 
 ```js
 // main.ts
