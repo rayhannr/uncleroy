@@ -9,6 +9,8 @@ import { htmlClassNames } from './plugins/html-classnames.mjs'
 import { externalLink } from './plugins/external-link'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import remarkCaptions from 'remark-captions'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
 import mdx from '@astrojs/mdx'
 
 const siteUrl =
@@ -58,8 +60,9 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'prism',
     processor: unified({
-      remarkPlugins: [htmlClassNames, remarkUnwrapImages, remarkCaptions],
-      rehypePlugins: [[externalLink, { domain: siteDomain }]]
+      // Single-dollar math is off so prices like "$5" in older posts aren't parsed as math.
+      remarkPlugins: [htmlClassNames, remarkUnwrapImages, remarkCaptions, [remarkMath, { singleDollarTextMath: false }]],
+      rehypePlugins: [[externalLink, { domain: siteDomain }], rehypeKatex]
     })
   }
 })

@@ -1,5 +1,5 @@
 ---
-title: From cringy Blogspot posts to a technical blog
+title: From Cringy Blogspot Posts to a Technical Blog
 image: ./images/blogspot-to-technical-blog.webp
 imageCaption: 'An image with the text "from cringy Blogspot posts to a technical blog"'
 imageCredit: Wahyu Pratama

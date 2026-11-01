@@ -23,10 +23,13 @@ if (!blog) {
 
 const { title, image, imageCaption, imageCredit, imageLink, publishedAt, description, metaDescription, status } = blog.data
 const { Content } = await render(blog)
+// KaTeX styles and fonts are self-hosted in public/katex and only loaded for posts that use $$ math.
+const hasMath = blog.body?.includes('$$') ?? false
 ---
 
 <BaseLayout {title} description={metaDescription || description} image={image.src} showMeter>
   <BlogStructuredData slot="structured-data" {...blog.data} />
+  {hasMath && <link slot="head" rel="stylesheet" href="/katex/katex.min.css" />}
   <article class="mt-2 lg:mt-4">
     <header>
       <h1 class="font-semibold text-balance">
