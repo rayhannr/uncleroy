@@ -33,6 +33,7 @@
 - [The Cost of Working Remotely](https://rayhannr.dev/blog/cost-of-working-remotely): Five years of working from home still got to me even as an introvert
 - [Haversine Distance Between Two Coordinates in JavaScript](https://rayhannr.dev/blog/haversine-distance-formula): A plain explanation of the haversine formula, with real numbers and a working JavaScript function
 - [Use Haversine to Cut Google Maps Requests by 80 Percent](https://rayhannr.dev/blog/reduce-google-maps-api-requests-haversine): Straight-line first, Google Maps only for the shortlist
+- [Hajj Ticket War Part 1: Assumptions and Stage Rules](https://rayhannr.dev/blog/hajj-ticket-war-part-1): The assumptions and stage rules for a hypothetical hajj ticket war
 
 ## Projects
 
