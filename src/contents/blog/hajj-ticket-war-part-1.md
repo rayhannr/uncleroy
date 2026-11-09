@@ -4,7 +4,7 @@ image: ./images/hajj-ticket-war-part-1.webp
 imageCaption: 'An image with the text "hajj ticket war part 1: assumptions and stage rules"'
 imageCredit: Faraaz Zuberi
 imageLink: https://unsplash.com/photos/a-group-of-people-standing-around-a-building-KMlcTUTQTLA
-description: The assumptions and stage rules for a hypothetical hajj ticket war
+description: Ground rules for a hypothetical hajj ticket war
 metaDescription: A hypothetical look at hajj registration as a ticket war, covering the current two-stage payment, the design assumptions, and the stage rules per province.
 status: published
 publishedAt: 2026-11-08T14:10:59.017Z
@@ -38,31 +38,41 @@ My own view is that the ideal would be to refund everyone except those departing
 
 ## Rules per stage
 
-Seats aren't sold all at once. They go out in stages, numbered 0 to 4, and the last one is the war for new registrants. From here on, "stage" means these stages, not the two in the current system above. Each season has a quota per province, and seats can't move between provinces. The stages fill in order, and a later stage only opens if the earlier ones leave seats. Every stage has a payment window, and the lengths below are example numbers.
+Seats aren't sold all at once. They go out in stages, numbered 0 to 4, and the last one is the war for new registrants. From here on, "stage" means these stages, not the two in the current system above. 
 
-Stage 0 is for people who paid in full and then deferred. Since they've paid, they take next year's quota first and don't join the war. If the quota is 1000 and 20 people are in this stage, 980 seats are left for everyone else in the next stage.
+Each season has a quota per province, and seats can't move between provinces. The stages fill in order, and a later stage only opens if the earlier ones leave seats. 
 
-Stage 1 is for people scheduled to depart this season, plus the elderly The elderly means 65 and older, oldest first, capped at 5% of the quota. If the elderly don't use their whole share, their unused seats go to the people scheduled this season.
+Each stage is for its own group, plus anyone from the earlier stages who missed out. Every stage has a payment window, and the lengths below are example numbers.
 
-Nobody re-registers in stage 1. They just pay the remainder within 14 days. If stage 1 fills the quota, it ends there.
+I'll follow one example through every stage, using East Java. It has the biggest regular quota of any province in 2026 at 42,409 seats. That quota is real. Every number after it is made up.
 
-Stage 2 is for people scheduled within the next 6 years after this season (6 is just an example), and it only opens if stage 1 leaves seats. The payment window is 18 days. Priority goes by queue number.
+Stage 0 is for people who paid in full and then deferred. Since they've paid, they take next year's quota first and don't join the war. Say 2409 people are in this stage, so 40k seats are left for the stages after it.
 
-Anyone who failed to pay in stage 1 rolls in at the front, because their numbers are the smallest. For example, if 280 seats are left after stage 1, they go to the next 280 people by queue number, starting with those who missed stage 1.
+Stage 1 is for people scheduled to depart this season, plus the elderly (65 and older), sorted by oldest first, capped at 5% of the quota, which is about 2120 seats here. If the elderly don't use their whole share, their unused seats go to the people scheduled this season.
 
-Stage 3 is for everyone scheduled more than 6 years out, and it only opens if stage 2 comes up short. The payment window is 7 days, and it's first pay, first served. That makes it a war too, just between people who are already registered.
+Nobody re-registers in stage 1. They just pay the remainder within 14 days. If stage 1 fills the quota, it ends there. Say 28k of the 40k seats (70%) get paid, which leaves 12k.
 
-Stage 4 is the war for new registrants. It's for people who never registered, and it only opens if stage 3 leaves seats. They have to pay in full right away, and the payment window is 14 days.
+Stage 2 is for people scheduled within the next 4 years after this season (4 is just an example), and it only opens if stage 1 leaves seats. The payment window is 18 days. Priority goes by queue number.
 
-Note: the 6-year window is relative to the current season, not fixed calendar years, so it slides every season. Someone scheduled 8 years out this season is 7 years out the next, and eventually lands inside stage 2, where queue number decides instead of speed.
+Anyone who failed to pay in stage 1 rolls in at the front, because their numbers are the smallest. In the example, the 12k seats go out by queue number, starting with the people who missed stage 1 and then people scheduled in the next 4 years. Say 8k of them pay. That leaves 4k seats.
+
+Stage 3 is for everyone scheduled more than 4 years out, and it only opens if stage 2 comes up short. The payment window is 7 days, and it's first pay first served. We can consider this as a ticket war, just between people who are already registered. In the example, 4k seats are open to all of them, and they'd probably be gone within minutes.
+
+Stage 4 is the war for new registrants. It's for people who never registered, plus registered people who missed stage 3, since trying again this year is still better than waiting another year. It only opens if stage 3 leaves seats. New registrants have to pay in full right away, and the payment window is 14 days. 
+
+In the example it never opens, because stage 3 sold out. That would be the common case for as long as the old queue hasn't run dry, so the real war for new registrants may not happen for decades.
+
+Note: the 4-year window is relative to the current season, not fixed calendar years, so it slides every season. Someone scheduled 6 years out this season is 5 years out the next, and eventually lands inside stage 2, where queue number decides instead of speed.
 
 ## Why the rules differ per stage
 
-What differs is how a seat gets decided. Stages 1 and 2 are protected: stage 1 follows the schedule (and age for the elderly), and stage 2 follows queue number. Stages 3 and 4 are first pay, first served, so speed decides.
+I don't want this to be a cruel system, so the closer someone is to departure, the more protected they are. Stage 1 follows the schedule (and age for the elderly), and stage 2 follows queue number, so nobody close to departure loses their seat to someone who just pays faster. Stages 3 and 4 are first pay, first served, so speed decides.
 
-Stage 2 protects people whose departure is close. If someone is scheduled in two or three years, getting overtaken costs them a lot, so queue number decides.
+Stage 2 protects people whose departure is close. If someone is scheduled in two or three years getting overtaken after waiting that long is real emotional damage, so queue number decides.
 
-Stage 3 is first pay first served because those people are far from departure. Being overtaken by someone who registered later barely costs them. And anyone who keeps losing eventually moves into stage 2, and then stage 1, where there's no war.
+Stage 3 is first pay first served because most of the people in it are far from departure. Being overtaken by someone who registered later still hurts, but they have years left and it isn't permanent.
+
+The ones close to departure only end up here after missing stage 2, so they already had their protected chance. And anyone who keeps losing the war eventually moves into stage 2, and then stage 1, where there's no war.
 
 ## Seats held in pairs
 
