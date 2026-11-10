@@ -34,6 +34,8 @@
 - [Haversine Distance Between Two Coordinates in JavaScript](https://rayhannr.dev/blog/haversine-distance-formula): A plain explanation of the haversine formula, with real numbers and a working JavaScript function
 - [Use Haversine to Cut Google Maps Requests by 80 Percent](https://rayhannr.dev/blog/reduce-google-maps-api-requests-haversine): Straight-line first, Google Maps only for the shortlist
 - [Hajj Ticket War Part 1: Assumptions and Stage Rules](https://rayhannr.dev/blog/hajj-ticket-war-part-1): The assumptions and stage rules for a hypothetical hajj ticket war
+- [Hajj Ticket War Part 2: Policy Tradeoffs](https://rayhannr.dev/blog/hajj-ticket-war-part-2): The cost of each policy choice and of the alternative to it
+- [Hajj Ticket War Part 3: Requirements](https://rayhannr.dev/blog/hajj-ticket-war-part-3): Functional needs and hard limits for a hajj registration system
 
 ## Projects
 

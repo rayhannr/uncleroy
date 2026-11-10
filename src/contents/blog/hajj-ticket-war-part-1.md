@@ -28,7 +28,7 @@ In the 2026 season, stage 1 absorbed about 74% of the quota. That's only one sea
 
 ## Assumptions
 
-The current registration, the one with a Rp 25 million initial deposit, has a queue of about 5.8 million people, and in 2026 there were about 203k regular seats. That works out to an average wait of roughly 28 years, and every new registration makes it longer. So if we go with the ticket war, the current registration has to stop.
+The current registration, the one with a Rp 25 million initial deposit, has a queue of about 5.8 million people, and in 2026 there were about 203k regular seats. The official wait is about 26 years, and every new registration makes it longer. So if we go with the ticket war, the current registration has to stop.
 
 People already in the queue keep their queue number and scheduled year, since seats are handed out based on those. Nobody new joins that queue.
 
