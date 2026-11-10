@@ -7,7 +7,7 @@ imageLink: https://unsplash.com/photos/people-pray-in-a-beautiful-mosque-oMSPhjE
 description: Functional needs and hard limits for a hajj registration system
 metaDescription: Part 3 of a hypothetical hajj ticket war series. The requirements for the registration system, from what each stage must do to the things it must never do.
 status: published
-publishedAt: 2026-11-09T14:47:05.000Z
+publishedAt: 2026-11-10T15:25:58.000Z
 ---
 
 Before designing anything, I want to write down what the system has to do and what it can never do.
@@ -24,7 +24,9 @@ The rules from part 1 come down to five stages, numbered 0 to 4. They open one a
 
 - Stage 2 is where the system has to decide who gets to pay. It invites people by queue number, up to the number of seats left, and each invitation holds a seat for one wave of the window. A seat that isn't paid goes to the next person in line in the next wave.
 
-- Stage 3 and stage 4 are first pay first served. Whoever pays first gets the seat and the system stops taking payments the moment the quota is full.
+- Stage 3 and stage 4 are first pay first served. Whoever pays first gets the seat, and the system stops taking payments the moment the quota plus the reserve cap is full.
+
+- Payments beyond the quota are allowed up to a small cap, 2 to 3% (an example number). Those payers are reserves, and only people scheduled for next season can be one. They only go if a seat opens, and otherwise they roll into stage 0 next season, where they were headed anyway. The system has to tell them they're reserves before they pay.
 
 - Companions of the elderly, disabled pilgrims, and pilgrims who must travel with a close relative need two seats held together. Either both are held or neither is.
 
@@ -34,11 +36,11 @@ The rules from part 1 come down to five stages, numbered 0 to 4. They open one a
 
 ## What it must never do
 
-- Never give out more seats than a province's quota. This is the one that matters most. Every other requirement can be bent a little, this one can't.
+- Never give out more seats than a province's quota. Reserves can pay beyond it, but they don't hold a seat. This is the one that matters most. Every other requirement can be bent a little, this one can't.
 
   ![One province with a quota of 42,409 seats, filled in order by 2409 deferred pilgrims in stage 0, 28k scheduled this season plus elderly in stage 1, 8k by queue number in stage 2, and 4k first pay in stage 3, with a dashed line at the end marking that no seat 42,410 can be given out and stage 4 never opens](./images/hajj-quota-stages.svg)
 
-- It must not take money for a seat it can't give. If someone pays and the seat is already gone, that payment has to be caught and returned.
+- It must not take money for a seat it can't give without saying so. A reserve inside the cap knows they only go if a seat opens. Anyone else, and anyone beyond the cap, shouldn't be able to pay once the quota is full. If such a payment still slips through, it has to be caught and returned, because rolling it into stage 0 would let someone scheduled years later take next season's seat.
 
   A seat nobody paid for is a small problem. Money taken for a seat that doesn't exist is a bad one.
 

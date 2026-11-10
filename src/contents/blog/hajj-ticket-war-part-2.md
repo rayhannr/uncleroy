@@ -7,7 +7,7 @@ imageLink: https://unsplash.com/photos/city-traffic-with-modern-buildings-and-a-
 description: The cost of each policy choice and of the alternative to it
 metaDescription: Part 2 of a hypothetical hajj ticket war series. The policy choices behind the design, with what each one costs and what the other option would have cost.
 status: published
-publishedAt: 2026-11-10T15:25:58.000Z
+publishedAt: 2026-11-09T14:47:05.000Z
 ---
 
 When I heard the news that hajj registration might become a ticket war, I kind of agreed with part of it. The official wait is about 26 years and every new registration makes it longer, so something has to stop that.
@@ -70,11 +70,11 @@ The cost is that new registrants take seats from people who registered first. Th
 
 ## A small tolerance for overbooking
 
-The choice: the system sells a little more than a province's quota, capped at 2 to 3% (an example number). The extra payers are reserves. They only go if a seat opens, and otherwise they roll into stage 0 next season, since they've already paid.
+The choice: the system sells a little more than a province's quota, capped at 2 to 3% (an example number). The extra payers are reserves, and only people scheduled for next season can be one. They only go if a seat opens, and otherwise they roll into stage 0 next season, which is where they were headed anyway.
 
 In the 2026 season, reserve pilgrims who had paid pushed stage 2 above 100% of the quota, and about 99.6% of the seats were filled in the end. That's one season, so it's a data point and not a pattern.
 
-What it costs: some reserves pay the remaining balance and don't get a seat this season, so their money is tied up for another year. Next year's quota also shrinks by that many seats, because stage 0 takes seats first. Part 3 says the system can never take money for a seat it can't give, so reserves have to know they're reserves when they pay.
+What it costs: some reserves pay the remaining balance and don't get a seat this season, so their money is tied up for another year. Part 3 says the system can never take money for a seat it can't give, so reserves have to know they're reserves when they pay.
 
 The other option is no tolerance at all, only as many payers as seats. The benefit is that nobody pays and then has to wait another year for a seat.
 
