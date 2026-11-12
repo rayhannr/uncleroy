@@ -20,11 +20,11 @@ The series stops when registration closes. Everything after that is out of scope
 
 ## How payment works now
 
-Regular hajj payment happens in two stages. Stage 1 goes to people whose queue number falls inside the quota, people who already paid in full but deferred their trip to a later year (we call it lunas tunda in Indonesian), and the elderly. Stage 2 only opens if a province still has seats left.
+Regular hajj payment happens in two rounds. Round 1 goes to people whose queue number falls inside the quota, people who already paid in full but deferred their trip to a later year (we call it lunas tunda in Indonesian), and the elderly. Round 2 only opens if a province still has seats left.
 
 Quota and queue numbers are allocated per province, so someone in West Java isn't competing with someone in Gorontalo.
 
-In the 2026 season, stage 1 absorbed about 74% of the quota. That's only one season, so I'm not treating it as a pattern.
+In the 2026 season, round 1 absorbed about 74% of the quota. That's only one season, so I'm not treating it as a pattern.
 
 ## Assumptions
 
@@ -38,7 +38,7 @@ My own view is that the ideal would be to refund everyone except those departing
 
 ## Rules per stage
 
-Seats aren't sold all at once. They go out in stages, numbered 0 to 4, and the last one is the war for new registrants. From here on, "stage" means these stages, not the two in the current system above. 
+Seats aren't sold all at once. They go out in stages, numbered 0 to 4, and the last one is the war for new registrants. From here on, "stage" means these stages, not the two rounds in the current system above. 
 
 Each season has a quota per province, and seats can't move between provinces. The stages fill in order, and a later stage only opens if the earlier ones leave seats. 
 
@@ -48,15 +48,15 @@ I'll follow one example through every stage, using East Java. It has the biggest
 
 Stage 0 is for people who paid in full and then deferred. Since they've paid, they take next year's quota first and don't join the war. Say 2409 people are in this stage, so 40k seats are left for the stages after it.
 
-Stage 1 is for people scheduled to depart this season, plus the elderly (65 and older), sorted by oldest first, capped at 5% of the quota, which is about 2120 seats here. If the elderly don't use their whole share, their unused seats go to the people scheduled this season.
+Stage 1 is for people scheduled to depart this season, plus the elderly (65 and older), sorted by oldest first, limited to 5% of the quota, which is about 2120 seats here. If the elderly don't use their whole share, their unused seats go to the people scheduled this season.
 
-Nobody re-registers in stage 1. They just pay the remainder within 14 days. If stage 1 fills the quota, it ends there. Say 28k of the 40k seats (70%) get paid, which leaves 12k.
+Nobody re-registers in stage 1. They just pay the remainder within 14 days. If stage 1 fills the quota, it ends there. Say 30k of the 40k seats (75%) get paid, which leaves 10k.
 
 Stage 2 is for people scheduled within the next 4 years after this season (4 is just an example), and it only opens if stage 1 leaves seats. The payment window is 18 days. Priority goes by queue number.
 
-Anyone who failed to pay in stage 1 rolls in at the front, because their numbers are the smallest. In the example, the 12k seats go out by queue number, starting with the people who missed stage 1 and then people scheduled in the next 4 years. Say 8k of them pay. That leaves 4k seats.
+Anyone who failed to pay in stage 1 rolls in at the front, because their numbers are the smallest. In the example, the 10k seats go out by queue number, starting with the people who missed stage 1 and then people scheduled in the next 4 years. Say 98% of them pay. That leaves 200 seats.
 
-Stage 3 is for everyone scheduled more than 4 years out, and it only opens if stage 2 comes up short. The payment window is 7 days, and it's first pay first served. We can consider this as a ticket war, just between people who are already registered. In the example, 4k seats are open to all of them, and they'd probably be gone within minutes.
+Stage 3 is for everyone scheduled more than 4 years out, and it only opens if stage 2 comes up short. The payment window is 7 days, and it's first pay first served. We can consider this as a ticket war, just between people who are already registered. In the example, 200 seats are open to all of them, and they'd probably be gone within minutes.
 
 Stage 4 is the war for new registrants. It's for people who never registered, plus registered people who missed stage 3, since trying again this year is still better than waiting another year. It only opens if stage 3 leaves seats. New registrants have to pay in full right away, and the payment window is 14 days. 
 

@@ -5,7 +5,7 @@ imageCaption: 'An image with the text "hajj ticket war part 2: policy tradeoffs"
 imageCredit: Ameer Albahouth
 imageLink: https://unsplash.com/photos/city-traffic-with-modern-buildings-and-a-tower-9VSseMMu7Fo
 description: The cost of each policy choice and of the alternative to it
-metaDescription: Part 2 of a hypothetical hajj ticket war series. The policy choices behind the design, with what each one costs and what the other option would have cost.
+metaDescription: Part 2 of a hajj ticket war series. The policy choices behind the design, with what each one costs and what the other option would have cost.
 status: published
 publishedAt: 2026-11-09T14:47:05.000Z
 ---
@@ -42,9 +42,11 @@ The choice: speed decides in stage 3, and queue number decides in stage 2.
 
 What it costs: speed means connection and device. Someone with a fast phone in a city beats someone with a slow connection in a remote district, and the system can't fix that. The only thing it does is move the preparation, the money and the health check, to before the war opens.
 
+It also repeats. Someone who loses the war has to be ready again next season, and I assume they pay for the health check again, because the supporting tests typically stay valid for only about 3 months. A person who keeps losing carries that cost every year, until their schedule moves them into stage 2.
+
 The other option is queue number in every stage. The benefit is that it's fairer to the time people have waited.
 
-The cost is time. The system would have to invite people one by one in queue order and wait for each of them to pay. Seats nobody pays for go to the next person in line. Stage 3 has millions of people for a few thousand seats, and many of them won't be ready to pay, so it would take wave after wave. Each wave needs days, and stage 3 only has about a week. All of that would protect people who still have years left.
+The cost is time. The system would have to invite people one by one in queue order and wait for each of them to pay. Seats nobody pays for go to the next person in line. Stage 3 has millions of people for about a thousand seats, and many of them won't be ready to pay, so it would take wave after wave. Each wave needs days, and stage 3 only has about a week. All of that would protect people who still have years left.
 
 ## Not refunding existing registrants
 
@@ -60,7 +62,7 @@ The cost is a funding hole, because that money is what produces the returns. Not
 
 The choice: new registrants get seats only after earlier stages leave some. There's no fixed share for them.
 
-What it costs: the war that gives the policy its name, stage 4, almost certainly never opens. Stage 3 has millions of people competing for a few thousand seats per province, so it sells out and nothing is left. The war that actually happens is stage 3, and it's among people who are already registered.
+What it costs: the war that gives the policy its name, stage 4, almost certainly never opens. Stage 3 has millions of people competing for about a thousand seats nationwide, so it sells out and nothing is left. The war that actually happens is stage 3, and it's among people who are already registered.
 
 Stage 4 only opens if the old queue runs dry or stage 3 fails to sell out. With an official wait of about 26 years, that's decades away. So for a person who never registered, the policy is a closed door that is supposed to open someday.
 
@@ -70,9 +72,13 @@ The cost is that new registrants take seats from people who registered first. Th
 
 ## A small tolerance for overbooking
 
-The choice: the system sells a little more than a province's quota, capped at 2 to 3% (an example number). The extra payers are reserves, and only people scheduled for next season can be one. They only go if a seat opens, and otherwise they roll into stage 0 next season, which is where they were headed anyway.
+The choice: stage 1 overbooks a little by also taking payments from reserves, limited to 0.5% of a province's quota. Only stage 1 can overbook, and only people scheduled for next season can be one. A reserve doesn't hold a seat. They only go if a seat opens because someone paid and then dropped out, and otherwise they roll into stage 0 next season, which is where they were headed anyway.
 
-In the 2026 season, reserve pilgrims who had paid pushed stage 2 above 100% of the quota, and about 99.6% of the seats were filled in the end. That's one season, so it's a data point and not a pattern.
+The limit is small on purpose. Every reserve who doesn't get a seat lands in next season's stage 0, and a big limit would stack it and leave less room for that season's stage 1.
+
+In the 2026 season, reserve pilgrims who had paid pushed round 2 above 100% of the quota, and about 99.6% of the seats were filled in the end. That's one season, so it's a data point and not a pattern.
+
+The other number is how many pilgrims pay and then fail to depart. A 2025 statement by the hajj ministry put it at 800 to 1.2k a year, about 0.5% of a 221k quota, and that's where the limit comes from.
 
 What it costs: some reserves pay the remaining balance and don't get a seat this season, so their money is tied up for another year. Part 3 says the system can never take money for a seat it can't give, so reserves have to know they're reserves when they pay.
 

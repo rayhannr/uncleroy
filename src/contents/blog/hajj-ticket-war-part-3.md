@@ -4,8 +4,8 @@ image: ./images/hajj-ticket-war-part-3.webp
 imageCaption: 'An image with the text "hajj ticket war part 3: requirements"'
 imageCredit: Hakam Magdea Fardana Ansie
 imageLink: https://unsplash.com/photos/people-pray-in-a-beautiful-mosque-oMSPhjE2e4Q
-description: Functional needs and hard limits for a hajj registration system
-metaDescription: Part 3 of a hypothetical hajj ticket war series. The requirements for the registration system, from what each stage must do to the things it must never do.
+description: Functional needs and hard limits the system has to respect
+metaDescription: Part 3 of a hajj ticket war series. The requirements for the registration system, from what each stage must do to the things it must never do.
 status: published
 publishedAt: 2026-11-10T15:25:58.000Z
 ---
@@ -24,9 +24,9 @@ The rules from part 1 come down to five stages, numbered 0 to 4. They open one a
 
 - Stage 2 is where the system has to decide who gets to pay. It invites people by queue number, up to the number of seats left, and each invitation holds a seat for one wave of the window. A seat that isn't paid goes to the next person in line in the next wave.
 
-- Stage 3 and stage 4 are first pay first served. Whoever pays first gets the seat, and the system stops taking payments the moment the quota plus the reserve cap is full.
+- Stage 3 and stage 4 are first pay first served. Whoever pays first gets the seat, and the system stops taking payments the moment the quota is full.
 
-- Payments beyond the quota are allowed up to a small cap, 2 to 3% (an example number). Those payers are reserves, and only people scheduled for next season can be one. They only go if a seat opens, and otherwise they roll into stage 0 next season, where they were headed anyway. The system has to tell them they're reserves before they pay.
+- Only stage 1 takes payments from reserves, up to 0.5% of the quota on top of the seats. Only people scheduled for next season can pay as reserves, and the system has to tell them they're reserves before they pay. A reserve who doesn't get a seat rolls into stage 0 next season.
 
 - Companions of the elderly, disabled pilgrims, and pilgrims who must travel with a close relative need two seats held together. Either both are held or neither is.
 
@@ -38,9 +38,9 @@ The rules from part 1 come down to five stages, numbered 0 to 4. They open one a
 
 - Never give out more seats than a province's quota. Reserves can pay beyond it, but they don't hold a seat. This is the one that matters most. Every other requirement can be bent a little, this one can't.
 
-  ![One province with a quota of 42,409 seats, filled in order by 2409 deferred pilgrims in stage 0, 28k scheduled this season plus elderly in stage 1, 8k by queue number in stage 2, and 4k first pay in stage 3, with a dashed line at the end marking that no seat 42,410 can be given out and stage 4 never opens](./images/hajj-quota-stages.svg)
+  ![One province with a quota of 42k seats, filled in order by 2k deferred pilgrims in stage 0, 30k scheduled this season plus elderly in stage 1, 9.8k by queue number in stage 2, and 200 first pay in stage 3, with a dashed line at the end marking that no seat past 42k can be given out and stage 4 never opens](./images/hajj-quota-stages.svg)
 
-- It must not take money for a seat it can't give without saying so. A reserve inside the cap knows they only go if a seat opens. Anyone else, and anyone beyond the cap, shouldn't be able to pay once the quota is full. If such a payment still slips through, it has to be caught and returned, because rolling it into stage 0 would let someone scheduled years later take next season's seat.
+- It must not take money for a seat it can't give without saying so. A reserve inside the limit knows they only go if a seat opens. Anyone else, and anyone beyond the limit, shouldn't be able to pay once the quota is full, and in stages 2 to 4 nobody should. If such a payment still slips through, it has to be caught and returned, because rolling it into stage 0 would let someone scheduled years later take next season's seat.
 
   A seat nobody paid for is a small problem. Money taken for a seat that doesn't exist is a bad one.
 
@@ -52,7 +52,7 @@ The rules from part 1 come down to five stages, numbered 0 to 4. They open one a
 
 ## How it has to behave
 
-Stage 3 is a burst. The queue is millions of people and the seats are a few thousand per province, so the system has to stay up when everyone arrives in the same minute, and it has to answer correctly even when it's slow.
+Stage 3 is a burst. The queue is millions of people and there are only about a thousand seats, so the system has to stay up when everyone arrives in the same minute, and it has to answer correctly even when it's slow.
 
 A payment can be retried. People will press the button twice, or the network will drop mid-payment. Paying twice can't take two seats or charge twice.
 
