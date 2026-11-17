@@ -12,7 +12,7 @@ publishedAt: 2026-11-10T15:25:58.000Z
 
 Before designing anything, I want to write down what the system has to do and what it can never do.
 
-The rules from part 1 come down to five stages, numbered 0 to 4. They open one after another, and a later stage only opens if the earlier ones leave seats.
+The rules from [part 1](/blog/hajj-ticket-war-part-1#rules-per-stage) come down to five stages, numbered 0 to 4. They open one after another, and a later stage only opens if the earlier ones leave seats.
 
 ## What the system has to do
 
@@ -60,6 +60,6 @@ The windows are short, 7 to 18 days, and the stages run one after another. So th
 
 ## What I'm leaving out
 
-Anything after registration closes is out of scope, as I said in part 1. So are the choice of payment provider and the app's screens. This series is about the part that decides who gets a seat.
+Anything after registration closes is out of scope, as I said in [part 1](/blog/hajj-ticket-war-part-1). So are the choice of payment provider and the app's screens. This series is about the part that decides who gets a seat.
 
 The next part puts numbers on all of this, so we can see which requirement is actually the hard one.

@@ -12,7 +12,7 @@ publishedAt: 2026-11-09T14:47:05.000Z
 
 When I heard the news that hajj registration might become a ticket war, I kind of agreed with part of it. The official wait is about 26 years and every new registration makes it longer, so something has to stop that.
 
-But a plain ticket war would be cruel to the people who already registered, especially the ones who have waited the longest. That's why the stage rules in part 1 treat people differently depending on how close they are to departure.
+But a plain ticket war would be cruel to the people who already registered, especially the ones who have waited the longest. That's why the stage rules in [part 1](/blog/hajj-ticket-war-part-1#rules-per-stage) treat people differently depending on how close they are to departure.
 
 This part lists the policy choices behind those rules. For each one, I list what it costs and what the other option would cost.
 
@@ -80,7 +80,7 @@ In the 2026 season, reserve pilgrims who had paid pushed round 2 above 100% of t
 
 The other number is how many pilgrims pay and then fail to depart. A 2025 statement by the hajj ministry put it at 800 to 1.2k a year, about 0.5% of a 221k quota, and that's where the limit comes from.
 
-What it costs: some reserves pay the remaining balance and don't get a seat this season, so their money is tied up for another year. Part 3 says the system can never take money for a seat it can't give, so reserves have to know they're reserves when they pay.
+What it costs: some reserves pay the remaining balance and don't get a seat this season, so their money is tied up for another year. [Part 3](/blog/hajj-ticket-war-part-3#what-it-must-never-do) says the system can never take money for a seat it can't give, so reserves have to know they're reserves when they pay.
 
 The other option is no tolerance at all, only as many payers as seats. The benefit is that nobody pays and then has to wait another year for a seat.
 

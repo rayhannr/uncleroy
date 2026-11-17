@@ -10,17 +10,17 @@ status: published
 publishedAt: 2026-11-11T15:03:16.000Z
 ---
 
-Part 3 listed what the system has to do. This part puts numbers on it, to find out which requirement is the hard one.
+[Part 3](/blog/hajj-ticket-war-part-3#what-the-system-has-to-do) listed what the system has to do. This part puts numbers on it, to find out which requirement is the hard one.
 
-The real inputs are the queue of about 5.8 million people, the 2026 regular quota of about 203k seats, and East Java's 42k seats from part 1. The rest are the made-up numbers from the part 1 example, plus a few scenarios that I'll label as scenarios.
+The real inputs are the queue of about 5.8 million people, the 2026 regular quota of about 203k seats, and East Java's 42k seats from [part 1](/blog/hajj-ticket-war-part-1#rules-per-stage). The rest are the made-up numbers from the [part 1](/blog/hajj-ticket-war-part-1#rules-per-stage) example, plus a few scenarios that I'll label as scenarios.
 
-The example numbers from part 1 are East Java's. To size the whole system, I apply the same split to the national quota of about 203k seats. All provinces follow the same stage calendar. For this estimate, I assume the war stages, 3 and 4, happen on the same day in every province.
+The example numbers from [part 1](/blog/hajj-ticket-war-part-1#rules-per-stage) are East Java's. To size the whole system, I apply the same split to the national quota of about 203k seats. All provinces follow the same stage calendar. For this estimate, I assume the war stages, 3 and 4, happen on the same day in every province.
 
 Putting every province's war on the same day isn't ideal in practice. It makes overloading the server likely, and some provinces may have no seats left while others still do. People only compete with others from their own province, so nothing forces every province onto one day. Scheduling them per province group comes in a later part.
 
 ## Windows follow the deadline
 
-The deadline is fixed and the windows adjust to it. In part 1 I gave each stage a window length, but those were example numbers for one season.
+The deadline is fixed and the windows adjust to it. In [part 1](/blog/hajj-ticket-war-part-1#rules-per-stage) I gave each stage a window length, but those were example numbers for one season.
 
 Take the 2026 season. Registration opened on November 24th 2025, and Saudi Arabia's cutoff for pilgrim data was February 8th. That's 76 days. The real payment window in 2026 closed on January 23rd, 16 days before the cutoff, and I'm doing the same here. That leaves 60 days.
 
@@ -92,4 +92,4 @@ East Java is about a fifth of either number. Bandwidth is only large if everyone
 
 It's the 5k people per seat in stage 3. Payment volume is small, storage is small, and stages 0 to 2 are small. The pressure is on one counter per province during the first minute of the war.
 
-That counter is also the requirement from part 3 that can't be bent, never giving out more seats than the quota. Scheduling provinces on different days would spread the national peak, but it wouldn't ease the pressure on one province's counter. So the next parts build around the counter, starting with the data model.
+That counter is also the requirement from [part 3](/blog/hajj-ticket-war-part-3#what-it-must-never-do) that can't be bent, never giving out more seats than the quota. Scheduling provinces on different days would spread the national peak, but it wouldn't ease the pressure on one province's counter. So the next parts build around the counter, starting with the data model.
