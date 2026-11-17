@@ -36,6 +36,7 @@
 - [Hajj Ticket War Part 1: Assumptions and Stage Rules](https://rayhannr.dev/blog/hajj-ticket-war-part-1): The assumptions and stage rules for a hypothetical hajj ticket war
 - [Hajj Ticket War Part 2: Policy Tradeoffs](https://rayhannr.dev/blog/hajj-ticket-war-part-2): The cost of each policy choice and of the alternative to it
 - [Hajj Ticket War Part 3: Requirements](https://rayhannr.dev/blog/hajj-ticket-war-part-3): Functional needs and hard limits for a hajj registration system
+- [Hajj Ticket War Part 5: Data Model](https://rayhannr.dev/blog/hajj-ticket-war-part-5): The tables behind the seat counter and the rules they enforce
 
 ## Projects
 

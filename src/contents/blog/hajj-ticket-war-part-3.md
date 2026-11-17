@@ -18,7 +18,7 @@ The rules from part 1 come down to five stages, numbered 0 to 4. They open one a
 
 - Each province has its own quota, and the stages fill it in order. So the system has to know, per province and per season, how many seats exist and how many are left.
 
-- Stage 0 comes off the top. Pilgrims who paid in full and deferred take next year's quota first, and whatever remains goes to the stages after it.
+- Stage 0 comes off the top. Pilgrims who paid in full but deferred take next year's quota first, and whatever remains goes to the stages after it.
 
 - Stage 1 needs no registration. The system already knows who is scheduled this season, so it only has to open payment for them and for the elderly, oldest first, up to 5% of the quota.
 
